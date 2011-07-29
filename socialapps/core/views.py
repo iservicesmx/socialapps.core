@@ -128,8 +128,13 @@ class HybridListView(JSONResponseMixin, MultipleObjectTemplateResponseMixin, Bas
 
         return MultipleObjectTemplateResponseMixin.render_to_response(self, context)
 
+class HybridTemplateView(JSONResponseMixin, TemplateView):
+    def render_to_response(self, context):
+        # Look for a 'format=json' GET argument
+        if self.request.GET.get('format','html') == 'json':
+            return JSONResponseMixin.render_to_response(self, context)
 
-
+        return TemplateView.render_to_response(self, context)
 
 
 def file(request, language=None, id=None):
