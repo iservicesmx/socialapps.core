@@ -169,7 +169,13 @@ $(function() {
                                 <a href="{{ item.target.get_absolute_url }}">{{ item.target }}</a>
                             </h2>
                         {% else %}
-                            <h2>{{ item.activity_object }}</h2>
+                            <h2>
+                            {% if item.activity_object.url %}
+                                <a href="{{ item.activity_object }}" target="blank">{{ item.activity_object}}</a>
+                            {% else %}
+                                {{ item.activity_object }}
+                            {% endif %}
+                            </h2>
                         {% endif %}
                         <h3>{{ item.activity_object.created }}
                     </div>
