@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/dash.css">
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}css/socialstream.css' />
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}css/buttons.css' />
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}css/form.css' />
+{% endblock %}
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        var availableTags = [
+            "ActionScript",
+
+            "ActionScript",
+            "ActionScript",
+            "ActionScript",
+            "ActionScript",
+            "ActionScript",
+            "ActionScript",
+            "AppleScript",
+            "Asp",
+            "BASIC",
+            "C",
+            "C++",
+            "Clojure",
+            "COBOL",
+            "ColdFusion",
+            "Erlang",
+            "Fortran",
+            "Groovy",
+            "Haskell",
+            "Java",
+            "JavaScript",
+            "Lisp",
+            "Perl",
+            "PHP",
+            "Python",
+            "Ruby",
+            "Scala",
+            "Scheme"
+        ];
+        
+        $('#mytags').tagit({tagSource: availableTags});
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+    <form class="myform">
+        <div class="line">
+            <label for="tags">Tags</label>
+            <ul id="mytags"></ul>
+        </div>
+    </form>
+{% endblock %}

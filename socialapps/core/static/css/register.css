@@ -1,0 +1,72 @@
+.register	{
+//	margin-top: -225px;
+	padding-top: 5px;
+	margin-top: -0px !important;	 
+}
+
+.box.register {
+	top:20% !important;
+}
+.box fieldset {
+	padding: 10px 0px;
+	border: none;
+	margin: 0px;
+}
+
+.errors {
+	margin-left: 120px;
+	padding-left: 30px;
+	background: url(../images/exclamation-red-frame.png) no-repeat;
+}
+
+.errorlist {
+	color: red;
+/*	float: right;*/
+	top: -100px;
+	display:none;
+}
+
+.box.register form fieldset ul.errorlist {
+	float: left;
+	position: relative;
+}
+
+
+.box alert p {
+	font-size: 20px;
+	font-weight: bold;
+	text-shadow: 0px 1px 0px rgba(0,0,0, .4);
+	text-align: center;
+}
+
+.box alert p fail {
+	color: red;
+}
+
+.box a {
+	color:black;
+}
+
+.box a:hover {
+	color:black;
+}
+
+.box alert h2 {
+	border: none;
+}
+
+.login_form input,
+.register input {
+    border-radius: 4px 4px;
+    -webkit-border-radius: 4px 4px;
+    -moz-border-radius: 4px 4px;
+    background: #F4F8FA;
+    -webkit-box-shadow: rgba(81, 203, 238, 0) 0px 0px 5px;
+    -webkit-transition: all 0.25s ease-in-out;
+    border: 1px solid #CCC;
+    color: #333;
+    font: normal normal normal 1.25em/normal 'Lucida Grande', 'Lucida Sans Unicode', Arial, sans-serif;
+    padding: 5px;
+    vertical-align: top;
+    position: relative;
+}

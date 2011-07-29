@@ -1,0 +1,10 @@
+{% load i18n %}
+
+<form class="uniForm" id="generic_form" method="POST" action="{{ url_form_post }}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form_block">
+        <input type="hidden" name="action" value="{{action_title}}" />
+        <input type="submit" value="{% trans action_title %}"/>
+    </div>
+</form>

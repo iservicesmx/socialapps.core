@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title %}{% blocktrans %}Delete {{type_title}}{% endblocktrans %}{% endblock %}
+
+{% block content %}
+    <h1>{% blocktrans %}Delete {{type_title}}{% endblocktrans %}</h1>
+    
+    {% include template_form %}
+    
+{% endblock %}

@@ -1,0 +1,14 @@
+body { background: #EECA67 !important; }
+
+.box button, .login-switch, #facebox .closed  {  background: #008C00  !important; }
+
+
+#content {
+	-webkit-box-shadow: #B79E4F 5px 5px 10px;
+	-moz-box-shadow: #B79E4F 10px 10px 10px;
+	box-shadow: #B79E4F 10px 10px 10px;
+}
+
+.avatar, #menu-left #id_posting { border-color: #EECA67 !important; }
+
+a  { text-decoration: none; }

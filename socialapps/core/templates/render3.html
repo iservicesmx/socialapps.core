@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+{% load socialapps_tags %}
+{% block extra_css %}<link rel="stylesheet" href="{{ STATIC_URL }}css/dash.css">
+
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}css/media.css' />
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}css/buttons.css' />
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}css/form.css' />
+ {% endblock %}
+{% block extra_js %} 
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jqtransform.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/datepicker.js"></script>
+
+    
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            var options
+            $("#contentbox").keyup(function()
+            {
+                var content=$(this).val();
+                var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+                var url= content.match(urlRegex);
+                if(url.length>0)
+                {   link = url
+                    $("#linkbox").slideDown('show');
+                    $("#linkbox").html("<img src='/static/images/loading.gif'>");
+                    
+                    {% get_urll "url" %}
+                }
+
+            });
+        });
+    </script>
+
+
+{% endblock %}
+
+{% block content %}
+<!-- status update-->
+<div>
+    <div class ="media-tabs">
+        <ul>
+            <li id="status"><a href="#">Status</a></li>
+            <li id="link"><a href="#">Link</a></li>
+            <li id="file"><a href="#">File</a></li>
+            <li id="idea"><a href="#">Idea</a></li>
+            <li id="event"><a href="#">Event</a></li>                                                    
+        </ul>           
+    </div>
+    <div class="media-content status">
+        <form method="POST" name="add_form" action="#">     
+            <textarea id="area-content" rows="5" cols="94" name="posting" class="status"></textarea>
+    	    <div class = "media-send status">
+    	        <ul>
+    	            <li id="facebook"><input type="checkbox" name="facebook"> Facebook</li>
+    	            <li id="twitter"><input type="checkbox" name="twitter"> Twitter</li>    	       
+    	        </ul>
+                <input class="button blue" type="button" value="Update" />
+            </div>
+        </form>	
+        <div class="arrow-back status"></div>
+        <div class="arrow-font status"></div>  
+    </div>
+</div>
+
+<!-- Link --> 
+ <div>
+    <div class ="media-tabs">
+        <ul>
+            <li id="status"><a href="#">Status</a></li>
+            <li id="link"><a href="#">Link</a></li>
+            <li id="file"><a href="#">File</a></li>
+            <li id="idea"><a href="#">Idea</a></li>
+            <li id="event"><a href="#">Event</a></li>                                                    
+        </ul>
+    </div>
+    
+    <div class="media-content link">
+        <form method="POST" name="add_form" action="#">             
+            <ul>
+                <li id="url"><input type="text" id="url-input"></li>
+                <li id="description"><input type="text" id="desc-input" class="description"></li>                
+            </ul>
+    	    <div class = "media-send">
+                <input class="button blue" type="button" value="Update" />
+    	    </div>                
+        </form>
+        <div class="arrow-back link"></div>
+        <div class="arrow-font link"></div>    
+    </div>
+</div>
+    
+<!-- event -->
+<div>
+    <div class ="media-tabs">
+        <ul>
+            <li id="status"><a href="#">Status</a></li>
+            <li id="link"><a href="#">Link</a></li>
+            <li id="file"><a href="#">File</a></li>
+            <li id="idea"><a href="#">Idea</a></li>
+            <li id="event"><a href="#">Event</a></li>                                                    
+        </ul>
+    </div>
+    <script type="text/javascript"> 
+	$(function() {
+        $( "#start" ).datepicker({dateFormat: "dd/mm/yy"});
+        $( "#end" ).datepicker({dateFormat: "dd/mm/yy"});
+      });
+    </script>    
+    <div class="media-content event">
+        <form method="POST" name="add_form" action="#" class="form">    
+            <ul>
+                <li><input type="text" id="event-title" name="event-title" title="Evento Title"></li>
+            </ul> 
+            <div class="rowElem"> 
+                <div class="form-wapper date"> 
+                    <label>Start</label> 
+                    <input type="text" name="expires" id="start" />            
+                </div> 
+                <div class="form-wapper time"> 
+                    <label></label>       
+                    <select name="expires_time" class="time"> 
+                        <option value="0">00:00 hrs</option> 
+                    </select>
+                </div> 
+                <div class="form-wapper date"> 
+                    <label>End</label> 
+                    <input type="text" name="end" id="end" />            
+                </div> 
+                <div class="form-wapper time"> 
+                    <label></label>       
+                    <select name="end_time" class="time"> 
+                        <option value="0">00:00 hrs</option> 
+                    </select>
+                </div>
+            </div>
+            <textarea id="area-description" rows="3" cols="94" name="posting" class="description"></textarea>
+    	    <div class = "media-send">
+                <input class="button blue" type="button" value="Update" />
+            </div>
+        </form>	
+        <div class="arrow-back event"></div>
+        <div class="arrow-font event"></div>    
+    </div>
+</div>
+
+<!-- file --> 
+ <div>
+    <div class ="media-tabs">
+        <ul>
+            <li id="status"><a href="#">Status</a></li>
+            <li id="link"><a href="#">Link</a></li>
+            <li id="file"><a href="#">File</a></li>
+            <li id="idea"><a href="#">Idea</a></li>
+            <li id="event"><a href="#">Event</a></li>                                                    
+        </ul>
+    </div>
+    <div class="media-content file">
+        <form method="POST" name="add_form" action="#">     
+            <textarea id="area-description" rows="3" cols="94" name="posting" class="description"></textarea>                    
+            <ul>
+                <li id="file"><input type="text" class="file-input"></li>
+                <li id="description"><input type="text" id="desc-input" class="description"></li>                
+                <li id="file"><input type="text" class="file-input"></li>
+                <li id="description"><input type="text" id="desc-input" class="description"></li>                                
+            </ul>
+    	    <div class = "media-send">
+    	        <a href="#"><span class="add-new"></span></a>
+                <input class="button blue" type="button" value="Update" />
+    	    </div>                
+        </form>
+        <div class="arrow-back file"></div>
+        <div class="arrow-font file"></div>    
+    </div>
+</div>
+
+<!-- idea --> 
+ <div>
+    <div class ="media-tabs">
+        <ul>
+            <li id="status"><a href="#">Status</a></li>
+            <li id="link"><a href="#">Link</a></li>
+            <li id="file"><a href="#">File</a></li>
+            <li id="idea"><a href="#">Idea</a></li>
+            <li id="event"><a href="#">Event</a></li>                                                    
+        </ul>
+    </div>
+    <div class="media-content idea">
+        <form method="POST" name="add_form" action="#">     
+            <textarea id="area-description" rows="3" cols="94" class="description"></textarea>                    
+            <ul>
+                <li id="idea"><input type="text" class="file-input"></li>
+                <li id="description"><input type="text" id="desc-input" class="description"></li>                
+                <li id="idea"><input type="text" class="file-input"></li>
+                <li id="description"><input type="text" id="desc-input" class="description"></li>                                
+            </ul>
+    	    <div class = "media-send">
+    	        <a href="#"><span class="add-new"></span></a>
+                <input class="button blue" type="button" value="Update" />
+    	    </div>                
+        </form>
+        <div class="arrow-back idea"></div>
+        <div class="arrow-font idea"></div>    
+    </div>
+</div>
+           
+    
+
+
+<div style="height:25px">
+</div>
+<textarea id="contentbox" name="area"></textarea>
+
+<div id="linkbox">
+</div>
+
+
+{% endblock %}

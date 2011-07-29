@@ -1,0 +1,414 @@
+{% extends "base.html" %}
+{% load avatar_tags %}
+{% load socialstream_tags %}
+{% load space_tags %}
+{% block extra_css %}
+{% load i18n %}
+
+<link rel="stylesheet" href="{{ STATIC_URL }}css/dash.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/buttons.css"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/calendars.css"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/spaces.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/profile.css">
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/datepicker.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
+{% endblock %}
+
+{% block extra_script %}
+<script id="statusDashTemplate" type="text/x-jquery-tmpl">
+<div class="post">
+    <div class="avatar">
+        <img src="${creator.avatar_url}" alt="Photo of ${creator.first_name} ${creator.last_name}" class="photo" />
+    </div>
+    <h1><a href="#"> ${creator.first_name} ${creator.last_name}</a></h1>
+    <h2>${object.description}</h2>
+    <h3>${object.created}</h3>
+</div>   
+</script>
+
+<script language="javascript"> 
+
+function showStatus(data, statusText, xhr, $form) {
+    if(data.success) {
+        $('#statusDashTemplate').tmpl(data.comment).hide().prependTo('#body-stream').slideDown('slow');
+        $($form).resetForm();
+    	$("#id_posting").animate({"height": "30px",}, "fast" );
+		$(".media-send.status").slideUp("fast");
+		$("#name").show("slow");
+        $('.errorlist').html(''); 
+    } else {
+        for (var key in data) {
+            for (var error in data[key]) {
+                $("#field-error-" + key + " ul").html('<li>'+ data[key][error] +'</li>');
+            }
+        }
+    }
+}
+
+jQuery(function($){
+  $("#id_posting").Watermark("What's up?");
+  });
+$(document).ready(function(){
+
+	$("#id_posting").keyup(function() {
+        var submit=$('#submit');
+        var box=$(this).val();
+        var main = box.length *100;
+        var value= (main / 250);
+        var count= 250 - box.length;
+        $('#count').html(count);
+        submit.disabled=true;
+        if(box.length <= 250)	{
+            document.add_form.submit.disabled=false;
+            $('#bar').animate(	{
+                "width": value+'%',
+                }, -100);
+        }
+        else { document.add_form.submit.disabled=true; }
+        return false;
+    });
+
+    $('.status_form').ajaxForm({ dataType: 'json', success: showStatus });
+});
+$(function() {
+//	$("#button_block").hide();
+    /* events for satus form of dashboard */
+	$("#area-content").focus(function()
+//	{	$(this).animate({"height": "60px",}, "fast" );
+//		$("#button_block").slideDown("fast");
+    {
+		$("#name").hide();
+		return false;
+	});
+
+	$("#cancel").click(function() {
+		$("#area-content").val('');	
+		return false;
+	});
+
+/*	$(".status_form").focusout(function(event) {
+        if(!$(event.target).is($('.status-form input'))) {
+        }
+	});*/
+
+});
+</script>
+
+{% endblock %}
+
+{% block body_id %}dash{% endblock %}
+
+{% block extra_messages %}
+    {% if messages_new_count %}
+    <ul class="notify">
+        <li><a href="/messages">{{ messages_new_count }} New messages</a></li>   
+    </ul>
+    {% endif %}    
+{% endblock %}
+{% block content %}
+
+<!-- Inicia menu1 en panel izquierdo-->
+	<div id="menu-left">
+<!-- Inicia widget izquierdo-->
+	<div class="widget">
+		<div id="media-avatar">
+		<a href="#" class="avatar">
+			<span class="thumb">
+				<img src="{% avatar_url user 64 %}" alt="" class="tooltip" title="Tu Avatar" width="64" height="64">
+			</span>
+		</a>			
+
+		<div class="form-toggle">  
+            {%  socialstream_status_form user.get_profile %}
+<!--	    	<div id="post-to-wall">
+	        	<form method="POST" name="add_form" class="dash_form" action="/status/add/"> {% csrf_token %}
+	        		<textarea id="id_posting" name="description" style="height: 30px;"></textarea>
+	        		<div id="button_block">
+	            		<input name="submit" class="large button-o" type="submit" value="Send" />
+	            		<a href="#"><input id="cancel" class="large button-o" type="button" value="Cancel" /></a>
+						<div id="count">250</div><br> 
+	        			<div id="barbox"><div id="bar"></div></div>
+	        		</div>
+	        	</form>
+	     	</div>-->
+		</div>
+		<div id="name"> {%if user.first_name and user.last_name %}
+		        {{ user.get_profile.name }} 
+		    {% else %}
+		        <div style="font-size:13px; line-height:16px">No has completado tu Perfil. Te invitamos a hacerlo <a rel="facebox[.profile_form]" href="{% url profile_edit user %}">*Aqu&iacute;*</a></div>
+		    {% endif %}
+        </div>
+		</div>
+		
+		
+		
+		<div id="stream-avatar">
+			<ul id="nav-menu">
+				<li class="current"><a href="#">All</a></li>			
+				<li><a href="#">My Courses</a></li>
+				<li><a href="#">My Groups</a></li>								
+			</ul>    
+			<div id="body-stream">      
+            {% get_friends_stream for user.get_profile as stream %}
+            {% if stream.activities %}
+                {% for item in stream.activities %}
+			        <div class="post">
+				        <div class="avatar">
+                            <img src="{% avatar_url item.activity_object.creator 30 %}" alt="Photo of {{ item.activity_object.creator.username }}" class="photo" />
+				        </div>
+				        <h1><a href="{{ item.actor.get_absolute_url }}">{{ item.actor.name }}</a></h1>
+                        {% if item.collapsed %}
+                            <h2>
+                                {{ item.verb }}
+                                {% trans "a" %}
+                                <a href="#">{{ item.activity_object_content_type }}</a>
+                                {% trans "on" %}
+                                <a href="{{ item.target.get_absolute_url }}">{{ item.target }}</a>
+                            </h2>
+                        {% else %}
+                            <h2>{{ item.activity_object }}</h2>
+                        {% endif %}
+                        <h3>{{ item.activity_object.created }}
+                    </div>
+                {% endfor %}
+                {% if stream.more %}
+                    <div class="more-activity dash">
+                        <div class="view-more">
+                            <a id="more-activity" class="small button-o" href="/social/?ct={{stream.ct}}&id={{stream.parent.id}}&option=friends">{% trans "view more" %}</a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+            </div>
+        </div>
+	</div> 	<!-- Termina menu1 en panel izquierdo-->
+	</div> 	<!-- Termina widget izquierdo-->	
+	<!-- Inicia menu2 en panel derecho-->		
+		<div id="menu-right">
+			<div class = "widget">
+				<ul id="existed" class="ctrotator">
+                          
+                          
+                            {% for announcement in site_wide_announcements %}	
+                    <li><a class="rotator_item" href="{{ announcement }}"><p>{{ announcement.description }}</p></a></li>                        
+                      {% endfor %}	
+                      
+			     
+				</ul> 
+				
+
+                
+                
+                
+				<script type="text/javascript"> 
+				var dataSource = new ctRotatorBridgeLi($('#existed')).getDataSource();  
+				$('#existed').ctRotator(dataSource, { 
+				  speed:2500,
+				  showCount:2,  
+				});  
+				</script> 
+
+				<div class="title">Course listing</div>
+				<div class="body">
+					<a href="/courses/uno/" title="uno"></a>
+					<div class="class">
+						<a href="/courses/uno/" title="uno">
+							<t1>Civismo</t1>
+							<t2></t2>
+							<t3></t3>
+						</a>
+						<div class="edit">
+							<a href="/courses/uno/" title="uno"></a>
+							<a href="/courses/uno/edit" title="Edit this course" rel="[facebox]" rev="iframe|410">
+								Edit this course
+							</a>
+					 	</div>                
+			         </div>
+ 					<div class="result">
+			            <t1>Attendees </t1>
+		                <t3>20</t3>
+		                <br>
+		                <t2>Activities </t2>
+		                <t3>5</t3>
+			         </div>
+				</div>
+				<div class="body">
+					<a href="/courses/uno/" title="uno"></a>
+					<div class="class">
+						<a href="/courses/uno/" title="uno">
+							<t1>Historia</t1>
+							<t2></t2>
+							<t3></t3>
+						</a>
+						<div class="edit">
+							<a href="/courses/uno/" title="uno"></a>
+							<a href="/courses/uno/edit" title="Edit this course" rel="[facebox]" rev="iframe|410">
+								Edit this course
+							</a>
+					 	</div>                
+			         </div>
+ 					<div class="result">
+			            <t1>Attendees </t1>
+		                <t3>20</t3>
+		                <br>
+		                <t2>Activities </t2>
+		                <t3>5</t3>
+			         </div>
+				</div>			
+				<div class="body">
+					<a href="/courses/uno/" title="uno"></a>
+					<div class="class">
+						<a href="/courses/uno/" title="uno">
+							<t1>Cultura y Arte</t1>
+							<t2></t2>
+							<t3></t3>
+						</a>
+						<div class="edit">
+							<a href="/courses/uno/" title="uno"></a>
+							<a href="/courses/uno/edit" title="Edit this course" rel="[facebox]" rev="iframe|410">
+								Edit this course
+							</a>
+					 	</div>                
+			         </div>
+ 					<div class="result">
+			            <t1>Attendees </t1>
+		                <t3>20</t3>
+		                <br>
+		                <t2>Activities </t2>
+		                <t3>5</t3>
+			         </div>
+				</div>			
+				<div class="body">
+					<a href="/courses/uno/" title="uno"></a>
+					<div class="class">
+						<a href="/courses/uno/" title="uno">
+							<t1>Matem&aacute;ticas I</t1>
+							<t2></t2>
+							<t3></t3>
+						</a>
+						<div class="edit">
+							<a href="/courses/uno/" title="uno"></a>
+							<a href="/courses/uno/edit" title="Edit this course" rel="[facebox]" rev="iframe|410">
+								Edit this course
+							</a>
+					 	</div>                
+			         </div>
+ 					<div class="result">
+			            <t1>Attendees </t1>
+		                <t3>20</t3>
+		                <br>
+		                <t2>Activities </t2>
+		                <t3>5</t3>
+			         </div>
+				</div>		
+				<div class="body">
+					<a href="/courses/uno/" title="uno"></a>
+					<div class="class">
+						<a href="/courses/uno/" title="uno">
+							<t1>Espa&ntilde;ol</t1>
+							<t2></t2>
+							<t3></t3>
+						</a>
+						<div class="edit">
+							<a href="/courses/uno/" title="uno"></a>
+							<a href="/courses/uno/edit" title="Edit this course" rel="[facebox]" rev="iframe|410">
+								Edit this course
+							</a>
+					 	</div>                
+			         </div>
+ 					<div class="result">
+			            <t1>Attendees </t1>
+		                <t3>20</t3>
+		                <br>
+		                <t2>Activities </t2>
+		                <t3>5</t3>
+			         </div>
+				</div>	
+			
+                {% show_space_widget 5 request.user %}
+				
+				<!-- Inicia calendario medio -->
+				<div class="calendar-small">
+					<div class="calendar-controls">
+						<a href="#" class="calendar-prev" title="Previous month"><img src="{{ STATIC_URL }}images/cal-arrow-left.png" width="16" height="16"></a>
+						<a href="#" class="calendar-next" title="Next month"><img src="{{ STATIC_URL }}images/cal-arrow-right.png" width="16" height="16"></a>
+						Apr 2010
+					</div>
+
+					<table cellspacing="0">
+						<thead>
+							<tr>
+								<th scope="col" class="weekend" id="calendar-left">Sun</th>
+								<th scope="col">Mon</th>
+								<th scope="col">Tue</th>
+								<th scope="col">Wed</th>
+								<th scope="col">Thu</th>
+								<th scope="col">Fri</th>
+								<th scope="col" class="weekend" id="calendar-right">Sat</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="weekend other-month">28</td>
+								<td class="other-month">29</td>
+								<td class="other-month">30</td>
+								<td class="other-month">31</td>
+								<td><a href="#">1</a></td>
+								<td><a href="#"><span class="blue-corner">2</span></a></td>
+								<td class="weekend"><a href="#">3</a></td>
+							</tr>
+							<tr>
+								<td class="weekend"><a href="#">4</a></td>
+								<td><a href="#">5<span class="nb-events">54</span></a></td>
+								<td><a href="#">6</a></td>
+								<td><a href="#">7<span class="nb-events">1</span></a></td>
+								<td><a href="#"><span class="red-corner"><span class="blue-corner">8</span></span></a></td>
+								<td><a href="#"><span class="today">9</span></a></td>
+								<td class="weekend"><a href="#">10</a></td>
+							</tr>
+							<tr>
+								<td class="weekend"><a href="#">11</a></td>
+								<td><a href="#">12</a></td>
+								<td><a href="#">13</a></td>
+								<td><a href="#">14<span class="nb-events">1</span></a></td>
+								<td><a href="#"><span class="red-corner">15</span><span class="nb-events">1</span></a></td>
+								<td><a href="#">16</a></td>
+								<td class="weekend"><a href="#">17</a></td>
+							</tr>
+							<tr>
+								<td class="weekend"><a href="#">18</a></td>
+								<td><a href="#">19</a></td>
+								<td><a href="#">20<span class="nb-events">1</span></a></td>
+								<td><a href="#">21</a></td>
+								<td><a href="#">22<span class="nb-events">1</span></a></td>
+								<td><a href="#"><span class="blue-corner">23</span></a></td>
+								<td class="weekend"><a href="#"><span class="blue-corner">24</span></a></td>
+							</tr>
+							<tr>
+								<td class="weekend"><a href="#">25</a></td>
+								<td class="unavailable">26</td>
+								<td class="unavailable">27</td>
+								<td class="unavailable">28</td>
+								<td><a href="#">29</a></td>
+								<td><a href="#">30</a></td>
+								<td class="weekend other-month"><div><span class="blue-corner">1</span><span class="nb-events">2</span></div></td> <!-- div required to position elements -->
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<!-- Termina calendario medio -->
+				
+										      
+			 </div> <!-- Termina widget -->
+			
+
+			
+			
+			
+		</div><!-- Termina menu2 en panel derecho-->
+
+{% endblock %}

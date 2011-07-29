@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% block extra_css %}<link rel="stylesheet" href="{{ STATIC_URL }}css/dash.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/datepicker.css" type="text/css" />
+<!--<link rel="stylesheet" media="screen" type="text/css" href="{{ STATIC_URL }}css/layout.css" />-->
+{% endblock %}
+
+{% block extra_js %}
+<script type='text/javascript' src='http://test.thecodecentral.com/ajax-rotator/src/jquery.ctrotator.js'></script> 
+<script type="text/javascript" src="{{ STATIC_URL }}js/datepicker.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/eye.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/layout.js?ver=1.0.2"></script>
+
+<script language="javascript"> 
+$(document).ready(function(){
+	$('#testimonials .slide');
+	setInterval(function(){
+		$('#testimonials .slide').filter(':visible').fadeOut(2000,function(){
+			if($(this).next('li.slide').size()){
+				$(this).next().fadeIn(1000);
+			}
+			else{
+				$('#testimonials .slide').eq(0).fadeIn(1000);
+			}
+		});
+	},1000);	
+});	
+</script> 
+<script language="javascript"> 
+$('#date2').DatePicker({
+	flat: true,
+	current: '2008-07-31',
+	format: 'Y-m-d',
+	calendars: 1,
+	onRender: function(date) {
+		return {
+			enable: (date.valueOf() < now.valueOf()),
+			className: date.valueOf() == now2.valueOf() ? 'datepickerSpecial' : false
+		}
+	},
+	starts: 0
+});
+</script>
+
+{% endblock %}
+{% block body_id %}dash{% endblock %}
+{% block content %}
+<div id="menu-content">
+	<ul id="nav-menu">
+		<li class="current"><a href="#">Objetivos</a></li>			
+		<li><a href="#">Recursos</a></li>
+		<li><a href="#">Usuarios</a></li>				
+		<li><a href="#">Stats</a></li>
+		<li><a href="#">Anuncios</a></li>				
+	</ul>
+	<div id="table">
+		<h3>Objetivos</h3>
+		<table>
+			<tr>
+				<td>huh</td>
+				<td>huh</td>	
+			</tr>
+			<tr>
+				<td>huh</td>
+				<td>huh</td>	
+			</tr>		
+			<tr>
+				<td>huh</td>
+				<td>huh</td>	
+			</tr>			
+		</table>
+	</div>
+ </div>
+
+<br>&nbsp;<br>
+<!--
+	Los tres widgets siguientes estan dentro de un content-left.
+	Esto es por si se quiere usar el sidebar de la parte izquierda
+-->
+<div id="content-left">
+<!-- Este widget es por si no hay informacion del witget, nostese que solo se le agrega la clase no a class='class' -->
+	<div class="widget">
+		<div class="title">Course listing</div>	
+		<div class="body">
+			<div class="class no"> <t1>There are no courses</t1> </div>
+		</div>
+	</div>
+	
+	<br>&nbsp;<br>
+	<!-- Widget para cuando si existe informacion, tiene dos secciones, la clase y los resultados -->
+	<div class="widget">
+		<div class="title">Course listing</div>
+		<div class="body">
+			<div class="class">
+                <t1>Nombre de curso</t1>
+                <t2>ejemplo</t2>
+                <t3>COMPLETED</t3>
+		 		<div class="edit">
+		  			<a href="#" title="Edit this course" rel="[facebox]" rev="iframe|410">
+						Edit this course
+					</a>
+		 		</div>                
+         	</div>
+        	 <div class="result">
+				<t1>Attendees </t1>
+				<t3>20</t3>
+				<br>
+				<t2>Activities </t2>
+				<t3>5</t3>
+         	</div>	            
+		</div>
+	</div>
+	
+	<br>&nbsp;<br>
+	<!-- Es igual al anterior solo que este cuenta con un div info, que contiene la informacion encuando al contenido del widget
+		incluyendo la barra de progreso -->
+	<div class="widget">
+		<div class="title">Course listing</div>
+		<div class="body">
+			<div class="class">
+                <t1>Nombre de curso</t1>
+                <t2>ejemplo</t2>
+                <t3>COMPLETED</t3>
+		 		<div class="edit">
+		  			<a href="#" title="Edit this course" rel="[facebox]" rev="iframe|410">
+						Edit this course
+					</a>
+		 		</div>                
+         	</div>
+        	 <div class="result">
+				<t1>Attendees </t1>
+				<t3>20</t3>
+				<br>
+				<t2>Activities </t2>
+				<t3>5</t3>
+         	</div>	
+         	<div class="info">
+         		<h1>This a course</h1>
+                <h2>Last Update Octubre 13, 2010</h2>
+				<p></p>
+                <div id="progressbar"></div>
+            </div>
+		</div>
+	</div>	
+	<!-- End Widget -->
+	<br>&nbsp;<br>	
+</div>	
+
+	<!-- En caso de que los widgets deban usarse abarcando todo el ancho no hay problema, todos se verias asi: -->
+	<!-- Inicia widget1 -->
+	<div class="widget">
+		<div class="title">Course listing</div>	
+		<div class="body">
+			<div class="class no"> <t1>There are no courses</t1> </div>
+		</div>
+	</div>
+	<!-- Termina widget1 -->	
+	<br>&nbsp;<br>
+	
+	<!-- Inicia menu1 en panel izquierdo-->
+		<div id="menu-left">
+			
+			<a href="#" class="example">
+				<span class="thumb">
+					<img src="{{ STATIC_URL }}images/course_edit.png" alt="">
+				</span>
+			</a>			
+			<h1>Curso 1</h1>
+			<h2>MEDICINA</h2>	
+			<h3>Uno, Dos, Tres</h3>
+			
+			
+			
+		</div> 	<!-- Termina menu1 en panel izquierdo-->
+	<!-- Inicia menu2 en panel derecho-->		
+		<div id="menu-right">
+			<ul id="manually" class="ctrotator"></ul> 
+				<script type="text/javascript"> 
+					var dataSource = [
+						{title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum velit quis lorem.', url: '#', tip: 'Mensaje tip'},
+						{title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum velit quis lorem bibendum.', url: '#', tip: 'Mensaje tip'},
+						{title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum velit quis lorem bibendum commodo.', url: '#', tip: 'Mensaje tip'},
+						{title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum velit quis lorem bibendum commodo. Quisque.', url: '#', tip: 'Mensaje tip'},
+						{title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum velit quis lorem bibendum commodo. Quisque dolor.', url: '#', tip: 'Mensaje tip'}
+					];
+					$('#manually').ctRotator(dataSource, {
+						showCount:3,
+						shuffle:true, 
+						fadeEffect: true, 
+						speed:1800
+					});
+				</script> 
+		</div><!-- Termina menu2 en panel derecho-->
+
+			
+		<div id="menu-left"><!-- Inicia menu2 en panel izquierdo-->
+		</div><!-- Termina menu2 en panel izquierdo-->
+		<div id="menu-right"><!-- Inicia menu2 en panel derecho-->
+			<ul id="testimonials"> 
+		    	<li class="slide"> 
+        			<blockquote>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum velit quis lorem bibendum commodo. Quisque dolor ipsum."</blockquote> 
+				</li> 
+				<li class="slide" style="display: none"> 
+					<blockquote>2-I absolutely love and take great pride in building websites. I'm passionate about all things design and dedicated to standards based design.</blockquote> 
+				</li> 
+				<li class="slide" style="display: none"> 
+					<blockquote>3-I absolutely love and take great pride in building websites. I'm passionate about all things design and dedicated to standards based design.</blockquote> 
+				</li> 
+			</ul> 
+		</div><!-- Termina menu2 en panel derecho-->
+		
+		<br>
+		<div id="content-left">
+			<p id="date"></p>			
+		</div>	
+		<div id="content-right">
+	<p id="date2"></p>		
+		</div>		
+	
+	
+	
+	
+	
+	    
+{% endblock %}
