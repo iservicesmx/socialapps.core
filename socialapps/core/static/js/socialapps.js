@@ -212,11 +212,22 @@ jQuery(function($){
 		});
 });
 
-$(document).ready(function(){
-    $('a[rel*=facebox]').facebox({
+$('a[rel*=facebox]').live('mouseover', function() {
+    if($(this).is('.facebox-loaded')) {
+        return false;
+    } else {
+        $(this).facebox({
             loadingImage : '/static/images/loading.gif',
             closeImage   : '/static/closelabel.png'
-        })
+        });
+        $(this).addClass('facebox-loaded');
+    }
+});
+$(document).ready(function(){
+/*    $('a[rel*=facebox]').facebox({
+            loadingImage : '/static/images/loading.gif',
+            closeImage   : '/static/closelabel.png'
+        })*/
 	$(document).bind('loading.facebox', function() {
 		$(document).unbind('keydown.facebox');
 		$('#facebox_overlay').unbind('click');

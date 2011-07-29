@@ -164,7 +164,7 @@ $(function() {
                             <h2>
                                 {{ item.verb }}
                                 {% trans "a" %}
-                                <a href="#">{{ item.activity_object_content_type }}</a>
+                                <a href="{% url activity_detail item.id %}" rel="facebox[.social_item]">{{ item.activity_object_content_type }}</a>
                                 {% trans "on" %}
                                 <a href="{{ item.target.get_absolute_url }}">{{ item.target }}</a>
                             </h2>
