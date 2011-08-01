@@ -930,7 +930,7 @@ a.uiSelectorButton.uiCloseButton {
 
 #posts_wall .post .comment-post .message-post .footer-post #like, 
 #posts_wall .post .comment-post .message-post .footer-post #nolike {
-	height: 18px;
+	height: 21px;
 	width: 37px;
 	padding: 3px 0px 3px 14px;
 }
