@@ -126,7 +126,9 @@ class ContentBridge(object):
         
         final_kwargs = {}
         
-        final_kwargs.update(container.get_url_kwargs())
+        #final_kwargs.update(container.get_url_kwargs())
+        final_kwargs.update({"%s_pk" % container._meta.object_name.lower(): container.id})
+        
         final_kwargs.update(kwargs)
         
         return dreverse("%s%s" % (self._url_name_prefix, view_name), kwargs=final_kwargs)
