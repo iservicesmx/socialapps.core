@@ -890,7 +890,7 @@ a.uiSelectorButton.uiCloseButton {
 
 #posts_wall .post .body-post .footer-header-post, #posts_wall .post .comment-post .footer-header-post {
 	float: right;
-	font-size: 9px;
+	font-size: 10px;
 	margin-right: 10px;
 }
 
@@ -899,13 +899,11 @@ a.uiSelectorButton.uiCloseButton {
 }
 
 #posts_wall .post .body-post .message-post, #posts_wall .post .comment-post .message-post {
-	font-size: 0.8em;
-/*	min-height: 50px;*/
+	font-size: 0.9em;
 	min-height: 20px;
 	line-height: 15px;
 	padding: 0 10px 5px;
 	color: black;
-	font-weight: bold;
 	
 }
 
