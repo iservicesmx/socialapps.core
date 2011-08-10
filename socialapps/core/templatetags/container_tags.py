@@ -8,25 +8,25 @@ from django.db.models.query import QuerySet
 register = template.Library()
 
 
-class GroupURLNode(template.Node):
-    def __init__(self, view_name, group, kwargs, asvar):
+class ContainerURLNode(template.Node):
+    def __init__(self, view_name, container, kwargs, asvar):
         self.view_name = view_name
-        self.group = group
+        self.container = container
         self.kwargs = kwargs
         self.asvar = asvar
     
     def render(self, context):
         url = ""
-        group = self.group.resolve(context)
+        container = self.container.resolve(context)
         
         kwargs = {}
         for k, v in self.kwargs.items():
             kwargs[smart_str(k, "ascii")] = v.resolve(context)
         
-        if group:
-            bridge = group.content_bridge
+        if container:
+            bridge = container.content_bridge
             try:
-                url = bridge.reverse(self.view_name, group, kwargs=kwargs)
+                url = bridge.reverse(self.view_name, container, kwargs=kwargs)
             except NoReverseMatch:
                 if self.asvar is None:
                     raise
@@ -45,8 +45,8 @@ class GroupURLNode(template.Node):
 
 
 class ContentObjectsNode(template.Node):
-    def __init__(self, group_var, model_name_var, gfk_field_var, context_var):
-        self.group_var = template.Variable(group_var)
+    def __init__(self, container_var, model_name_var, gfk_field_var, context_var):
+        self.container_var = template.Variable(container_var)
         self.model_name_var = template.Variable(model_name_var)
         if gfk_field_var is not None:
             self.gfk_field_var = template.Variable(gfk_field_var)
@@ -55,7 +55,7 @@ class ContentObjectsNode(template.Node):
         self.context_var = context_var
     
     def render(self, context):
-        group = self.group_var.resolve(context)
+        container = self.container_var.resolve(context)
         model_name = self.model_name_var.resolve(context)
         if self.gfk_field_var is not None:
             gfk_field = self.gfk_field_var.resolve(context)
@@ -68,23 +68,23 @@ class ContentObjectsNode(template.Node):
             app_name, model_name = model_name.split(".")
             model = get_model(app_name, model_name)
         
-        context[self.context_var] = group.content_objects(model, gfk_field=gfk_field)
+        context[self.context_var] = container.content_objects(model, gfk_field=gfk_field)
         return ""
 
 
-class ObjectGroupUrlNode(template.Node):
-    def __init__(self, obj, group, asvar):
+class ObjectContainerURLNode(template.Node):
+    def __init__(self, obj, container, asvar):
         self.obj_var = template.Variable(obj)
-        self.group = group
+        self.container = container
         self.asvar = asvar
     
     def render(self, context):
         url = ""
         obj = self.obj_var.resolve(context)
-        group = self.group.resolve(context)
+        container = self.container.resolve(context)
         
         try:
-            url = obj.get_absolute_url(group)
+            url = obj.get_absolute_url(container)
         except NoReverseMatch:
             if self.asvar is None:
                 raise
@@ -97,15 +97,15 @@ class ObjectGroupUrlNode(template.Node):
 
 
 @register.tag
-def groupurl(parser, token):
+def containerurl(parser, token):
     bits = token.contents.split()
     tag_name = bits[0]
     if len(bits) < 3:
         raise template.TemplateSyntaxError("'%s' takes at least two arguments"
-            " (path to a view and a group)" % tag_name)
+            " (path to a view and a container)" % tag_name)
     
     view_name = bits[1]
-    group = parser.compile_filter(bits[2])
+    container = parser.compile_filter(bits[2])
     args = []
     kwargs = {}
     asvar = None
@@ -125,7 +125,7 @@ def groupurl(parser, token):
                     elif arg:
                         raise template.TemplateSyntaxError("'%s' does not support non-kwargs arguments." % tag_name)
     
-    return GroupURLNode(view_name, group, kwargs, asvar)
+    return ContainerURLNode(view_name, container, kwargs, asvar)
 
 
 @register.tag
@@ -133,12 +133,12 @@ def content_objects(parser, token):
     """
     Basic usage::
     
-        {% content_objects group "tasks.Task" as tasks %}
+        {% content_objects container "tasks.Task" as tasks %}
     
     or if you need to specify a custom generic foreign key field (default is
-    group)::
+    container)::
     
-        {% content_objects group "tasks.Task" "content_object" as tasks %}
+        {% content_objects container "tasks.Task" "content_object" as tasks %}
     """
     bits = token.split_contents()
     if len(bits) not in [5, 6]:
@@ -151,21 +151,21 @@ def content_objects(parser, token):
 
 
 @register.tag
-def object_group_url(parser, token):
+def object_container_url(parser, token):
     """
-    given an object and an optional group, call get_absolute_url passing the
-    group variable::
+    given an object and an optional container, call get_absolute_url passing the
+    container variable::
     
-        {% object_group_url task group %}
+        {% object_container_url task container %}
     """
     bits = token.contents.split()
     tag_name = bits[0]
     if len(bits) < 3:
         raise template.TemplateSyntaxError("'%s' takes at least two arguments"
-            " (object and a group)" % tag_name)
+            " (object and a container)" % tag_name)
     
     obj = bits[1]
-    group = parser.compile_filter(bits[2])
+    container = parser.compile_filter(bits[2])
     
     if len(bits) > 3:
         if bits[3] != "as":
@@ -177,4 +177,4 @@ def object_group_url(parser, token):
             raise template.TemplateSyntaxError("'%s' requires an argument"
                 " after 'as'" % tag_name)
     
-    return ObjectGroupUrlNode(obj, group, asvar)
+    return ObjectContainerURLNode(obj, container, asvar)

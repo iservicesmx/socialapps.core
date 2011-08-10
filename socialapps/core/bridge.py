@@ -8,16 +8,16 @@ from django.core.urlresolvers import RegexURLPattern, RegexURLResolver, reverse 
 from django.contrib.contenttypes.models import ContentType
 
 
-class GroupDummy(object):
+class ContainerDummy(object):
     
     def __nonzero__(self):
         return False
 
-class GroupRequestHelper(object):
+class ContainerRequestHelper(object):
     
-    def __init__(self, request, group):
+    def __init__(self, request, container):
         self.request = request
-        self.group = group
+        self.container = container
     
     def __deepcopy__(self, memo):
         obj = copy.copy(self)
@@ -30,31 +30,32 @@ class GroupRequestHelper(object):
         return obj
     
     def user_is_member(self):
+        # Change for permissions
         if not self.request.user.is_authenticated():
             is_member = False
         else:
-            if self.group:
-                is_member = self.group.user_is_member(self.request.user)
+            if self.container:
+                is_member = self.container.user_is_member(self.request.user)
             else:
                 is_member = True
         return is_member
 
 class ContentBridge(object):
     
-    def __init__(self, group_model, content_app_name=None, urlconf_aware=True):
+    def __init__(self, container_model, content_app_name=None, urlconf_aware=True):
         self.parent_bridge = None
-        self.group_model = group_model
+        self.container_model = container_model
         self.urlconf_aware = urlconf_aware
         
         if content_app_name is None:
-            self.content_app_name = group_model._meta.app_label
+            self.content_app_name = container_model._meta.app_label
         else:
             self.content_app_name = content_app_name
         
         # attach the bridge to the model itself. we need to access it when
-        # using groupurl to get the correct prefix for URLs for the given
-        # group.
-        self.group_model.content_bridge = self
+        # using containerurl to get the correct prefix for URLs for the given
+        # container.
+        self.container_model.content_bridge = self
     
     def include_urls(self, module_name, url_prefix, kwargs=None):
         if kwargs is None:
@@ -119,48 +120,40 @@ class ContentBridge(object):
         else:
             return ""
     
-    def reverse(self, view_name, group, kwargs=None):
+    def reverse(self, view_name, container, kwargs=None):
         if kwargs is None:
             kwargs = {}
         
         final_kwargs = {}
         
-        final_kwargs.update(group.get_url_kwargs())
+        final_kwargs.update(container.get_url_kwargs())
         final_kwargs.update(kwargs)
         
         return dreverse("%s%s" % (self._url_name_prefix, view_name), kwargs=final_kwargs)
-    
-    def render(self, template_name, context, context_instance=None):
-        # @@@ this method is practically useless -- consider removing it.
-        ctype = ContentType.objects.get_for_model(self.group_model)
-        return render_to_response([
-            "%s/%s/%s" % (ctype.app_label, self.content_app_name, template_name),
-            "%s/%s" % (self.content_app_name, template_name),
-        ], context, context_instance=context_instance)
-    
-    def group_base_template(self, template_name="content_base.html"):
+        
+    def container_base_template(self, template_name="content_base.html"):
         return "%s/%s" % (self.content_app_name, template_name)
     
-    def get_group(self, kwargs):
+    def get_container(self, kwargs):
         
         lookup_params = {}
         
         if self.parent_bridge is not None:
-            parent_group = self.parent_bridge.get_group(kwargs)
-            lookup_params.update(parent_group.lookup_params(self.group_model))
+            parent_container = self.parent_bridge.get_container(kwargs)
+            lookup_params.update(parent_container.lookup_params(self.container_model))
         else:
-            parent_group = None
+            parent_container = None
         
-        slug = kwargs.pop("%s_slug" % self.group_model._meta.object_name.lower())
+        pk = kwargs.pop("%s_pk" % self.container_model._meta.object_name.lower())
         
         lookup_params.update({
-            "slug": slug,
+            "pk": pk,
         })
         
-        group = self.group_model._default_manager.get(**lookup_params)
+        container = self.container_model._default_manager.get(**lookup_params)
         
-        if parent_group:
-            # cache parent_group on GFK to prevent database hits later on
-            group.group = parent_group
+        if parent_container:
+            # cache parent_container on GFK to prevent database hits later on
+            container.content = parent_container
         
-        return group
+        return container
