@@ -2,6 +2,7 @@
 {% load avatar_tags %}
 {% load socialstream_tags %}
 {% load space_tags %}
+{% load courses_tags %}
 {% block extra_css %}
 {% load i18n %}
 
@@ -164,12 +165,18 @@ $(function() {
                             <h2>
                                 {{ item.verb }}
                                 {% trans "a" %}
-                                <a href="#">{{ item.activity_object_content_type }}</a>
+                                <a href="{% url activity_detail item.id %}" rel="facebox[.social_item]">{{ item.activity_object_content_type }}</a>
                                 {% trans "on" %}
                                 <a href="{{ item.target.get_absolute_url }}">{{ item.target }}</a>
                             </h2>
                         {% else %}
-                            <h2>{{ item.activity_object }}</h2>
+                            <h2>
+                            {% if item.activity_object.url %}
+                                <a href="{{ item.activity_object }}" target="blank">{{ item.activity_object}}</a>
+                            {% else %}
+                                {{ item.activity_object }}
+                            {% endif %}
+                            </h2>
                         {% endif %}
                         <h3>{{ item.activity_object.created }}
                     </div>
@@ -211,123 +218,8 @@ $(function() {
 				});  
 				</script> 
 
-				<div class="title">Course listing</div>
-				<div class="body">
-					<a href="/courses/uno/" title="uno"></a>
-					<div class="class">
-						<a href="/courses/uno/" title="uno">
-							<t1>Civismo</t1>
-							<t2></t2>
-							<t3></t3>
-						</a>
-						<div class="edit">
-							<a href="/courses/uno/" title="uno"></a>
-							<a href="/courses/uno/edit" title="Edit this course" rel="[facebox]" rev="iframe|410">
-								Edit this course
-							</a>
-					 	</div>                
-			         </div>
- 					<div class="result">
-			            <t1>Attendees </t1>
-		                <t3>20</t3>
-		                <br>
-		                <t2>Activities </t2>
-		                <t3>5</t3>
-			         </div>
-				</div>
-				<div class="body">
-					<a href="/courses/uno/" title="uno"></a>
-					<div class="class">
-						<a href="/courses/uno/" title="uno">
-							<t1>Historia</t1>
-							<t2></t2>
-							<t3></t3>
-						</a>
-						<div class="edit">
-							<a href="/courses/uno/" title="uno"></a>
-							<a href="/courses/uno/edit" title="Edit this course" rel="[facebox]" rev="iframe|410">
-								Edit this course
-							</a>
-					 	</div>                
-			         </div>
- 					<div class="result">
-			            <t1>Attendees </t1>
-		                <t3>20</t3>
-		                <br>
-		                <t2>Activities </t2>
-		                <t3>5</t3>
-			         </div>
-				</div>			
-				<div class="body">
-					<a href="/courses/uno/" title="uno"></a>
-					<div class="class">
-						<a href="/courses/uno/" title="uno">
-							<t1>Cultura y Arte</t1>
-							<t2></t2>
-							<t3></t3>
-						</a>
-						<div class="edit">
-							<a href="/courses/uno/" title="uno"></a>
-							<a href="/courses/uno/edit" title="Edit this course" rel="[facebox]" rev="iframe|410">
-								Edit this course
-							</a>
-					 	</div>                
-			         </div>
- 					<div class="result">
-			            <t1>Attendees </t1>
-		                <t3>20</t3>
-		                <br>
-		                <t2>Activities </t2>
-		                <t3>5</t3>
-			         </div>
-				</div>			
-				<div class="body">
-					<a href="/courses/uno/" title="uno"></a>
-					<div class="class">
-						<a href="/courses/uno/" title="uno">
-							<t1>Matem&aacute;ticas I</t1>
-							<t2></t2>
-							<t3></t3>
-						</a>
-						<div class="edit">
-							<a href="/courses/uno/" title="uno"></a>
-							<a href="/courses/uno/edit" title="Edit this course" rel="[facebox]" rev="iframe|410">
-								Edit this course
-							</a>
-					 	</div>                
-			         </div>
- 					<div class="result">
-			            <t1>Attendees </t1>
-		                <t3>20</t3>
-		                <br>
-		                <t2>Activities </t2>
-		                <t3>5</t3>
-			         </div>
-				</div>		
-				<div class="body">
-					<a href="/courses/uno/" title="uno"></a>
-					<div class="class">
-						<a href="/courses/uno/" title="uno">
-							<t1>Espa&ntilde;ol</t1>
-							<t2></t2>
-							<t3></t3>
-						</a>
-						<div class="edit">
-							<a href="/courses/uno/" title="uno"></a>
-							<a href="/courses/uno/edit" title="Edit this course" rel="[facebox]" rev="iframe|410">
-								Edit this course
-							</a>
-					 	</div>                
-			         </div>
- 					<div class="result">
-			            <t1>Attendees </t1>
-		                <t3>20</t3>
-		                <br>
-		                <t2>Activities </t2>
-		                <t3>5</t3>
-			         </div>
-				</div>	
-			
+				
+			    {% show_course_widget 5 request.user %}
                 {% show_space_widget 5 request.user %}
 				
 				<!-- Inicia calendario medio -->
