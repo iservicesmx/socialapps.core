@@ -14,7 +14,8 @@ def show_local_menu(parent = None, current = 'index'):
     if isinstance(parent,models.Model):
         if hasattr(parent, 'get_local_menu'):
             menu = parent.get_local_menu()
-            return {'options' : menu, 'current' : current }
+            absolute_url = parent.get_absolute_url()
+            return {'options' : menu, 'absolute_url':absolute_url ,'current' : current }
 
 class PermissionComparisonNode(template.Node):
     """Implements a node to provide an if current user has passed permission 
