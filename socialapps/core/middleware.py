@@ -20,7 +20,7 @@ class ContainerAwareMiddleware(object):
             container = ContainerDummy()
         
         # attach a request helper
-        container.request = GroupRequestHelper(request, container)
+        container.request = ContainerRequestHelper(request, container)
         
         request.container = container
         request.bridge = bridge
