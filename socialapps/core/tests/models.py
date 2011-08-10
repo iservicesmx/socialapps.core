@@ -3,23 +3,26 @@ from datetime import datetime
 from django.test import TestCase
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
+
+from permissions.utils import register_permission, register_role
 
 from socialapps.core.models import *
 
 class MyBaseDescription(BaseDescription):
     class Meta:
         ordering = ("title",)
-        app_label = 'core'
+        #app_label = 'core'
 
 class MyBaseMetadata(BaseMetadata):
     class Meta:
         ordering = ("title",)
-        app_label = 'core'    
+        #app_label = 'core'    
 
 class MyBaseContent(BaseContent):
     class Meta:
         ordering = ("title",)
-        app_label = 'core'    
+        #app_label = 'core'    
 
 class MyDummyModel(models.Model):
     foo = models.TextField("Foo", blank=True, null=True)
@@ -30,6 +33,10 @@ class BaseCase(TestCase):
         """
         Create an admin user.
         """
+        #roles = {}
+        #for role in settings.ROLES:
+        #    roles[role] = register_role(role[1])
+            
         self.username = "test"
         self.password = "test"
         args = (self.username, "example@example.com", self.password)
@@ -75,4 +82,14 @@ class BaseCase(TestCase):
     
     def test_my_base_content(self):
         pass
+    
+class BaseGroupCase(TestCase):
+    def setUp(self):
+        """
+        Create an admin user.
+        """
+        self.username = "test2"
+        self.password = "test2"
+        args = (self.username, "example2@example.com", self.password)
+        self.user = User.objects.create_superuser(*args)
     
