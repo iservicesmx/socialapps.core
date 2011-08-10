@@ -3,6 +3,8 @@ from datetime import datetime
 
 from django.db import models
 from django.db.models.sql.constants import LOOKUP_SEP
+from django.db.models.query import QuerySet
+
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.template.defaultfilters import slugify, truncatewords_html
@@ -12,6 +14,22 @@ from tagging.fields import TagField
 
 from socialapps.core.fields import ImageWithThumbsField
 from socialapps.core.utils import base_concrete_model
+
+def _get_queryset(klass):
+    """
+    Returns a QuerySet from a Model, Manager, or QuerySet. Created to make
+    get_object_or_404 and get_list_or_404 more DRY.
+    
+    Pulled from django.shortcuts
+    """
+    
+    if isinstance(klass, QuerySet):
+        return klass
+    elif isinstance(klass, models.Manager):
+        manager = klass
+    else:
+        manager = klass._default_manager
+    return manager.all()
 
 class BaseDescription(models.Model):
     title = models.CharField(_("Title"), max_length=100, blank=True)
@@ -118,10 +136,10 @@ class BaseGroup(BaseMetadata):
     def user_is_member(self, user):
         return user in self.member_queryset()
 
-    def _group_gfk_field(self, model, join=None, field_name=None):
+    def _content_gfk_field(self, model, join=None, field_name=None):
         opts = model._meta
         if field_name is None:
-            field_name = "group"
+            field_name = "content"
         if join is not None:
             # see if we can get the model where the field actually lives
             parts = join.split(LOOKUP_SEP)
@@ -150,34 +168,34 @@ class BaseGroup(BaseMetadata):
 
     def lookup_params(self, model):
         content_type = ContentType.objects.get_for_model(self)
-        group_gfk = self._group_gfk_field(model)
+        content_gfk = self._content_gfk_field(model)
         params = {
-            group_gfk.fk_field: self.id,
-            group_gfk.ct_field: content_type,
+            content_gfk.fk_field: self.id,
+            content_gfk.ct_field: content_type,
         }
         return params
 
     def content_objects(self, queryable, join=None, gfk_field=None):
         queryset = _get_queryset(queryable)
         content_type = ContentType.objects.get_for_model(self)
-        group_gfk = self._group_gfk_field(queryset.model, join=join, field_name=gfk_field)
+        content_gfk = self._content_gfk_field(queryset.model, join=join, field_name=gfk_field)
         if join:
             lookup_kwargs = {
-                "%s__%s" % (join, group_gfk.fk_field): self.id,
-                "%s__%s" % (join, group_gfk.ct_field): content_type,
+                "%s__%s" % (join, content_gfk.fk_field): self.id,
+                "%s__%s" % (join, content_gfk.ct_field): content_type,
             }
         else:
             lookup_kwargs = {
-                group_gfk.fk_field: self.id,
-                group_gfk.ct_field: content_type,
+                content_gfk.fk_field: self.id,
+                content_gfk.ct_field: content_type,
             }
         content_objects = queryset.filter(**lookup_kwargs)
         return content_objects
 
     def associate(self, instance, commit=True, gfk_field=None):
-        group_gfk = self._group_gfk_field(instance, field_name=gfk_field)
-        setattr(instance, group_gfk.fk_field, self.id)
-        setattr(instance, group_gfk.ct_field, ContentType.objects.get_for_model(self))
+        content_gfk = self._content_gfk_field(instance, field_name=gfk_field)
+        setattr(instance, content_gfk.fk_field, self.id)
+        setattr(instance, content_gfk.ct_field, ContentType.objects.get_for_model(self))
         if commit:
             instance.save()
         return instance
@@ -187,7 +205,7 @@ class BaseGroup(BaseMetadata):
         #if hasattr(self, "group") and self.group:
         #    kwargs.update(self.group.get_url_kwargs())
 
-        kwargs.update({"%s_slug" % self._meta.object_name.lower(): self.slug})
+        kwargs.update({"%s_pk" % self._meta.object_name.lower(): self.id})
         return kwargs
 
     

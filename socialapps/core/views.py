@@ -45,6 +45,7 @@ class ContentBridgeView(object):
         self.container = getattr(request, "container", None)
         if self.container:
             self.bridge = request.bridge
+                    
         return super(ContentBridgeView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):

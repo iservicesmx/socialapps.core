@@ -13,14 +13,14 @@ class ContainerAwareMiddleware(object):
         
         if bridge:
             try:
-                container = bridge.get_container(view_kwargs)
+                container = bridge.get_container(view_kwargs)        
             except ObjectDoesNotExist:
                 raise Http404
         else:
             container = ContainerDummy()
         
         # attach a request helper
-        container.request = ContainerRequestHelper(request, container)
+        container.request = ContainerRequestHelper(request, container) # may be is not necesary
         
         request.container = container
         request.bridge = bridge
