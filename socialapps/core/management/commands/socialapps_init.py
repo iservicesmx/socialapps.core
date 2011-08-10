@@ -19,3 +19,4 @@ class Command(BaseCommand):
         register_permission('Edit', 'edit')
         register_permission('Add', 'add')
         register_permission('Delete', 'delete')
+        register_permission('Socialize', 'socialize')
