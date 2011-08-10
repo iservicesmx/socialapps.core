@@ -36,6 +36,23 @@ DATE_FORMAT='%m/%d/%Y'
 def dashboard(request):
     """ Dashboard page """
     return direct_to_template(request, template='dashboard.html',)
+    
+class ContentBridgeView(object):
+    container = None
+    bridge = None
+    
+    def dispatch(self, request, *args, **kwargs):
+        self.container = getattr(request, "container", None)
+        if self.container:
+            self.bridge = request.bridge
+        return super(ContentBridgeView, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        kwargs.update({
+                'container': self.container,
+        })
+        return super(ContentBridgeView, self).get_context_data(**kwargs)
+
 
 class LocalFormView(object):
     action_title    = _("Edit")
