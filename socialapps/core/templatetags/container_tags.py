@@ -17,7 +17,11 @@ class ContainerURLNode(template.Node):
     
     def render(self, context):
         url = ""
-        view_name = self.view_name.resolve(context)
+        
+        if (self.view_name.resolve(context)):
+            view_name = self.view_name.resolve(context)
+        else:
+            view_name = str(self.view_name)
         container = self.container.resolve(context)
         
         kwargs = {}
@@ -104,7 +108,6 @@ def containerurl(parser, token):
     if len(bits) < 3:
         raise template.TemplateSyntaxError("'%s' takes at least two arguments"
             " (path to a view and a container)" % tag_name)
-    
     view_name = parser.compile_filter(bits[1])
     container = parser.compile_filter(bits[2])
     args = []
