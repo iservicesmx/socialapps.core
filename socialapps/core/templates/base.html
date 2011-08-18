@@ -16,6 +16,7 @@
     <link href="{{STATIC_URL}}css/jquery-ui-1.8.13.custom.css" rel="stylesheet" type="text/css">
     <link href="{{STATIC_URL}}css/jquery.tagit.css" rel="stylesheet" type="text/css">
 	<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}css/form.css' />
+	<link rel="stylesheet" type='text/css' href="{{ STATIC_URL }}css/jquery.cleditor.css"/>
 	{% block extra_css %}{% endblock %}
 	
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.5.2.min.js"></script>
@@ -28,9 +29,8 @@
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.tmpl.min.js"></script>	
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/tag-it.js"></script>
-
-
-	{% block extra_js  %}{% endblock %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.cleditor.min.js"></script>
+	{% block extra_js %}{% endblock %}
 
 	<script type="text/javascript">
         //TODO: Explain why is this thing outside the document.ready() callback?
