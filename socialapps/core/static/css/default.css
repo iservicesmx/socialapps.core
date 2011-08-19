@@ -512,12 +512,14 @@ ul#navigation li a {
 }
 ul#navigation li a img.dash {
 	height: 55px;
+	padding-left: 15px;	
 	padding-right: 20px;
 	padding-top: 8px;
 	width: 55px;
 }
 ul#navigation li a img.calendar {
 	height: 45px;
+	padding-left: 15px;
 	padding-right: 22px;
 	padding-top: 12px;
 	width: 45px;
