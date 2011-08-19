@@ -17,6 +17,11 @@ class ContainerURLNode(template.Node):
     
     def render(self, context):
         url = ""
+        
+        if (self.view_name.resolve(context)):
+            view_name = self.view_name.resolve(context)
+        else:
+            view_name = str(self.view_name)
         container = self.container.resolve(context)
         
         kwargs = {}
@@ -26,13 +31,13 @@ class ContainerURLNode(template.Node):
         if container:
             bridge = container.content_bridge
             try:
-                url = bridge.reverse(self.view_name, container, kwargs=kwargs)
+                url = bridge.reverse(view_name, container, kwargs=kwargs)
             except NoReverseMatch:
                 if self.asvar is None:
                     raise
         else:
             try:
-                url = reverse(self.view_name, kwargs=kwargs)
+                url = reverse(view_name, kwargs=kwargs)
             except NoReverseMatch:
                 if self.asvar is None:
                     raise
@@ -103,8 +108,7 @@ def containerurl(parser, token):
     if len(bits) < 3:
         raise template.TemplateSyntaxError("'%s' takes at least two arguments"
             " (path to a view and a container)" % tag_name)
-    
-    view_name = bits[1]
+    view_name = parser.compile_filter(bits[1])
     container = parser.compile_filter(bits[2])
     args = []
     kwargs = {}

@@ -118,7 +118,7 @@ body.facebox #body {
 .contentf .form {
 	border: 0px;}
 
-li {
+#facebox li {
 	color: red;
 	text-align: right;
 }

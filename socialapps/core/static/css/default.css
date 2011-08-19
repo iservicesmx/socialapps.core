@@ -340,7 +340,7 @@ footer p a:hover { color: rgba(0,0,0,.6); }
  }
 
  .body .class {
- 	background: #E0DFDF url(../images/course-24-black.png) no-repeat 5px;
+ 	background: #E0DFDF url(../images/sections-24-black.png) no-repeat 5px;
 	-webkit-user-select: none;
 	padding: 5px 0px 8px 34px;
 	border: 1px white solid;
@@ -512,12 +512,14 @@ ul#navigation li a {
 }
 ul#navigation li a img.dash {
 	height: 55px;
+	padding-left: 15px;	
 	padding-right: 20px;
 	padding-top: 8px;
 	width: 55px;
 }
 ul#navigation li a img.calendar {
 	height: 45px;
+	padding-left: 15px;
 	padding-right: 22px;
 	padding-top: 12px;
 	width: 45px;
