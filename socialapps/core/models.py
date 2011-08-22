@@ -33,7 +33,7 @@ def _get_queryset(klass):
 
 class BaseDescription(models.Model):
     title = models.CharField(_("Title"), max_length=100, blank=True)
-    slug = models.SlugField(_("Name"), max_length=100, blank=True)
+    slug = models.SlugField(_("Slug"), max_length=100, blank=True)
     description = models.TextField(_(u"Description"), blank=True)
     
     class Meta:
@@ -107,7 +107,7 @@ class BaseContent(BaseMetadata):
 class BaseGroup(BaseMetadata):
     PRIVACY_CHOICES = (
         ('P', _('Public')),
-        ('R', _('Registered Only')),
+        ('R', _('Authorized')),
     )
     privacy = models.CharField(max_length = 1, choices = PRIVACY_CHOICES, default = 'P')
     image = ImageWithThumbsField(upload_to='images', sizes=((60, 60),), blank=True, null = True)
@@ -208,39 +208,6 @@ class BaseGroup(BaseMetadata):
         kwargs.update({"%s_pk" % self._meta.object_name.lower(): self.id})
         return kwargs
 
-    
-class Image(BaseMetadata):
-    position = models.SmallIntegerField(default=999)
-    image = ImageWithThumbsField(_(u"Image"), upload_to="uploads",
-        sizes=((64, 64), (128, 128), (400, 400), (600, 600), (800, 800)))
-        #TODO: Estandarizar tamanos
-
-    class Meta:
-        ordering = ("position", )
-
-    def __unicode__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return ("gallery.views.photo", (), {"slug" : self.slug})
-    get_absolute_url = models.permalink(get_absolute_url)    
-
-class File(BaseMetadata):    
-    position = models.SmallIntegerField(default=999)
-    file = models.FileField(upload_to="files")
-
-    class Meta:
-        ordering = ("position", )
-
-    def __unicode__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return reverse("socialapps_file", kwargs={"id" : self.id})
-
-    @property
-    def filename(self):
-        return os.path.split(self.attachment_file.name)[1]
         
 class Commentable(models.Model):
     comments_count = models.IntegerField(_('total amount of comments'), default=0)
