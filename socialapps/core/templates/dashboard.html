@@ -174,7 +174,12 @@ $(function() {
                             {% if item.activity_object.url %}
                                 <a href="{{ item.activity_object }}" target="blank">{{ item.activity_object}}</a>
                             {% else %}
-                                {{ item.activity_object }}
+                                    {% if item.activity_object.description|length > 100 %}
+                                        {{ item.activity_object.description|slice:"100"|add:".." }}
+                                        <a class="social-dash-more" href="{% url activity_detail item.id %}" rel="facebox[.social_item]">{% trans "View more" %}<a>                                        
+                                    {% else %}
+                                        {{ item.activity_object.description }}
+                                    {% endif %}
                             {% endif %}
                             </h2>
                         {% endif %}
