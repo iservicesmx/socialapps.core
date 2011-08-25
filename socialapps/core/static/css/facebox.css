@@ -119,7 +119,8 @@ body.facebox #body {
 	border: 0px;}
 
 #facebox li {
-	color: red;
+/* BUG: ? */
+/*	color: red;*/
 	text-align: right;
 }
 
