@@ -158,7 +158,7 @@ $(function() {
                 {% for item in stream.activities %}
 			        <div class="post">
 				        <div class="avatar">
-                            <img src="{% avatar_url item.activity_object.creator 30 %}" alt="Photo of {{ item.activity_object.creator.username }}" class="photo" />
+                            <img src="{% avatar_url item.activity_object.creator 48 %}" alt="Photo of {{ item.activity_object.creator.username }}" class="photo" />
 				        </div>
 				        <h1><a href="{{ item.actor.get_absolute_url }}">{{ item.actor.name }}</a></h1>
                         {% if item.collapsed %}
