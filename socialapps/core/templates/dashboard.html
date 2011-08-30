@@ -176,7 +176,7 @@ $(function() {
                             {% else %}
                                     {% if item.activity_object.description|length > 100 %}
                                         {{ item.activity_object.description|slice:"100"|add:".." }}
-                                        <a class="social-dash-more" href="{% url activity_detail item.id %}" rel="facebox[.social_item]">{% trans "View more" %}<a>                                        
+                                        <a class="social-dash-more" href="{% url activity_detail item.id %}" rel="facebox[.social_item]">{% trans "View more" %}</a>                                        
                                     {% else %}
                                         {{ item.activity_object.description }}
                                     {% endif %}
