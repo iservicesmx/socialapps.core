@@ -12,10 +12,12 @@ img {
 .container {
     	z-index:10;
     	/*position:relative;*/
-    	background-color:#111;
     	background-color:rgba(15,15,15,0.9);
     	background:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(35,35,35,0.85)),to(#141414));
     	background:-moz-linear-gradient(top,rgba(35,35,35,0.85),rgba(20,20,20,0.98));
+    	#background-color:#111;
+		background-color:#111;
+		_background-color:#111;
     	-webkit-box-shadow:0 1px 3px #111;
     	-moz-box-shadow:0 1px 2px #111;
     	box-shadow:0 1px 3px #222;
@@ -33,10 +35,11 @@ img {
 	height: 39px;
 	width:950px;
 }
-header .search_form {
+#form_avatar .search_form {
     float: left;
     margin-top: 0px;
-    width: 250px;
+    /*width: 250px;*/
+	#width: 250px;
     margin-left: 73px;
     padding: 0 !important;
 }
@@ -53,6 +56,9 @@ h2.trigger {font-size: 1em !important; font-weight:normal !important; display: i
 display: block;}
 
 #form_avatar {
+	position:absolute;
+	top:0px;
+	left:53%;
 	width: 440px;
 	float: right;
 	padding-top: 3px;
@@ -68,6 +74,7 @@ display: block;}
 	font-size: 12px;
 	margin: 4px 0 0 14px !important;
 	padding: 5px !important;
+	#float:right;
 }
 
 #form_avatar input:focus { background-color: #fff; }
@@ -88,6 +95,9 @@ display: block;}
 	background-color:rgba(15,15,15,0.9);
 	/*background:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(35,35,35,0.85)),to(#141414));
 	   background:-moz-linear-gradient(top,rgba(35,35,35,0.85),rgba(20,20,20,0.98));*/
+	#background-color:#111;
+	_background-color:#111;
+	background-color:#111;
 	-webkit-box-shadow:0 1px 3px #111;
 	-moz-box-shadow:0 1px 2px #111;
 	box-shadow:0 1px 3px #222;
@@ -495,17 +505,20 @@ ul#navigation li {
 ul#navigation li a {
     display: block;
     margin-left: 0px;
+	min-width: 90px;
+    min-height: 70px;
     width: 90px;
     height: 70px;
-    background-color:rgba(15,15,15,0.9);
-    background-repeat:no-repeat;
-    background-position:center center;
+    background-color: rgba(15,15,15,0.9);
+    background-repeat: no-repeat;
+    background-position: center center;
     border:1px solid #AFAFAF;
+	_background-color: #141414;
+	background-color: #141414;
     -moz-border-radius:0px 10px 10px 0px;
-    -webkit-border-bottom-right-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -khtml-border-bottom-right-radius: 10px;
-    -khtml-border-top-right-radius: 10px;
+    -webkit-border-radius:0px 10px 10px 0px;
+    -khtml-border-radius:0px 10px 10px 0px;
+    border-radius:0px 10px 10px 0px;
     margin-left: -85px;
     opacity: 1;
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
