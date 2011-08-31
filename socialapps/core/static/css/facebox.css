@@ -168,7 +168,7 @@ body.facebox #body {
   margin-bottom:0;
 }
 
-#facebox .close{
+#facebox .popup .close{
   position:absolute;
   top:5px;
   right:5px;
