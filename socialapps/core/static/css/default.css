@@ -540,8 +540,8 @@ ul#navigation li a img.calendar {
 }
 .personal-bar>ul {
     /*position:absolute;*/
-    margin:4px 0 0 -20px !important;
-	float: right !important;
+    margin:4px 0 0 -20px;
+	float: right;
 }
 
 .personal-bar.list > ul, .personal-bar.messages > ul {
