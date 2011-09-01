@@ -96,7 +96,6 @@ display: block;}
 	/*background:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(35,35,35,0.85)),to(#141414));
 	   background:-moz-linear-gradient(top,rgba(35,35,35,0.85),rgba(20,20,20,0.98));*/
 	#background-color:#111;
-	_background-color:#111;
 	background-color:#111;
 	-webkit-box-shadow:0 1px 3px #111;
 	-moz-box-shadow:0 1px 2px #111;
@@ -107,18 +106,15 @@ display: block;}
     border-bottom-left-radius: 8px 8px;
 	border-bottom-right-radius: 8px 8px;
 	/*  como le hago para alinearlo abajo del form*/
-	
 	right:70px;
-	/*z-index:99;*/
-	/*border-top:1px solid #111;*/
-	/*top:39px;*/
 }
 
 #body {
 	position: relative;
-	margin: 3.7em auto 0px;
+	margin: 0em auto 0px;
 	width: 960px;
 	zoom: 1;
+	padding-top: 3.7em;
 }
 
 #body:after {
@@ -543,7 +539,7 @@ ul#navigation li a img.calendar {
 	z-index: 3;
 }
 .personal-bar>ul {
-    position:absolute;
+    /*position:absolute;*/
     margin:4px 0 0 -20px !important;
 	float: right !important;
 }
