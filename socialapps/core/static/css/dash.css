@@ -244,10 +244,10 @@ font-weight: bold;
 
 #menu-left #id_posting,
 #menu-left .status_form textarea {
-	width: 76% !important;
+	width: 96% !important;
 	margin-top:3px;
 	font-size: 12px;
-	float:none;
+	float:right;
 	margin-bottom:0px;
 	border: 2px solid #94CBEC;
     /* add height for status_form on dash*/
@@ -266,9 +266,11 @@ font-weight: bold;
 
 #menu-left .form-toggle {
 	margin-left: 0px;
-	width: 100%;
+	width: 80%;
 	height: 50px;
 	margin-top: -4px;
+	position: relative;
+	float:right;
 }
 
 #menu-left textarea#id_posting,
