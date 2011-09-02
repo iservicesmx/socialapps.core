@@ -281,7 +281,7 @@ $(document).ready(function(){
 			$(".message-alert").hide();
         });
         
-        $("header").mouseleave(function(){
+        $("#body").mouseenter(function(){
             $(".toggle_container").slideUp();
 			$(".message-alert").fadeIn("slow");
         });      
