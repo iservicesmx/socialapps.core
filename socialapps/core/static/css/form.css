@@ -16,7 +16,7 @@ form div.rowElem {
 }
 
 form input.button {
-	float: right;
+	/*float: right;*/
 	margin-right: 20px;
 }
 
