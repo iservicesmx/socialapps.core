@@ -318,11 +318,7 @@ footer p a:hover { color: rgba(0,0,0,.6); }
 
 
 .title, .content-title {
-  	background: #222;
-  	height: 30px;
-	-webkit-border-radius: 8px 8px 0 0;
-	-moz-border-radius: 8px 8px 0 0;
-	border-radius: 8px 8px 0 0;		
+  	height: 30px;	
 	padding: 9px 16px;
 	position: relative;
 	font: normal normal normal 22px/28px Helvetica;
@@ -333,9 +329,14 @@ footer p a:hover { color: rgba(0,0,0,.6); }
 	background-color:rgba(15,15,15,0.9);
 	background:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(35,35,35,0.85)),to(#141414));
 	background:-moz-linear-gradient(top,rgba(35,35,35,0.85),rgba(20,20,20,0.98));
+	*background-color:#111;
 	-webkit-box-shadow:0 1px 3px #111;-moz-box-shadow:0 1px 2px #111;
 	box-shadow:0 1px 3px #222;
 	border-bottom:1px solid #777;
+	-webkit-border-radius: 7px 7px 0px 0px;	
+  	-moz-border-radius: 7px 7px 0px 0px;	
+  	-khtml-border-radius: 7px 7px 0px 0px;	
+  	border-radius: 7px 7px 0px 0px;	
   }
 
 

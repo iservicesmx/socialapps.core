@@ -17,32 +17,27 @@
 
 
 ul#nav-menu, #posts_wall ul#nav-menu {
-	-webkit-box-shadow: rgba(0, 0, 0, 0.398438) 0px 1px 3px;
 	background: url(../images/gradient.png) repeat-x 0px -110px;
 	line-height: 100%;
 	margin: -10px -5px 25px;
 	padding: 4px 6px 0px;
-	-moz-box-shadow: rgba(0, 0, 0, 0.398438) 0px 1px 3px;
 	background: #222;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.496094) 0px 1px 3px;
 	text-shadow: 0 1px 0 #000;
-	background-color:rgba(15,15,15,0.9);
+	background-color:#111;
 	background:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(35,35,35,0.85)),to(#141414));
 	background:-moz-linear-gradient(top,rgba(35,35,35,0.85),rgba(20,20,20,0.98));
-	background-color:#111;
-	-webkit-box-shadow:0 1px 3px #111;
-	-moz-box-shadow:0 1px 2px #111;
+	*background-color:#111;
 	box-shadow:0 1px 3px #222;
+	-moz-box-shadow:0 1px 3px #222;
+	-webkit-box-shadow:0 1px 3px #222;
+	-khtmlbox-shadow:0 1px 3px #222;
 	border:1px solid #777;
 	border-bottom:1px solid #777;
-	-moz-border-radius:0.6em 0.6em 0em 0em;	
-    -webkit-border-radius:0.6em 0.6em 0em 0em;	
-    -khtml-border-radius:0.6em 0.6em 0em 0em;	
-	border-radius: 0.6em 0.6em 0em 0em;
-/*	-moz-border-radius:5px 5px 0 0;
-    -webkit-border-radius:5px 5px 0 0;
-    -khtml-border-radius:5px 5px 0 0;
-	border-radius: 5px 5px 0 0;*/
+	-webkit-border-radius: 7px 7px 0px 0px;	
+  	-moz-border-radius: 7px 7px 0px 0px;	
+  	-khtml-border-radius: 7px 7px 0px 0px;	
+  	border-radius: 7px 7px 0px 0px;	
+
 }
 
 #menu-content ul#nav-menu {
@@ -64,6 +59,7 @@ font-weight: bold;
 	text-decoration: none;
 	display: block;
 	padding: 8px 20px 8px;
+	*padding-top:5px;
 	margin: 0;
 	-webkit-border-radius: 0.5em;
 	-moz-border-radius: 0.5em;
@@ -457,6 +453,7 @@ li.ctrotator-item a {
 
 #menu-right .widget, #menu-left .widget {
 	border:0px;
+	*margin-left:0px;
 }
 
 ul.notify li {
