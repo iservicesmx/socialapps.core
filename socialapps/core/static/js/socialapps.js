@@ -302,6 +302,7 @@ $(document).ready(function(){
 		$("#area-content").click(function(){
       //      $(this).toggleClass("active");//.next();
             $(".media-send").show();
+            $("#name").hide();
         });
 	});
 

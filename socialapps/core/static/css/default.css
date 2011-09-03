@@ -317,7 +317,7 @@ footer p a { color: rgba(0,0,0,.25); }
 footer p a:hover { color: rgba(0,0,0,.6); }
 
 
-.title, .content-title {
+.title, .content-title, #nav-menu {
   	height: 30px;	
 	padding: 9px 16px;
 	position: relative;
@@ -339,6 +339,12 @@ footer p a:hover { color: rgba(0,0,0,.6); }
   	border-radius: 7px 7px 0px 0px;	
   }
 
+#nav-menu .current a, ul#nav-menu li a:hover  {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	border-radius: 3px;
+}
 
  .body {
 	width: auto;
