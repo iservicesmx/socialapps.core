@@ -345,7 +345,20 @@ footer p a:hover { color: rgba(0,0,0,.6); }
 	-khtml-border-radius: 3px;
 	border-radius: 3px;
 }
+/*
+.calendar-small thead #calendar-left { 
+	-webkit-border-radius: 8px 0 0 0;
+	-moz-border-radius: 8px 0 0 0;
+	-khtml-border-radius: 8px 0 0 0;
+	border-radius: 8px 0 0 0;
+	}
+.calendar-small thead #calendar-right { 
+	-webkit-border-radius: 0 8px 0 0;
+	-moz-border-radius: 0 8px 0 0;
+	-khtml-border-radius: 0 8px 0 0;
+	border-radius: 0 8px 0 0; }
 
+*/
  .body {
 	width: auto;
   	height: auto;
