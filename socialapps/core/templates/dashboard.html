@@ -39,7 +39,8 @@ function showStatus(data, statusText, xhr, $form) {
     	$("#id_posting").animate({"height": "30px",}, "fast" );
 		$(".media-send.status").slideUp("fast");
 		$("#name").show("slow");
-        $('.errorlist').html(''); 
+        $('.errorlist').html('');
+        $('#count').html(250); 
     } else {
         for (var key in data) {
             for (var error in data[key]) {
@@ -52,28 +53,10 @@ function showStatus(data, statusText, xhr, $form) {
 jQuery(function($){
   $("#id_posting").Watermark("What's up?");
   });
-$(document).ready(function(){
-
-	$("#id_posting").keyup(function() {
-        var submit=$('#submit');
-        var box=$(this).val();
-        var main = box.length *100;
-        var value= (main / 250);
-        var count= 250 - box.length;
-        $('#count').html(count);
-        submit.disabled=true;
-        if(box.length <= 250)	{
-            document.add_form.submit.disabled=false;
-            $('#bar').animate(	{
-                "width": value+'%',
-                }, -100);
-        }
-        else { document.add_form.submit.disabled=true; }
-        return false;
-    });
-
+  $(document).ready(function() {
     $('.status_form').ajaxForm({ dataType: 'json', success: showStatus });
-});
+  });
+      
 $(function() {
 //	$("#button_block").hide();
     /* events for satus form of dashboard */
@@ -124,17 +107,17 @@ $(function() {
 
 		<div class="form-toggle">  
             {%  socialstream_status_form user.get_profile %}
-<!--	    	<div id="post-to-wall">
-	        	<form method="POST" name="add_form" class="dash_form" action="/status/add/"> {% csrf_token %}
-	        		<textarea id="id_posting" name="description" style="height: 30px;"></textarea>
-	        		<div id="button_block">
-	            		<input name="submit" class="large button-o" type="submit" value="Send" />
-	            		<a href="#"><input id="cancel" class="large button-o" type="button" value="Cancel" /></a>
-						<div id="count">250</div><br> 
-	        			<div id="barbox"><div id="bar"></div></div>
-	        		</div>
-	        	</form>
-	     	</div>-->
+	    	<!-- <div id="post-to-wall">
+	    	              <form method="POST" name="add_form" class="dash_form" action="/status/add/"> {% csrf_token %}
+	    	                  <textarea id="id_posting" name="description" style="height: 30px;"></textarea>
+	    	                  <div id="button_block">
+	    	                      <input name="submit" class="large button-o" type="submit" value="Send" />
+	    	                      <a href="#"><input id="cancel" class="large button-o" type="button" value="Cancel" /></a>
+	    	                      <div id="count">250</div><br> 
+	    	                      <div id="barbox"><div id="bar"></div></div>
+	    	                  </div>
+	    	              </form>
+	    	          </div> -->
 		</div>
 		<div id="name"> {%if user.first_name and user.last_name %}
 		        {{ user.get_profile.name }} 
