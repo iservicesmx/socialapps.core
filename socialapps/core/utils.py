@@ -140,7 +140,7 @@ class LazyEncoder(simplejson.JSONEncoder):
             return force_unicode(obj)
         return super(LazyEncoder, self).default(obj) 
 
-json_encoder = LazyEncoder(ensure_ascii=False)
+json_encoder = LazyEncoder(ensure_ascii=True)
 
 def python_to_json(obj):
     return json_encoder.encode(obj)
