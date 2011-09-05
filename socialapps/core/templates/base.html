@@ -32,6 +32,27 @@
 	{% block extra_js %}{% endblock %}
 
 	<script type="text/javascript">
+        	$("#area-description, #area-content").live('keyup', function() {
+                var submit=$('#submit');
+                var box=$(this).val();
+                var main = box.length *100;
+                var value= (main / 250);
+                var count= 250 - box.length;
+                $('#count').html(count);
+                var form = $(this).parents('form');
+                $(form).find('input[type=submit]').attr('disabled', 'disabled');
+                if(box.length <= 250)	{
+                    $(form).find('input[type=submit]').attr('disabled', '');
+                    $('#bar').animate(	{
+                        "width": value+'%',
+                        }, -100);
+                }
+                else { 
+                    $(form).find('input[type=submit]').attr('disabled', 'disabled');
+                }
+                return false;
+            });
+
         //TODO: Explain why is this thing outside the document.ready() callback?
         $(function() {
 			var delay = 0;
