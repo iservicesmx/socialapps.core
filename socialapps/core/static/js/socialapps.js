@@ -276,14 +276,17 @@ $(document).ready(function(){
         //TODO: What is this for?
 
         $("header").mouseenter(function(){
-            $(".toggle_container").slideDown();
+            if(timer) {
+                clearTimeout(timer);
+            }
+            $(".toggle_container").slideDown('fast');
 			$(".toggle_container").css("display","block");
 			$(".message-alert").hide();
-        });
-        
-        $("#body").mouseenter(function(){
-            $(".toggle_container").slideUp();
-			$(".message-alert").fadeIn("slow");
+        }).mouseleave(function(){
+            timer = setTimeout(function() {
+                $(".toggle_container").slideUp('fast');
+    			$(".message-alert").fadeIn("slow");
+            }, 1000);
         });      
 
 		//$("#page").mouseenter(function(){	
