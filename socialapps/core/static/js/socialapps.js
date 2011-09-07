@@ -276,7 +276,7 @@ $(document).ready(function(){
         //TODO: What is this for?
 
         $("header").mouseenter(function(){
-            if(timer) {
+            if(typeof timer !== 'undefined') {
                 clearTimeout(timer);
             }
             $(".toggle_container").slideDown('fast');
