@@ -22,7 +22,7 @@
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.6.custom.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/socialapps.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/socialstream.js"></script>	
-	<script type="text/javascript" src="{{ STATIC_URL }}js/comments.js"></script>
+<!--	<script type="text/javascript" src="{{ STATIC_URL }}js/comments.js"></script>-->
 	<script type="text/javascript" src="{{ STATIC_URL }}js/facebox.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jqtransform.js"></script>	
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.tmpl.min.js"></script>	
@@ -32,26 +32,7 @@
 	{% block extra_js %}{% endblock %}
 
 	<script type="text/javascript">
-        	$("#area-description, #area-content").live('keyup', function() {
-                var submit=$('#submit');
-                var box=$(this).val();
-                var main = box.length *100;
-                var value= (main / 250);
-                var count= 250 - box.length;
-                $('#count').html(count);
-                var form = $(this).parents('form');
-                $(form).find('input[type=submit]').attr('disabled', 'disabled');
-                if(box.length <= 250)	{
-                    $(form).find('input[type=submit]').attr('disabled', '');
-                    $('#bar').animate(	{
-                        "width": value+'%',
-                        }, -100);
-                }
-                else { 
-                    $(form).find('input[type=submit]').attr('disabled', 'disabled');
-                }
-                return false;
-            });
+
 
         //TODO: Explain why is this thing outside the document.ready() callback?
         $(function() {
@@ -77,13 +58,16 @@
         });
 	</script>
 	{% block extra_script  %}{% endblock %}	
-    <!--[if lt IE 8]>
-    <script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE8.js" type="text/javascript"></script>
-    <![endif]-->
+
     <!--[if IE]>
-	<script type="text/javascript" src="http://oritzio.com/pages/demos/CssRoundedCorners/curvycorners.src.js"></script>	
 	<script type="text/javascript" src="{{ STATIC_URL }}js/fixed.js"></script>
-	<![endif]-->
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.corner.js"></script>
+	<![endif]-->	
+  
+    <!--[if IE 8]>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE8.js" type="text/javascript"></script>
+	    <![endif]-->
+
 </head>
 <body id="{% block body_id %}{% endblock %}">
 	<ul id="navigation">

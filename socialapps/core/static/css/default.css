@@ -535,8 +535,9 @@ ul#navigation li a {
     -khtml-border-radius:0px 10px 10px 0px;
     border-radius:0px 10px 10px 0px;
     margin-left: -85px;
-    opacity: 1;
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+    opacity: 1;
+	*filter:none;
 }
 ul#navigation li a img.dash {
 	height: 55px;
