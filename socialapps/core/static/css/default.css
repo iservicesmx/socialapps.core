@@ -107,6 +107,7 @@ display: block;}
 	border-bottom-right-radius: 8px 8px;
 	/*  como le hago para alinearlo abajo del form*/
 	right:70px;
+    z-index:11;
 }
 
 #body {
