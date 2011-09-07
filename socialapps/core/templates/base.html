@@ -127,20 +127,22 @@
 		</div>
 	</div>
 	</header> 
-	    <div id="body">
+	<div id="body">
         <div class="content_wraper">
 			<div id="content">
-			                {% block extra_messages %}{% endblock %}
+			    {% block extra_messages %}{% endblock %}
 			    <div id="content-tabs-wrapper">
     			    {% block content_tabs %}
     			    {% endblock %}
-		            </div>
-				{% block content %}
+		        </div>
+			    {% block content %}
 				{% endblock %}							
 			</div>
         </div>
-	<footer>
-		<p>BluFrog - <a href = "http://iservices.com.mx" target="_blank">iServices de M&eacute;xico</a></p>
-    </footer>
+        <div class="footer">
+    		<p>BluFrog - <a href = "http://iservices.com.mx" target="_blank">iServices de M&eacute;xico</a></p>
+        </div>
+    </div>
+   
 </body>
 </html>

@@ -20,6 +20,7 @@ ul#nav-menu, #posts_wall ul#nav-menu {
 	line-height: 100%;
 	margin: -10px -5px 25px;
 	padding: 4px 6px 0px;
+	*padding-bottom:5px;
 	font: normal normal normal 18px/22px Helvetica !important;
 }
 
@@ -50,8 +51,6 @@ font-weight: bold;
 	-moz-border-radius: 0.5em;
 	text-shadow: 0 1px 1px rgba(0,0,0, .3);*/
 	font-size: 14px;
-/*	line-height:14px;*/
-
 }
 
 #nav-menu a:hover {
