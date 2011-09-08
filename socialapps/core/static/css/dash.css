@@ -376,10 +376,12 @@ font-weight: bold;
 	float: right;
 	margin-top: -10px;
 	opacity: 0.5;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
 	display: block;
 	width: 100%;
 	text-align: right;
 }
+
 
 #ctrotator .info {
 	color:blue;
