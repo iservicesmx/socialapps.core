@@ -756,9 +756,9 @@ textarea#id_posting {
 	margin-top: 15px;
 	display: block;
 	width: 96%;
-	padding: 11px 10px;
 /*	border-bottom: 2px solid white;*/
 	text-shadow: 0px 1px 0px white;
+	padding: 5px 10px 0;
 }
 
 .post .header-post .avatar {
@@ -841,7 +841,7 @@ textarea#id_posting {
 }
 
 #posts_wall .post .body-post .header-post, #posts_wall .post .comment-post .header-post, #sidebar-blog .widget #friends .footer-friends,
- #sidebar-blog .widget #followers .footer-followers {
+ #sidebar-blog .widget #followers .footer-followers/*, .more-activity*/ {
 	background: url(/static/images/backgrounds-sprite.png) 0 0 repeat-x;
 /*	background: #94CBEC;*/
 	font-size: 13px;
@@ -942,7 +942,8 @@ a.uiSelectorButton.uiCloseButton {
 	line-height: 15px;
 	padding: 0 10px 5px;
 	color: black;
-	max-height: 115px;
+/*	max-height: 115px;*/
+	max-height: 156px;
 }
 
 #posts_wall .post .comment-post .message-post {
