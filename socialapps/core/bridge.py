@@ -125,10 +125,13 @@ class ContentBridge(object):
             kwargs = {}
         
         final_kwargs = {}
-        
+
         if hasattr(container, "content") and container.content:
-            final_kwargs.update({"%s_pk" % container.content._meta.object_name.lower(): container.content.id})
-        
+            temp_container = container.content
+            while temp_container:
+                final_kwargs.update({"%s_pk" % temp_container._meta.object_name.lower(): temp_container.id})
+                temp_container = temp_container.content
+
         final_kwargs.update({"%s_pk" % container._meta.object_name.lower(): container.id})
         
         final_kwargs.update(kwargs)

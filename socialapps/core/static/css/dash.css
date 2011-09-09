@@ -270,6 +270,9 @@ font-weight: bold;
 
 #menu-left #count {
 	margin-top: 6px;
+	*margin-top:-50px;
+	*float:left;
+	*font-size:10px;
 /*	font-size:11px;
 	margin:-17px 0 0 150px;*/
 }
@@ -330,10 +333,11 @@ font-weight: bold;
 #stream-avatar .post {
 	display: block;
 	width: 96%;
-	padding: 11px 10px;
-	height: 60px;
+	padding: 7px 10px 3px;
+	min-height: 60px;
 	border-bottom: 2px solid #FFF;
 	text-shadow: 0px 1px 0px white;
+	margin-top:0px;
 }
 
 #stream-avatar .post .avatar {
@@ -376,10 +380,13 @@ font-weight: bold;
 	float: right;
 	margin-top: -10px;
 	opacity: 0.5;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=40);
 	display: block;
 	width: 100%;
 	text-align: right;
+	line-height: 10px;
 }
+
 
 #ctrotator .info {
 	color:blue;

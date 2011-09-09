@@ -586,6 +586,8 @@ ul#navigation li a img.calendar {
     display:block;
     height:10px;
 	padding: 1px 7px 8px 20px;
+	*padding-top:3px;
+	*padding-bottom:10px;
     width:55px;
     font-size:11px;
     text-decoration:none;
@@ -596,6 +598,7 @@ ul#navigation li a img.calendar {
     border-radius:3px;
     z-index:5;
 	line-height: 20px;
+	*line-height:15px;
 }
 .personal-bar.messages>ul>li>a {
 	top: -43px;
@@ -659,7 +662,8 @@ ul#navigation li a img.calendar {
 }
 #count
 {
-	float:right; margin-right:8px;
+	float:right; 
+	margin-right:8px;
 	font-size:16px;
 	font-weight:bold;
 	color:#666666;
@@ -756,9 +760,9 @@ textarea#id_posting {
 	margin-top: 15px;
 	display: block;
 	width: 96%;
-	padding: 11px 10px;
 /*	border-bottom: 2px solid white;*/
 	text-shadow: 0px 1px 0px white;
+	padding: 5px 10px 0;
 }
 
 .post .header-post .avatar {
@@ -816,6 +820,7 @@ textarea#id_posting {
 #posts_wall .post .comment-post {
 	margin-left: -37px;
 	display: block;
+	padding-bottom: 5px;
 }
 
 #posts_wall .post .comment-posting {
@@ -840,7 +845,7 @@ textarea#id_posting {
 }
 
 #posts_wall .post .body-post .header-post, #posts_wall .post .comment-post .header-post, #sidebar-blog .widget #friends .footer-friends,
- #sidebar-blog .widget #followers .footer-followers {
+ #sidebar-blog .widget #followers .footer-followers/*, .more-activity*/ {
 	background: url(/static/images/backgrounds-sprite.png) 0 0 repeat-x;
 /*	background: #94CBEC;*/
 	font-size: 13px;
@@ -941,7 +946,11 @@ a.uiSelectorButton.uiCloseButton {
 	line-height: 15px;
 	padding: 0 10px 5px;
 	color: black;
-	
+/*	max-height: 115px;*/
+/*	max-height: 156px;*/
+/*
+    FIXME por que poner una max-heihgt?
+*/
 }
 
 #posts_wall .post .comment-post .message-post {
@@ -963,8 +972,8 @@ a.uiSelectorButton.uiCloseButton {
 	
 }
 
-#posts_wall .post .comment-post .message-post .footer-post #like, 
-#posts_wall .post .comment-post .message-post .footer-post #nolike {
+#posts_wall .post .comment-post .message-post .footer-post .like, 
+#posts_wall .post .comment-post .message-post .footer-post .nolike {
 	height: 21px;
 	width: 37px;
 	padding: 3px 0px 3px 14px;
@@ -983,7 +992,6 @@ a.uiSelectorButton.uiCloseButton {
 } */
 
 #posts_wall .post .button {
-	width: auto;
 	padding: 4px 6px 5px 25px;
 	float: right;
 	display: block;
@@ -1003,17 +1011,26 @@ a.uiSelectorButton.uiCloseButton {
 	margin-right: 6px;
 } */
 
-#posts_wall .post #like.button  {
-	background: #EEE url(/static/images/thumb-up.png) no-repeat 4px 2px;	
+#posts_wall .post .button.like  {
+	background: url(/static/images/thumb-up.png) no-repeat 4px 1px;	
 	margin-right: 6px;
 }
+#posts_wall .post .button.reply  {
+	background: url(/static/images/comments_add.png) no-repeat 4px 1px;	
+	margin-right: 6px;
+	width: 60px;
+	-moz-text-shadow:none;
+	-webkit-text-shadow:none;
+	text-shadow:none;
+}
+
 
 /*#posts_wall .post .body-post .footer-post #nolike.button  {
 	background: #EEE url(/media/images/thumb.png) no-repeat 8px 2px;	
 } */
 
-#posts_wall .post #nolike.button  {
-	background: #EEE url(/static/images/thumb.png) no-repeat 4px 2px;	
+#posts_wall .post .button.nolike  {
+	background: url(/static/images/thumb.png) no-repeat 4px 1px;	
 }
 
 #posts_wall .post .comment-posting .comment {
@@ -1401,3 +1418,4 @@ li.ac_even:hover {
 	-moz-box-shadow: red 0.9px 0.8px 11px 5px;
 	box-shadow: red 0.9px 0.8px 13px 6px;
 }
+

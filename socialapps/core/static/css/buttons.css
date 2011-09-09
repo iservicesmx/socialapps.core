@@ -294,7 +294,7 @@
 
 .button-o:hover	{ background-color: #111; color: #fff; }
 .button-o:active { top: 1px; }
-.small.button-o, .small.button-o:visited { font-size: 11px; padding: ; }
+.small.button-o, .small.button-o:visited { font-size: 11px;  }
 .button-o, .button-o:visited, .medium.button-o, .medium.button-o:visited { 
 	font-size: 13px; font-weight: bold; line-height: 1; text-shadow: 0 -1px 1px rgba(0,0,0,0.25); 
 }
