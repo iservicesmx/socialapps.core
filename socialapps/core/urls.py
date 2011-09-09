@@ -1,6 +1,8 @@
 from django.conf.urls.defaults import *
 from socialapps import core
-# URL patterns for socialapps.core
+from socialapps import cms
+
+cms.autodiscover()
 
 urlpatterns = patterns('',
     (r'^accounts/', include('socialapps.account.urls')),
