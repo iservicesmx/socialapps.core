@@ -947,7 +947,10 @@ a.uiSelectorButton.uiCloseButton {
 	padding: 0 10px 5px;
 	color: black;
 /*	max-height: 115px;*/
-	max-height: 156px;
+/*	max-height: 156px;*/
+/*
+    FIXME por que poner una max-heihgt?
+*/
 }
 
 #posts_wall .post .comment-post .message-post {
