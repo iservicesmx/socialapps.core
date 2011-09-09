@@ -586,6 +586,8 @@ ul#navigation li a img.calendar {
     display:block;
     height:10px;
 	padding: 1px 7px 8px 20px;
+	*padding-top:3px;
+	*padding-bottom:10px;
     width:55px;
     font-size:11px;
     text-decoration:none;
@@ -596,6 +598,7 @@ ul#navigation li a img.calendar {
     border-radius:3px;
     z-index:5;
 	line-height: 20px;
+	*line-height:15px;
 }
 .personal-bar.messages>ul>li>a {
 	top: -43px;
@@ -659,7 +662,8 @@ ul#navigation li a img.calendar {
 }
 #count
 {
-	float:right; margin-right:8px;
+	float:right; 
+	margin-right:8px;
 	font-size:16px;
 	font-weight:bold;
 	color:#666666;
