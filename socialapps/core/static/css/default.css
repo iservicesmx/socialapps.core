@@ -816,6 +816,7 @@ textarea#id_posting {
 #posts_wall .post .comment-post {
 	margin-left: -37px;
 	display: block;
+	padding-bottom: 5px;
 }
 
 #posts_wall .post .comment-posting {
@@ -941,7 +942,7 @@ a.uiSelectorButton.uiCloseButton {
 	line-height: 15px;
 	padding: 0 10px 5px;
 	color: black;
-	
+	max-height: 115px;
 }
 
 #posts_wall .post .comment-post .message-post {
@@ -963,8 +964,8 @@ a.uiSelectorButton.uiCloseButton {
 	
 }
 
-#posts_wall .post .comment-post .message-post .footer-post #like, 
-#posts_wall .post .comment-post .message-post .footer-post #nolike {
+#posts_wall .post .comment-post .message-post .footer-post .like, 
+#posts_wall .post .comment-post .message-post .footer-post .nolike {
 	height: 21px;
 	width: 37px;
 	padding: 3px 0px 3px 14px;
@@ -983,7 +984,6 @@ a.uiSelectorButton.uiCloseButton {
 } */
 
 #posts_wall .post .button {
-	width: auto;
 	padding: 4px 6px 5px 25px;
 	float: right;
 	display: block;
@@ -1003,17 +1003,26 @@ a.uiSelectorButton.uiCloseButton {
 	margin-right: 6px;
 } */
 
-#posts_wall .post #like.button  {
-	background: #EEE url(/static/images/thumb-up.png) no-repeat 4px 2px;	
+#posts_wall .post .button.like  {
+	background: url(/static/images/thumb-up.png) no-repeat 4px 1px;	
 	margin-right: 6px;
 }
+#posts_wall .post .button.reply  {
+	background: url(/static/images/comments_add.png) no-repeat 4px 1px;	
+	margin-right: 6px;
+	width: 60px;
+	-moz-text-shadow:none;
+	-webkit-text-shadow:none;
+	text-shadow:none;
+}
+
 
 /*#posts_wall .post .body-post .footer-post #nolike.button  {
 	background: #EEE url(/media/images/thumb.png) no-repeat 8px 2px;	
 } */
 
-#posts_wall .post #nolike.button  {
-	background: #EEE url(/static/images/thumb.png) no-repeat 4px 2px;	
+#posts_wall .post .button.nolike  {
+	background: url(/static/images/thumb.png) no-repeat 4px 1px;	
 }
 
 #posts_wall .post .comment-posting .comment {
@@ -1401,3 +1410,4 @@ li.ac_even:hover {
 	-moz-box-shadow: red 0.9px 0.8px 11px 5px;
 	box-shadow: red 0.9px 0.8px 13px 6px;
 }
+
