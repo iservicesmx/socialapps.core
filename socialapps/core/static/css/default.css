@@ -786,15 +786,18 @@ textarea#id_posting {
 	border: medium none;
 }
 
-.post .header-post .avatar img, .post .comment-post .avatar img, #sidebar-profile .widget .top-profile img, #sidebar-profile .widget .top-friends img,
-#sidebar-profile .widget .top-followers img, .card-profiles .widget .top-profile img, #messages img{
+.post .header-post .avatar img, .post .comment-post .avatar img, #messages img{
+    height: 30px;
+    width: 30px;
+}
+
+#sidebar-profile .widget img, .post .header-post .avatar img, .post .comment-post .avatar img, #messages img, 
+.top-profile img {
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
 	padding: 3px;
 	border: medium none;
-    height: 30px;
-    width: 30px;
 }
 
 #posts_wall .post .body-post .header-post:hover {
@@ -874,7 +877,6 @@ textarea#id_posting {
 }
 
 #tooltip {
-	color: white!important;
 	width: 190px;
 /*	position: relative;*/
     position: absolute;
@@ -1090,6 +1092,12 @@ ul#existed.ctrotator li  {
 	text-align: left !important;
 	font-style: normal;
 	padding: 0px 20px 0px 10px;
+}
+ul#existed.ctrotator li, #tooltip h3 {
+	padding: 8px 0px;
+	width:auto;
+	height: auto;
+	font-style: normal;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
@@ -1100,6 +1108,7 @@ ul#existed.ctrotator li  {
     box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
 	font-family:'Lucida Grande', Verdana, Helvetica, Arial, sans-serif;
 }
+
     ul#existed.ctrotator li h3 {
 		margin-top: -1px;
 		font-size: 1.13em;	
@@ -1111,7 +1120,7 @@ ul#existed.ctrotator li  {
 		line-height: 1.3em;
     }
 
-ul#existed.ctrotator li.ctrotator-item.info {
+ul#existed.ctrotator li.ctrotator-item.info, #tooltip h3 {
 	border: 1px solid #cadcea;
     background: #e1f2fc;
     background: -webkit-gradient(linear, left top, left bottom, from(#e1f2fc), to(#cae9fd));
@@ -1418,4 +1427,9 @@ li.ac_even:hover {
 	-moz-box-shadow: red 0.9px 0.8px 11px 5px;
 	box-shadow: red 0.9px 0.8px 13px 6px;
 }
+
+.widget .desc {
+	
+}
+
 

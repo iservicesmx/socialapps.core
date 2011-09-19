@@ -40,7 +40,7 @@ function showStatus(data, statusText, xhr, $form) {
 		$(".media-send.status").slideUp("fast");
 		$("#name").show("slow");
         $('.errorlist').html('');
-        $('#count').html(250); 
+        $('#count').html(250);
     } else {
         for (var key in data) {
             for (var error in data[key]) {
@@ -80,7 +80,6 @@ $(function() {
 
 });
 </script>
-
 {% endblock %}
 
 {% block body_id %}dash{% endblock %}
