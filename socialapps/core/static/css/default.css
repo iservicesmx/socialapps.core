@@ -1024,6 +1024,7 @@ a.uiSelectorButton.uiCloseButton {
 	-moz-text-shadow:none;
 	-webkit-text-shadow:none;
 	text-shadow:none;
+	float: left;
 }
 
 
