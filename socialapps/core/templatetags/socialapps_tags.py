@@ -6,16 +6,18 @@ from BeautifulSoup import BeautifulSoup
 import re
 import permissions.utils
 
-
 register = template.Library()
 
 @register.inclusion_tag('local_menu.html')
 def show_local_menu(parent = None, current = 'index'):
-    if isinstance(parent,models.Model):
-        if hasattr(parent, 'get_local_menu'):
-            menu = parent.get_local_menu()
-            absolute_url = parent.get_absolute_url()
-            return {'options' : menu, 'absolute_url':absolute_url ,'current' : current }
+    if isinstance(parent, models.Model):
+        parents = [ancestor.get_type_object() for ancestor in parent.get_ancestors(include_self=True)]
+        print parents
+        for parent in parents:
+            if hasattr(parent, 'get_local_menu'):
+                menu = parent.get_local_menu()
+                absolute_url = parent.get_absolute_url()
+                return {'options' : menu, 'absolute_url':absolute_url ,'current' : current }
 
 class PermissionComparisonNode(template.Node):
     """Implements a node to provide an if current user has passed permission 
