@@ -11,8 +11,8 @@ register = template.Library()
 @register.inclusion_tag('local_menu.html')
 def show_local_menu(parent = None, current = 'index'):
     if isinstance(parent, models.Model):
-        parents = [ancestor.get_type_object() for ancestor in parent.get_ancestors(include_self=True)]
-        for parent in parents:
+        for ancestor in parent.get_ancestors(include_self=True):
+            parent = ancestor.get_type_object()
             if hasattr(parent, 'get_local_menu'):
                 menu = parent.get_local_menu()
                 absolute_url = parent.get_absolute_url()

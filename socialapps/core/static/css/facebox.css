@@ -253,10 +253,10 @@ body.facebox #body {
 
 .contentf #nav-menu { margin-top: -8px; margin-bottom:2px;}
 
-.contentf #nav-menu .current a, .contentf #nav-menu li:hover > a {
-	height: 11px;
+/*.contentf #nav-menu .current a, .contentf #nav-menu li:hover > a {
+    height: 11px;
 }
-
+*/
 .contentf #nav-menu li{
 	padding-bottom: 3px;
 }
