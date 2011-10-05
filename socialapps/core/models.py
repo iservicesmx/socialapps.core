@@ -87,8 +87,10 @@ class BaseMetadata(BaseDescription):
 
     def __unicode__(self):
         return self.title
+        
+    def get_contenttype(self):
+        return ContentType.objects.get_for_model(self).id
                 
-    
 class BaseContent(BaseMetadata):
     
     body   = models.TextField(_(u"Body"), blank=True)
