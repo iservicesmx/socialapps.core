@@ -2,7 +2,7 @@
 {% load avatar_tags %}
 {% load socialstream_tags %}
 {% load space_tags %}
-{% comment %}{% load courses_tags %}{% endcomment %}
+{% load courses_tags %}
 {% block extra_css %}
 {% load i18n %}
 
@@ -205,8 +205,7 @@ $(function() {
 				});  
 				</script> 
 
-				
-			    {% comment %} {% show_course_widget 5 request.user %} {% endcomment %}
+				{% show_course_widget 5 request.user %}
                 {% show_space_widget 5 request.user %}
 				
 				<!-- Inicia calendario medio -->

@@ -4,6 +4,7 @@ from django.contrib.sites.models import Site
 from django.conf import settings
 
 from socialapps.spaces.models import SpaceRoot
+from blufrog.courses.models import CourseRoot
 
 from permissions.utils import register_permission, register_role
 
@@ -24,3 +25,4 @@ class Command(BaseCommand):
         register_permission('Socialize', 'socialize')
         
         SpaceRoot.objects.create(title="spaces", status=1, portal_type="spaceroot")
+        CourseRoot.objects.create(title="courses", status=1, portal_type="courseroot")
