@@ -24,5 +24,7 @@ class Command(BaseCommand):
         register_permission('Delete', 'delete')
         register_permission('Socialize', 'socialize')
         
-        SpaceRoot.objects.create(title="spaces", status=1, portal_type="spaceroot")
-        CourseRoot.objects.create(title="courses", status=1, portal_type="courseroot")
+        if not SpaceRoot.objects.count():
+            SpaceRoot.objects.create(title="spaces", status=1, portal_type="spaceroot")
+        if not CourseRoot.objects.count():            
+            CourseRoot.objects.create(title="courses", status=1, portal_type="courseroot")
