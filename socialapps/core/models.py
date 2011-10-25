@@ -90,6 +90,11 @@ class BaseMetadata(BaseDescription):
         
     def get_contenttype(self):
         return ContentType.objects.get_for_model(self).id
+        
+    @property
+    def date_string(self):
+        """Formats the created date into a pretty string."""                           
+        return self.created.strftime("%d of %B of %Y at %H:%M")
                 
 class BaseContent(BaseMetadata):
     

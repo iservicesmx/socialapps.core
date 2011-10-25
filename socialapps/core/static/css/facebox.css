@@ -77,8 +77,12 @@ body {
 	line-height: 0px;
 	margin-top:0px;
 	color:white;
-	padding: 15px 0px 0px 70px;
+	padding: 10px 0px 5px 10px;
 }
+
+.contentf h2 img {
+    padding-right: 60px;
+} 
 
 p {
 	margin: 0 5px 0 0;
