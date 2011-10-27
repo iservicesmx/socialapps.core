@@ -84,7 +84,7 @@ body {
     padding-right: 60px;
 } 
 
-p {
+#facebox p {
 	margin: 0 5px 0 0;
 	width: 300px;
 //	display: inline;
