@@ -50,13 +50,19 @@ class PermissionComparisonNode(template.Node):
     def render(self, context):
         obj = context.get(self.object)
         request = context.get("request")
-        if permissions.utils.has_permission(obj, request.user, self.codename):
-            return self.nodelist_true.render(context)
+        temp = obj
+        while temp:
+            if permissions.utils.has_permission(temp, request.user, self.codename):
+                return self.nodelist_true.render(context)
+            if not hasattr(temp, 'parent'):
+                break
+            if not temp.parent:
+                break
+            temp = temp.parent.get_type_object()
+        if type(self.nodelist_false) == str:
+            return self.nodelist_false
         else:
-            if type(self.nodelist_false) == str:
-                return self.nodelist_false
-            else:
-                return self.nodelist_false.render(context)
+            return self.nodelist_false.render(context)
 
 @register.tag
 def ifhasperm(parser, token):
