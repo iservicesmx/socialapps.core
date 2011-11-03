@@ -378,3 +378,8 @@ li.ac_even:hover {
     width: 640px;
     height: 250px;
 }
+
+#facebox form .errorlist li {
+    text-align: left;
+    color: #F00;
+}
