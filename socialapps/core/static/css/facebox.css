@@ -77,10 +77,14 @@ body {
 	line-height: 0px;
 	margin-top:0px;
 	color:white;
-	padding: 15px 0px 0px 70px;
+	padding: 10px 0px 5px 10px;
 }
 
-p {
+.contentf h2 img {
+    padding-right: 60px;
+} 
+
+#facebox p {
 	margin: 0 5px 0 0;
 	width: 300px;
 //	display: inline;
@@ -253,10 +257,10 @@ body.facebox #body {
 
 .contentf #nav-menu { margin-top: -8px; margin-bottom:2px;}
 
-.contentf #nav-menu .current a, .contentf #nav-menu li:hover > a {
-	height: 11px;
+/*.contentf #nav-menu .current a, .contentf #nav-menu li:hover > a {
+    height: 11px;
 }
-
+*/
 .contentf #nav-menu li{
 	padding-bottom: 3px;
 }
@@ -372,5 +376,16 @@ li.ac_even:hover {
 
 #facebox .message_form {
     width: 640px;
-    height: 250px;
+    height: 270px;
+}
+
+#facebox form .errorlist {
+    padding: 0;
+    margin: 0;
+}
+
+#facebox form .errorlist li{
+    text-align: left;
+    color: #F00;
+    list-style-type: none;
 }

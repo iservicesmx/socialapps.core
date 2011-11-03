@@ -4,6 +4,9 @@ from StringIO import StringIO
 import PIL.ImageFile
 import PIL
 
+import datetime
+import types
+
 from django.utils import simplejson
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
@@ -136,7 +139,9 @@ def base_concrete_model(abstract, instance):
 #http://docs.djangoproject.com/en/dev/topics/serialization#s-id2
 class LazyEncoder(simplejson.JSONEncoder):
     def default(self, obj):
-        if isinstance(obj, Promise):
+        if isinstance(obj, datetime.datetime):
+            return obj.strftime('%Y-%m-%dT%H:%M:%S')
+        elif isinstance(obj, Promise):
             return force_unicode(obj)
         return super(LazyEncoder, self).default(obj) 
 
@@ -144,3 +149,20 @@ json_encoder = LazyEncoder(ensure_ascii=True)
 
 def python_to_json(obj):
     return json_encoder.encode(obj)
+    
+def serialize_model(obj):
+    attrs = []
+    for slot in dir(obj):
+        if  slot.startswith('_') or slot == 'objects' or slot == 'Meta':
+            continue
+        attr = getattr(obj, slot)
+        if (isinstance(attr, types.BuiltinMethodType)):
+            continue
+        elif (isinstance(attr, types.MethodType) or isinstance(attr, types.FunctionType)):
+            attrs.append((slot, attr))
+        elif isinstance(attr, types.TypeType):
+            continue
+        else:
+            attrs.append((slot, attr))
+    return attrs
+        

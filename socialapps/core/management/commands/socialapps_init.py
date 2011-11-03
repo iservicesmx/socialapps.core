@@ -3,6 +3,9 @@ from django.core.management.base import BaseCommand
 from django.contrib.sites.models import Site
 from django.conf import settings
 
+from socialapps.spaces.models import SpaceRoot
+from blufrog.courses.models import CourseRoot
+
 from permissions.utils import register_permission, register_role
 
 class Command(BaseCommand):
@@ -20,3 +23,8 @@ class Command(BaseCommand):
         register_permission('Add', 'add')
         register_permission('Delete', 'delete')
         register_permission('Socialize', 'socialize')
+        
+        if not SpaceRoot.objects.count():
+            SpaceRoot.objects.create(title="spaces", status=1, portal_type="spaceroot")
+        if not CourseRoot.objects.count():            
+            CourseRoot.objects.create(title="courses", status=1, portal_type="courseroot")

@@ -90,7 +90,7 @@ display: block;}
 	width: 416px;
 	padding-bottom: 10px;
 	display: none;
-	position:fixed;
+	position:absolute;
 	background-color:#111;
 	background-color:rgba(15,15,15,0.9);
 	/*background:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(35,35,35,0.85)),to(#141414));

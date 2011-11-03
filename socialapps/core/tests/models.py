@@ -8,6 +8,7 @@ from django.conf import settings
 from permissions.utils import register_permission, register_role
 
 from socialapps.core.models import *
+from socialapps.core.utils import serialize_model
 
 class MyBaseDescription(BaseDescription):
     class Meta:
@@ -19,10 +20,10 @@ class MyBaseMetadata(BaseMetadata):
         ordering = ("title",)
         #app_label = 'core'    
 
-class MyBaseContent(BaseContent):
-    class Meta:
-        ordering = ("title",)
-        #app_label = 'core'    
+#class MyBaseContent(BaseContent):
+#    class Meta:
+#        ordering = ("title",)
+#        #app_label = 'core'    
 
 class MyDummyModel(models.Model):
     foo = models.TextField("Foo", blank=True, null=True)
@@ -92,4 +93,15 @@ class BaseGroupCase(TestCase):
         self.password = "test2"
         args = (self.username, "example2@example.com", self.password)
         self.user = User.objects.create_superuser(*args)
+        
+class SerializeCase(TestCase):
+    def setUp(self):
+        """
+        Create user
+        """
+        self.user = User.objects.create_user("user", "mail@mail.com", "password")
+        
+    def test_user_serialize(self):
+        print serialize_model(self.user.get_profile())
+        
     
