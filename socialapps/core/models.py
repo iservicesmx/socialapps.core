@@ -32,8 +32,8 @@ def _get_queryset(klass):
     return manager.all()
 
 class BaseDescription(models.Model):
-    title = models.CharField(_("Title"), max_length=100, blank=True)
-    slug = models.SlugField(_("Slug"), max_length=100, blank=True)
+    title = models.CharField(_("Title"), max_length=255, blank=True)
+    slug = models.SlugField(_("Slug"), max_length=255, blank=True)
     description = models.TextField(_(u"Description"), blank=True)
     
     class Meta:
