@@ -970,17 +970,17 @@ a.uiSelectorButton.uiCloseButton {
 	height: 18px;
 }
 
-#posts_wall .post .comment-post .message-post .footer-post {
-	
-}
-
-#posts_wall .post .comment-post .message-post .footer-post .like, 
+/*
+    TODO
+    Move like, nolike a socialstream.css?
+*/
+/*#posts_wall .post .comment-post .message-post .footer-post .like, 
 #posts_wall .post .comment-post .message-post .footer-post .nolike {
-	height: 21px;
-	width: 37px;
-	padding: 3px 0px 3px 14px;
+    height: 21px;
+    width: 37px;
+    padding: 3px 0px 3px 14px;
 }
-
+*/
 /* #posts_wall .post .body-post .footer-post .button {
 	width: auto;
 	padding: 4px 6px 5px 25px;
@@ -1001,7 +1001,7 @@ a.uiSelectorButton.uiCloseButton {
 	text-decoration:none;
 	font-size: 10px;
 	font-weight: normal;
-	width: 45px;
+	width: auto;
 }
 
 #posts_wall .post .body-post .footer-post a:hover {
