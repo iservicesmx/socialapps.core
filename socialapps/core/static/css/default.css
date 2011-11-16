@@ -252,7 +252,7 @@ div.widget.slide-right .body ul li a{
 }
 
 div.tags {
-	padding-left: 30px;
+	margin-left: -5px;
 }
 
 #menu-left {
@@ -767,23 +767,24 @@ textarea#id_posting {
 
 .post .header-post .avatar {
 	border: medium none;
-	margin: -14px 0 0 -48px;
+	margin: -6px 0 0 -6px;
 	position: absolute;
 }
 
 .post .header-post h1 {
-	color: black;
 	text-align: left;
 	line-height: 14px;
 	font-size: 13px;
-	display: inline;
-	float: left;	
+	position: relative;
+	top: 51px;
 }
 
 .post .comment-post .avatar {
-	margin:0px;
-	position: absolute;
+	margin: 4px 0 0 5px;
+	position: relative;
 	border: medium none;
+	width: 36px;
+	height: 36px;
 }
 
 .post .header-post .avatar img, .post .comment-post .avatar img, #messages img{
@@ -800,12 +801,6 @@ textarea#id_posting {
 	border: medium none;
 }
 
-#posts_wall .post .body-post .header-post:hover {
-	/*background-color: #94CBEC;
-	color: white;*/
-	background-color: #CCC;
-	color: black;
-}
 
 #posts_wall .post .body-post {
 	display: block;
@@ -813,18 +808,21 @@ textarea#id_posting {
 }
 
 #posts_wall .post .comment-post, #posts_wall .post .comment-posting {
-	display: block;
+/*	display: block;*/
 /*	background-color: #F0F4F5;*/
-	background-color: #F0F4F5;
-	margin-left: 46px;
-	border-bottom: 2px solid #E0DFDF;
+/*	background-color: #F0F4F5;*/
+/*	margin-left: 88px;*/
+/*	border-bottom: 2px solid #E0DFDF;*/
 }
 
 #posts_wall .post .comment-post {
-	margin-left: -37px;
+	margin-left: -45px;
 	display: block;
-	padding-bottom: 5px;
+	padding: 10px 0px;
+	border-bottom: 3px solid white;
+	border-right: 2px solid #2396DC;
 }
+/*#posts_wall .post .comment-post:hover { border-right: 2px solid #2396DC; }*/
 
 #posts_wall .post .comment-posting {
 	border: none;
@@ -832,7 +830,10 @@ textarea#id_posting {
 	min-height: 32px;
 	display: block;
 	position: relative;
-	
+	background: #F2F2F2;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#F2F2F2',endColorstr='#FFFFFF');
+	background: -webkit-gradient(linear,0% 0,0% 100%,from(#F2F2F2),to(#FFFFFF));
+	background: -moz-linear-gradient(270deg,#F2F2F2,#FFFFFF);	
 }
 
 #posts_wall .post .comment-posting textarea {
@@ -901,8 +902,8 @@ textarea#id_posting {
 #posts_wall .post .comment-post .header-post {
 	background:none;
 	border: none;
-    margin-left: 45px;
-	padding-left: 0px;
+    margin: 4px 0 0 50px;
+	padding: 7px 0 0 0px;
 	font-size: 12px;
 	max-height: 15px;
 	margin-bottom: 1px;
@@ -914,7 +915,10 @@ textarea#id_posting {
 }
 	
 .hideSelector { 
-	float: right; 
+	float: right;
+	top: -26px;
+	position: relative;
+	left: -1px;
 }
 
 .uiCloseButton{
@@ -940,6 +944,8 @@ a.uiSelectorButton.uiCloseButton {
 
 #posts_wall .post .comment-post .footer-header-post {
 	font-weight: normal;
+	float: left;
+	margin-top: 5px;
 }
 
 #posts_wall .post .body-post .message-post, #posts_wall .post .comment-post .message-post {
@@ -956,7 +962,7 @@ a.uiSelectorButton.uiCloseButton {
 }
 
 #posts_wall .post .comment-post .message-post {
-	padding: 0 10px 5px 45px;
+	padding: 0 10px 5px 50px;
 	font-weight: normal;
 }
 
@@ -967,7 +973,7 @@ a.uiSelectorButton.uiCloseButton {
 }
 
 #posts_wall .post .comment-post .message-post .footer-post {
-	height: 18px;
+	height: 21px; width: 99%; margin-top: 11px;
 }
 
 /*
@@ -1014,17 +1020,25 @@ a.uiSelectorButton.uiCloseButton {
 } */
 
 #posts_wall .post .button.like  {
-	background: url(/static/images/thumb-up.png) no-repeat 4px 1px;	
-	margin-right: 6px;
+	background: url(/static/images/like-icon.png) no-repeat 0px 0px;
+	margin: 2px 6px 0 0;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	border-radius: 0;	
 }
 #posts_wall .post .button.reply  {
-	background: url(/static/images/comments_add.png) no-repeat 4px 1px;	
+	background: url(/static/images/reply.png) no-repeat 4px 1px;	
 	margin-right: 6px;
 	width: 60px;
 	-moz-text-shadow:none;
 	-webkit-text-shadow:none;
 	text-shadow:none;
+	box-shadow:none;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
 	float: left;
+	border:none;
 }
 
 
@@ -1432,5 +1446,6 @@ li.ac_even:hover {
 .widget .desc {
 	
 }
+
 
 
