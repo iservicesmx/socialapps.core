@@ -771,14 +771,17 @@ textarea#id_posting {
 	position: absolute;
 }
 
-.post .header-post h1 {
+.post .header-post h1, #posts_wall .post .comment-posting .header-post.discussions h1 {
 	text-align: left;
 	line-height: 14px;
 	font-size: 13px;
 	position: relative;
 	top: 51px;
 }
-
+#posts_wall .post .comment-posting .header-post.discussions h1 {
+top: 54px;
+left: -36px;
+}
 .post .comment-post .avatar {
 	margin: 4px 0 0 5px;
 	position: relative;
@@ -808,23 +811,25 @@ textarea#id_posting {
 }
 
 #posts_wall .post .comment-post, #posts_wall .post .comment-posting {
+	margin-left: 40px;
 /*	display: block;*/
 /*	background-color: #F0F4F5;*/
 /*	background-color: #F0F4F5;*/
 /*	margin-left: 88px;*/
 /*	border-bottom: 2px solid #E0DFDF;*/
 }
+#posts_wall .post .comment-post { min-height: 186px;}
 
-#posts_wall .post .comment-post {
+#posts_wall #activity .post .comment-post {
 	margin-left: -45px;
 	display: block;
-	padding: 10px 0px;
+	padding: 3px 0px 10px;
 	border-bottom: 3px solid white;
 	border-right: 2px solid #2396DC;
 }
 /*#posts_wall .post .comment-post:hover { border-right: 2px solid #2396DC; }*/
 
-#posts_wall .post .comment-posting {
+#posts_wall #activity .post .comment-posting {
 	border: none;
 	padding: 6px 10px 8px 45px;
 	min-height: 32px;
@@ -899,7 +904,7 @@ textarea#id_posting {
 	-moz-border-radius: 6px;	
 }
 
-#posts_wall .post .comment-post .header-post {
+#posts_wall #activity .post .comment-post .header-post {
 	background:none;
 	border: none;
     margin: 4px 0 0 50px;
@@ -936,7 +941,8 @@ a.uiSelectorButton.uiCloseButton {
 	opacity: 0;
 }
 
-#posts_wall .post .body-post .footer-header-post, #posts_wall .post .comment-post .footer-header-post {
+#posts_wall .post .body-post .footer-header-post, #posts_wall .post .comment-post .footer-header-post,
+#posts_wall .post .comment-post .header-post.discussions .footer-header-post {
 	float: right;
 	font-size: 10px;
 	margin-right: 10px;
@@ -961,7 +967,7 @@ a.uiSelectorButton.uiCloseButton {
 */
 }
 
-#posts_wall .post .comment-post .message-post {
+#posts_wall #activity .post .comment-post .message-post {
 	padding: 0 10px 5px 50px;
 	font-weight: normal;
 }
@@ -973,7 +979,7 @@ a.uiSelectorButton.uiCloseButton {
 }
 
 #posts_wall #activity .post .comment-post .message-post .footer-post {
-	height: 21px; width: 99%; margin-top: 11px; top: 0px;
+	height: 21px; width: 99%; margin-top: 11px; top: 0px; margin-left: 0px;
 }
 
 /*
