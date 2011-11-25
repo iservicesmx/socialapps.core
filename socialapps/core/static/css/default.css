@@ -262,20 +262,6 @@ div.tags {
 	text-align: left;
 	margin: -8px 0 20px 0px;
 	width: 48.2%;
-	
-	
-	
-	/* Efecto chido pero no
-	-webkit-box-shadow: #244766 0.9px 3px 18px;
-	-moz-box-shadow: #244766 10px 10px 10px;
-	box-shadow: #244766 10px 10px 10px;
-	-webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	border-radius: 7px;
-	border-top-left-radius: 7px 7px;
-	border-top-right-radius: 7px 7px;
-	border-bottom-right-radius: 7px 7px;
-	border-bottom-left-radius: 7px 7px;*/
 }
 
 #menu-right {
@@ -298,7 +284,6 @@ div.tags {
 
 footer, .footer {
 	font-size: 9;
-	/*margin: 0px auto 20px 700px;*/
 	float:right;
 	padding-left: 50px;
 	position: relative;
@@ -807,26 +792,14 @@ left: -36px;
 
 #posts_wall .post .body-post {
 	display: block;
-/*	padding: 0 0 0 46px;*/
 }
 .comment-posting .reply-list.discussions {margin-bottom: -40px;}
 
 #posts_wall .post .comment-post, #posts_wall .post .comment-posting {
-/*	margin-left: 40px;*/
-	
-
 margin-left: 51px;
-/*position:relative;*/
 margin-top: -69px;
-
-	
-/*	display: block;*/
-/*	background-color: #F0F4F5;*/
-/*	background-color: #F0F4F5;*/
-/*	margin-left: 88px;*/
-/*	border-bottom: 2px solid #E0DFDF;*/
 }
-#posts_wall .post .reply-list .comment-post { /*min-height: 186px; margin-bottom: 10px;  */ min-height: 261px;
+#posts_wall .post .reply-list .comment-post { min-height: 261px;
 margin-bottom: 10px;
    }
 
@@ -837,7 +810,6 @@ margin-bottom: 10px;
 	border-bottom: 3px solid white;
 	border-right: 2px solid #2396DC;
 }
-/*#posts_wall .post .comment-post:hover { border-right: 2px solid #2396DC; }*/
 
 #posts_wall #activity .post .comment-posting {
 	border: none;
@@ -996,24 +968,6 @@ a.uiSelectorButton.uiCloseButton {
     TODO
     Move like, nolike a socialstream.css?
 */
-/*#posts_wall .post .comment-post .message-post .footer-post .like, 
-#posts_wall .post .comment-post .message-post .footer-post .nolike {
-    height: 21px;
-    width: 37px;
-    padding: 3px 0px 3px 14px;
-}
-*/
-/* #posts_wall .post .body-post .footer-post .button {
-	width: auto;
-	padding: 4px 6px 5px 25px;
-	float: right;
-	display: block;
-	color: black !important;
-	text-decoration:none;
-	font-size: 10px;
-	font-weight: normal;
-	width: 45px;
-} */
 
 #posts_wall .post .button {
 	padding: 4px 6px 5px 25px;
@@ -1031,10 +985,6 @@ a.uiSelectorButton.uiCloseButton {
 }
 #posts_wall .post .comment-posting .footer-post a.favorite-link {padding-top:4px;}
 
-/*#posts_wall .post .body-post .footer-post #like.button  {
-	background: #EEE url(/media/images/thumb-up.png) no-repeat 8px 2px;	
-	margin-right: 6px;
-} */
 
 #posts_wall .post .button.like  {
 	background: url(/static/images/like-icon.png) no-repeat 0px 0px;
@@ -1057,11 +1007,6 @@ a.uiSelectorButton.uiCloseButton {
 	float: left;
 	border:none;
 }
-
-
-/*#posts_wall .post .body-post .footer-post #nolike.button  {
-	background: #EEE url(/media/images/thumb.png) no-repeat 8px 2px;	
-} */
 
 #posts_wall .post .button.nolike  {
 	background: url(/static/images/thumb.png) no-repeat 4px 1px;	
@@ -1204,28 +1149,6 @@ ul#testimonials li blockquote {
 	color: black;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 1);	
 } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #agenda-wrapper{
 	margin: 0 220px 0 0;
