@@ -809,16 +809,26 @@ left: -36px;
 	display: block;
 /*	padding: 0 0 0 46px;*/
 }
+.comment-posting .reply-list.discussions {margin-bottom: -40px;}
 
 #posts_wall .post .comment-post, #posts_wall .post .comment-posting {
-	margin-left: 40px;
+/*	margin-left: 40px;*/
+	
+
+margin-left: 51px;
+/*position:relative;*/
+margin-top: -69px;
+
+	
 /*	display: block;*/
 /*	background-color: #F0F4F5;*/
 /*	background-color: #F0F4F5;*/
 /*	margin-left: 88px;*/
 /*	border-bottom: 2px solid #E0DFDF;*/
 }
-#posts_wall .post .comment-post { min-height: 186px;}
+#posts_wall .post .reply-list .comment-post { /*min-height: 186px; margin-bottom: 10px;  */ min-height: 261px;
+margin-bottom: 10px;
+   }
 
 #posts_wall #activity .post .comment-post {
 	margin-left: -45px;
