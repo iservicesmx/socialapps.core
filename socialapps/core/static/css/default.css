@@ -972,8 +972,8 @@ a.uiSelectorButton.uiCloseButton {
 	height: 25px;
 }
 
-#posts_wall .post .comment-post .message-post .footer-post {
-	height: 21px; width: 99%; margin-top: 11px;
+#posts_wall #activity .post .comment-post .message-post .footer-post {
+	height: 21px; width: 99%; margin-top: 11px; top: 0px;
 }
 
 /*
@@ -1010,9 +1010,10 @@ a.uiSelectorButton.uiCloseButton {
 	width: auto;
 }
 
-#posts_wall .post .body-post .footer-post a:hover {
+#posts_wall .post .body-post .footer-post a:hover, #posts_wall .post .comment-posting .footer-post a:hover {
 	text-decoration:none;
 }
+#posts_wall .post .comment-posting .footer-post a.favorite-link {padding-top:4px;}
 
 /*#posts_wall .post .body-post .footer-post #like.button  {
 	background: #EEE url(/media/images/thumb-up.png) no-repeat 8px 2px;	
