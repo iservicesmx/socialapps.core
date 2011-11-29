@@ -925,7 +925,7 @@ a.uiSelectorButton.uiCloseButton {
 
 #posts_wall .post .body-post .footer-header-post, #posts_wall .post .comment-post .footer-header-post,
 #posts_wall .post .comment-post .header-post.discussions .footer-header-post {
-	float: right;
+/*	float: right;*/
 	font-size: 10px;
 	margin-right: 10px;
 }
