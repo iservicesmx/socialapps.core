@@ -87,7 +87,7 @@ $(function() {
 {% block extra_messages %}
     {% if messages_new_count %}
     <ul class="notify">
-        <li><a href="/messages">{{ messages_new_count }} New messages</a></li>   
+        <li><a href="/messages">{{ messages_new_count }} {% trans "new messages" %}, {% trans "click to read" %}</a></li>   
     </ul>
     {% endif %}    
 {% endblock %}
