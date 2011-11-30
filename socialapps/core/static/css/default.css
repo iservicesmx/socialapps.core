@@ -764,8 +764,8 @@ textarea#id_posting {
 	top: 51px;
 }
 #posts_wall .post .comment-posting .header-post.discussions h1 {
-top: 54px;
-left: -36px;
+	top: 2px;
+	left: 3px;
 }
 .post .comment-post .avatar {
 	margin: 4px 0 0 5px;
@@ -799,7 +799,7 @@ left: -36px;
 margin-left: 51px;
 margin-top: -69px;
 }
-#posts_wall .post .reply-list .comment-post { min-height: 261px;
+#posts_wall .post .reply-list .comment-post { min-height: 198px;
 margin-bottom: 10px;
    }
 
