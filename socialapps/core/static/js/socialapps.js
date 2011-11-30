@@ -203,13 +203,13 @@ jQuery(function($){
    $("#id_to_message").click(function () { 
       $(this).hide(); 
     });	
-	jQuery(".tooltip").tooltip({
+	$(".tooltip").tooltip({
 		track: true,
 		delay: 0,
 		showURL: false,
 		showBody: " - ",
 		fade: 250
-		});
+	});
 });
 
 $('a[rel*=facebox]').live('mouseover', function() {
