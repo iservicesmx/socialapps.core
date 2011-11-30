@@ -39,7 +39,7 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.cleditor.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.movingboxes.min.js"></script>
 	{% if object %}
-		<script type="text/javascript" src="{{ STATIC_URL }}extimage/jquery.cleditor.extimage.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.cleditor.extimage.js"></script>
 		<script type="text/javascript">
 			$.cleditor.buttons.image.uploadUrl = '{% url base_create object.get_absolute_url "image" %}';
 			$.cleditor.buttons.image.popupContent =	
