@@ -24,10 +24,10 @@
 		name: 'link',
 		title: 'Insert Hyperlink,',
 		command: 'createlink',
-		popupName: 'url',
+		popupName: 'ext-url',
 		popupClass: 'cleditorPrompt',
 		stripIndex: $.cleditor.buttons.link.stripIndex,		
-		buttonClick: externalLinkButtonClick,
+		buttonClick: urlButtonClick,
 	};
 
 	function closePopup(editor) {
@@ -86,12 +86,17 @@
 			});
 	}
 	
-	function externalLinkButtonClick(e, data) {
+	function urlButtonClick(e, data) {
 		var editor = data.editor,
 			$text = $(data.popup).find(':text.url'),
 			url = $.trim($text.val()),
             $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.url');
 
+        if (editor.selectedText() === "") {
+            editor.showMessage('A selection is required when inserting a link', data.button);
+            return false;
+        }
+            
 		// clear previously selected file and url
 		$text.val('').focus();
         $(data.popup).find('iframe[name="existing"]').contents().find('.selected-url').hide();
@@ -101,30 +106,20 @@
         $tabs.tabs('select', 0);
         var selected = '#link-url';
         
-        console.log("primer click");
         $('.browser-tabs').bind('tabsselect', function(event, ui) {
             selected = $(ui.tab).attr('href');
         })
+
         $(data.popup).find('.save-link').unbind('click').bind('click', function(e) {
-            console.log("jajaja");
+            $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.url').val();
+            if (selected == '#existing-url' && $existing != undefined) {
+                editor.execCommand(data.command, $existing, $existing, data.button);
+                closePopup(editor);
+            } else if (selected == '#link-url' && $text.val() != '') {
+                editor.execCommand(data.command, $text.val(), $text.val(), data.button);
+                closePopup(editor);
+            }            
             return false;
         });
-        
-        $(data.popup).find('.save-link').click();
-		
-        // $(data.popup).children('.save-link')
-        //  .unbind("click")
-        //  .bind("click", function(e) {
-        //      console.log("puff");
-        //                 $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.url').val();
-        //                 console.log($existing);
-        //                 if (selected == '#existing-url' && $existing != undefined) {
-        //                     editor.execCommand(data.command, $existing, $existing, data.button);
-        //                     closePopup(editor);
-        //      } else if (selected == '#link-url' && $text.val() != '') {
-        //          editor.execCommand(data.command, $text.val(), $text.val(), data.button);
-        //          closePopup(editor);
-        //      }
-        //  });
 	}
 })(jQuery);
