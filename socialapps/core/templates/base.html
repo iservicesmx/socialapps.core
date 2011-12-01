@@ -65,7 +65,7 @@
 				'<li><a href="#existing-url">{% trans "Choose an existing object to link" %}</a></li>' +
 				'</ul>' +
 				'<div id="existing-url">'+							
-				'<iframe width="500" height="250" name="existing" style="border:1px solid #CCC;" src="{% url ajax_browser object.get_absolute_url None %}" />' +
+				'<iframe width="500" height="250" name="existing" style="border:1px solid #CCC;" src="{% url ajax_browser object.get_absolute_url "all" %}" />' +
 				'</div>' +
 				'<div id="link-url">' +					
 				'<input type="text" class="url" size="40" value="" /></div>' +
