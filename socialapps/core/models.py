@@ -94,7 +94,7 @@ class BaseMetadata(BaseDescription):
     @property
     def date_string(self):
         """Formats the created date into a pretty string."""                           
-        return self.created.strftime("%d/%M/%Y %H:%M")
+        return self.created.strftime("%d/%m/%Y %H:%M")
                 
 class BaseContent(BaseMetadata):
     
