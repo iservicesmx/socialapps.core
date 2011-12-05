@@ -37,11 +37,45 @@
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/tag-it.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.cleditor.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.movingboxes.min.js"></script>    
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.movingboxes.min.js"></script>
+	{% if object %}
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.cleditor.extimage.js"></script>
+		<script type="text/javascript">
+			$.cleditor.buttons.image.uploadUrl = '{% url base_create object.get_absolute_url "image" %}';
+			$.cleditor.buttons.image.popupContent =	
+				'<div class="browser-tabs"><ul>' +
+				'<li><a href="#existing">{% trans "Choose an existing one" %}</a></li>' +
+				'<li><a href="#upload">{% trans "Upload from your computer" %}</a></li>' +
+				'<li><a href="#url">{% trans "Url from a external image" %}</a></li>' +				
+				'</ul>' +
+				'<div id="existing">'+
+				'<iframe width="500" height="250" name="existing" style="border:1px solid #CCC;" src="{% url ajax_browser object.get_absolute_url "image" %}" /></div>' +
+				'<div id="upload"><iframe style="width:0;height:0;border:0;" name="__upload_iframe" />' +
+				'<form method="post" enctype="multipart/form-data" action="" target="__upload_iframe">' +
+				"{% csrf_token %}" + 			
+				'<input id="id_image" name="image" type="file" /></form></div>' +
+				'<div id="url">' +
+				'<input type="text" class="url" size="40" value="" /></div>' +				
+				'</div>' +				
+				'<input type="button" value="Submit"/>';
+				
+			$.cleditor.buttons.link.popupContent = 
+				'<div class="browser-tabs"><ul>' +
+				'<li><a href="#link-url">{% trans "External url" %}</a></li>' +								
+				'<li><a href="#existing-url">{% trans "Choose an existing object to link" %}</a></li>' +
+				'</ul>' +
+				'<div id="existing-url">'+							
+				'<iframe width="500" height="250" name="existing" style="border:1px solid #CCC;" src="{% url ajax_browser object.get_absolute_url "all" %}" />' +
+				'</div>' +
+				'<div id="link-url">' +					
+				'<input type="text" class="url" size="40" value="" /></div>' +
+				'</div>' +
+				'<input type="button" class="save-link" value="Submit"/>';			        						
+		</script>
+	{% endif %}
 	{% block extra_js %}{% endblock %}
 
 	<script type="text/javascript">
-
 
         //TODO: Explain why is this thing outside the document.ready() callback?
         $(function() {
