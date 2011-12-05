@@ -164,7 +164,7 @@
 			    <li><a {% ifequal site_section "profile_detail" %} class="selected" {% endifequal %}
 				       href="{% url profile_view user %}"><span class="ui-icon ui-icon-person"></span>Profile</a></li>
 			    <li><a {% ifequal site_section "profile_settings" %} class="selected" {% endifequal %}
-				       href="#"><span class="ui-icon ui-icon-wrench"></span>Settings</a></li>
+				       href="{% url account %}"><span class="ui-icon ui-icon-wrench"></span>Settings</a></li>
 			    <li><a href="{% url auth_logout %}"><span class="ui-icon ui-icon-power"></span>Exit</a></li>
 			</ul>
 		</div>
