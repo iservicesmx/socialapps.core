@@ -129,11 +129,11 @@ $(function() {
 		
 		
 		<div id="stream-avatar">
-			<ul id="nav-menu">
+			<!-- <ul id="nav-menu">
 				<li class="current"><a href="#">All</a></li>			
 				<li><a href="#">My Courses</a></li>
 				<li><a href="#">My Spaces</a></li>								
-			</ul>    
+			</ul>     -->
 			<div id="body-stream">      
             {% get_friends_stream for user.get_profile as stream %}
             {% if stream.activities %}
@@ -192,10 +192,6 @@ $(function() {
                       
 			     
 				</ul> 
-				
-
-                
-                
                 
 				<script type="text/javascript"> 
 				var dataSource = new ctRotatorBridgeLi($('#existed')).getDataSource();  
