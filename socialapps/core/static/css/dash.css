@@ -147,6 +147,11 @@ font-weight: bold;
 	border: 0;
 }
 
+#nav-menu h3 {
+	color: #FFF;
+	margin: 0;
+}
+
 #table {
 	-webkit-box-shadow: black 1px 1px 5px;
 	-moz-box-shadow: black 10px 10px 10px;
