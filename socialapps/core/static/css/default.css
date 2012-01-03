@@ -272,7 +272,7 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
   
 .widget .title,
 .widget #nav-menu {
-    margin: -8px -8px 0px -8px;
+    margin: -9px -9px 8px -9px;
 }
 
 #nav-menu .current a, ul#nav-menu li a:hover  {
