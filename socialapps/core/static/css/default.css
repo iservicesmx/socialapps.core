@@ -269,8 +269,11 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
   	-khtml-border-radius: 7px 7px 0px 0px;	
   	border-radius: 7px 7px 0px 0px;	
   }
-
-.ie7_body #nav-menu { margin:-10px -7px 25px -5px }
+  
+.widget .title,
+.widget #nav-menu {
+    margin: -8px -8px 0px -8px;
+}
 
 #nav-menu .current a, ul#nav-menu li a:hover  {
 	-webkit-border-radius: 3px;
