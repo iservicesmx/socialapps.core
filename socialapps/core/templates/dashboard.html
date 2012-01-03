@@ -95,9 +95,9 @@ $(function() {
 	{%if not user.first_name and not user.last_name %}
 		<div class="alert-message block-message info fade in">
 			<a class="close" data-dismiss="alert" href="#">×</a>
-			<p><strong>{% trans "Oops!" %}</strong>{% trans " your profile is incomplete, we welcome you to finish it." %}</p>
+			<p><strong>{% trans "Hey!" %}</strong>{% trans " your profile is incomplete, please fill it" %}</p>
 			<div class="alert-actions">
-				<a class="btn small" href="{% url profile_edit user %}">{% trans "Fill in now" %}</a>
+				<a rel='facebox' class="btn small" href="{% url profile_edit user %}">{% trans "Fill in now" %}</a>
 			</div>
 		</div>
 	{% endif %}
