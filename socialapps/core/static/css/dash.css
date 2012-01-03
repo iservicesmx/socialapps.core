@@ -10,8 +10,8 @@ ul#nav-menu {
 	float: left;
 	list-style: none;
 	margin: 1px 5px 0;
-	padding: 0px 0px 2px;
-	*padding-bottom:0px;
+/*  padding: 0px 0px 2px;
+    *padding-bottom:0px;*/
 	position: relative;
 	color: #666;
 }
@@ -473,5 +473,9 @@ ul.notify li a {
 	color: red;
 }
 
-/* dashboard form begin */
-/* dashboard form end */
+/* dashboard status form  */
+.dashboard-form .arrow-back,
+.dashboard-form .arrow-font {
+    display: none;
+}
+/* dashboard status form end */
