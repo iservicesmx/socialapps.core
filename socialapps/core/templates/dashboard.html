@@ -94,32 +94,24 @@ $(function() {
 <div class="row">
 
 <!-- Inicia menu1 en panel izquierdo-->
-	<div class="span6">
+<div class="span6">
+	{%if not user.first_name and not user.last_name %}
+		<div class="alert-message block-message info fade in">
+			<a class="close" data-dismiss="alert" href="#">×</a>
+			<p><strong>{% trans "Oops!" %}</strong>{% trans " your profile is incomplete, we welcome you to finish it." %}</p>
+			<div class="alert-actions">
+				<a class="btn small" href="{% url profile_edit user %}">{% trans "Fill in now" %}</a>
+			</div>
+		</div>
+	{% endif %}
+	
 	<div class="widget">
-	    <div id="media-avatar">
-    		<a href="#" class="avatar">
-    			<span class="thumb">
-    				<img src="{% avatar_url user 64 %}" alt="" class="tooltip" title="Tu Avatar" width="64" height="64">
-    			</span>
-    		</a>			
-    		<div id="name"> {%if user.first_name and user.last_name %}
-    		        {{ user.get_profile.name }} 
-    		    {% else %}
-    		        <div style="font-size:13px; line-height:16px">No has completado tu Perfil. Te invitamos a hacerlo <a rel="facebox[.profile_form]" href="{% url profile_edit user %}">*Aqu&iacute;*</a></div>
-    		    {% endif %}
-            </div>
-	    </div>
-		
-	</div>
-<!-- Inicia widget izquierdo-->
-	<div class="widget">
-
-		<div class="form-toggle">  
+		<div class="dashboard-form">  
             {%  socialstream_status_form user.get_profile %}
 		</div>
-		
-		
-		
+	</div>
+<!-- Inicia widget izquierdo-->
+	<div class="widget">		
 		<div id="stream-avatar">
 			<!-- <ul id="nav-menu">
 				<li class="current"><a href="#">All</a></li>			
@@ -184,13 +176,13 @@ $(function() {
 			     
 				</ul> 
                 
-				<script type="text/javascript"> 
+				<!-- <script type="text/javascript"> 
 				var dataSource = new ctRotatorBridgeLi($('#existed')).getDataSource();  
 				$('#existed').ctRotator(dataSource, { 
 				  speed:2500,
 				  showCount:2,  
 				});  
-				</script> 
+				</script>  -->
 
                 <div class = "widget">
 				{% show_course_widget 5 request.user %}

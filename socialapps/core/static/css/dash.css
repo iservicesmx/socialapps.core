@@ -495,5 +495,9 @@ ul.notify li a {
 	color: red;
 }
 
-/* dashboard form begin */
-/* dashboard form end */
+/* dashboard status form  */
+.dashboard-form .arrow-back,
+.dashboard-form .arrow-font {
+    display: none;
+}
+/* dashboard status form end */
