@@ -1,31 +1,9 @@
-#menu-content {
-	background: #EBEBEB;
-	border: 1px solid #C9D5DF;
-	border-bottom-left-radius: 2px 2px;
-	border-bottom-right-radius: 2px 2px;
-	border-top-left-radius: 2px 2px;
-	border-top-right-radius: 2px 2px;
-	height: auto;
-	position: relative;
-	min-height: 490px;
-	border-top-left-radius: 1.5em 1.5em;
-	border-top-right-radius: 1.5em 1.5em;
-	padding: 60px 29px 30px;
-	height: auto;	
-}
-
-
-
-ul#nav-menu, #posts_wall ul#nav-menu {
+ul#nav-menu {
 	line-height: 100%;
-	margin: -10px -5px 25px;
+	margin: -20px -20px 20px;
 	padding: 4px 6px 0px;
 	*padding-bottom:5px;
 	font: normal normal normal 18px/22px Helvetica !important;
-}
-
-#menu-content ul#nav-menu {
-	margin: -61px -30px 25px;
 }
 
 #nav-menu li {
