@@ -9,26 +9,6 @@ img {
     border: none;
 }
 
-.container {
-    	z-index:10;
-    	/*position:relative;*/
-    	background-color:rgba(15,15,15,0.9);
-    	background:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(35,35,35,0.85)),to(#141414));
-    	background:-moz-linear-gradient(top,rgba(35,35,35,0.85),rgba(20,20,20,0.98));
-    	#background-color:#111;
-		background-color:#111;
-		_background-color:#111;
-    	-webkit-box-shadow:0 1px 3px #111;
-    	-moz-box-shadow:0 1px 2px #111;
-    	box-shadow:0 1px 3px #111;
-    	border-bottom:1px solid #777;
-    	padding:0;
-    	color:#ccc;
-    	position:fixed;
-    	width:100%;
-    	top:0;
-    	left:0;    
-}
 
 .subhead {
 	margin:0 auto;
@@ -47,8 +27,6 @@ img {
 .search_form { overflow: hidden; }
 .search_form p { margin: 0; }
 .search_form p input { margin: 3px 5px 0 0; background: #fff url(/static/images/spyglass.png) no-repeat 98% 50%; }
-
-
 
 h2.trigger {font-size: 1em !important; font-weight:normal !important; display: inline;}
 
@@ -82,10 +60,11 @@ display: block;}
 .search_form p { margin: 0; }
 .search_form p input { margin: 3px 5px 0 0; background: #fff url(/static/images/spyglass.png) no-repeat 98% 50%; }
 
+/*
 .container a {
 	line-height: 0px;
 }
-
+*/
 .toggle_container {
 	width: 416px;
 	padding-bottom: 10px;
@@ -108,45 +87,6 @@ display: block;}
 	/*  como le hago para alinearlo abajo del form*/
 	right:70px;
     z-index:11;
-}
-
-#body {
-	position: relative;
-	margin: 0em auto 0px;
-	width: 960px;
-	zoom: 1;
-	padding-top: 3.7em;
-}
-
-#body:after {
-	content: ".";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
-}
-
-.content_wraper {
-	float: right;
-	margin: 0 0 0 -150px;
-	width: 100%;
-	zoom: 1;
-}
-
-#content {
-    background: #fff;
-    padding: 20px;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-    border-radius: 12px;
-	border-top-left-radius: 12px 12px;
-	border-top-right-radius: 12px 12px;
-	border-bottom-left-radius: 12px 12px;
-	border-bottom-right-radius: 12px 12px;
-	min-height: 500px;
-	padding: 10px 5px 5px;
-	float: left;
-	width: 94%;
 }
 
 .content_menu {
@@ -273,7 +213,7 @@ div.tags {
 	width: 48%;
 	font-size: 12px;
 }
-
+/*
 .content:after {
 	content: ".";
 	display: block;
@@ -281,6 +221,8 @@ div.tags {
 	clear: both;
 	visibility: hidden;
 }
+
+*/
 
 footer, .footer {
 	font-size: 9;
@@ -421,16 +363,6 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
 	padding: 0px 8px 8px 3px;
 }
 
-.widget {
-  	float: left;
-  	//margin: 9px;
-  	padding: 8px;
-  	border: 1px #ddd solid;
-  	-webkit-border-radius: 8px;
-  	-moz-border-radius: 8px;
-  	border-radius: 8px;
-  	width: 97%;
-  }
 
  .body .result t1 {
   	background: #94CBEC url(/static/images/eye.png) no-repeat 1px;
