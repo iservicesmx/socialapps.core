@@ -431,54 +431,6 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
 	opacity: 1;
 }
 
-ul#navigation {
-    position: fixed;
-    margin: 0px;
-    padding: 0px;
-    top: 70px;
-    left: 0px;
-    list-style: none;
-    z-index:9999;
-}
-ul#navigation li {
-    width: 100px;
-}
-ul#navigation li a {
-    display: block;
-    margin-left: 0px;
-	min-width: 90px;
-    min-height: 70px;
-    width: 90px;
-    height: 70px;
-    background-color: rgba(15,15,15,0.9);
-    background-repeat: no-repeat;
-    background-position: center center;
-    border:1px solid #AFAFAF;
-	_background-color: #141414;
-	background-color: #141414;
-    -moz-border-radius:0px 10px 10px 0px;
-    -webkit-border-radius:0px 10px 10px 0px;
-    -khtml-border-radius:0px 10px 10px 0px;
-    border-radius:0px 10px 10px 0px;
-    margin-left: -85px;
-    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
-    opacity: 1;
-	*filter:none;
-}
-ul#navigation li a img.dash {
-	height: 55px;
-	padding-left: 15px;	
-	padding-right: 20px;
-	padding-top: 8px;
-	width: 55px;
-}
-ul#navigation li a img.calendar {
-	height: 45px;
-	padding-left: 15px;
-	padding-right: 22px;
-	padding-top: 12px;
-	width: 45px;
-}
 .personal-bar {
 	height: 30px;
 	padding: 0 10px;
