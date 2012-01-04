@@ -1,3 +1,5 @@
+.navbar .logo { float: left;}
+
 ul#nav-menu {
 	line-height: 100%;
 	margin: -20px -20px 20px;
