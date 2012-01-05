@@ -685,6 +685,10 @@ textarea#id_posting {
 	padding: 5px 10px 0;
 }
 
+#activity .post {
+    margin-top: 25px;
+}
+
 .post .header-post .avatar {
 	border: medium none;
 	margin: -6px 0 0 -6px;
