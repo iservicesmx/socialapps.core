@@ -6,76 +6,13 @@
 {% load courses_tags %}
 {% block extra_css %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/dash.css">
-<link rel="stylesheet" href="{{ STATIC_URL }}css/calendars.css"/>
+<!-- <link rel="stylesheet" href="{{ STATIC_URL }}css/calendars.css"/> -->
 {% endblock %}
 
 {% block extra_js %}
-<script type="text/javascript" src="{{ STATIC_URL }}js/datepicker.js"></script>
+<!-- <script type="text/javascript" src="{{ STATIC_URL }}js/datepicker.js"></script> -->
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
-{% endblock %}
-
-{% block extra_script %}
-<script id="statusDashTemplate" type="text/x-jquery-tmpl">
-<div class="post">
-    <div class="avatar">
-        <img src="${creator.avatar_url}" alt="Photo of ${creator.first_name} ${creator.last_name}" class="photo" />
-    </div>
-    <h1><a href="#"> ${creator.first_name} ${creator.last_name}</a></h1>
-    <h2>${object.description}</h2>
-    <h3>${object.created}</h3>
-</div>   
-</script>
-
-<script language="javascript"> 
-
-function showStatus(data, statusText, xhr, $form) {
-    if(data.success) {
-        $('#statusDashTemplate').tmpl(data.comment).hide().prependTo('#body-stream').slideDown('slow');
-        $($form).resetForm();
-    	$("#id_posting").animate({"height": "30px",}, "fast" );
-		$(".media-send.status").slideUp("fast");
-		$("#name").show("slow");
-        $('.errorlist').html('');
-        $('#count').html(250);
-    } else {
-        for (var key in data) {
-            for (var error in data[key]) {
-                $("#field-error-" + key + " ul").html('<li>'+ data[key][error] +'</li>');
-            }
-        }
-    }
-}
-
-jQuery(function($){
-  $("#id_posting").Watermark("What's up?");
-  });
-  $(document).ready(function() {
-    $('.status_form').ajaxForm({ dataType: 'json', success: showStatus });
-  });
-      
-$(function() {
-//	$("#button_block").hide();
-    /* events for satus form of dashboard */
-	$("#area-content").focus(function()
-//	{	$(this).animate({"height": "60px",}, "fast" );
-//		$("#button_block").slideDown("fast");
-    {
-		$("#name").hide();
-		return false;
-	});
-
-	$("#cancel").click(function() {
-		$("#area-content").val('');	
-		return false;
-	});
-
-/*	$(".status_form").focusout(function(event) {
-        if(!$(event.target).is($('.status-form input'))) {
-        }
-	});*/
-
-});
-</script>
+{% include "socialstream/json_templates.html" %}
 {% endblock %}
 
 {% block body_id %}dash{% endblock %}
