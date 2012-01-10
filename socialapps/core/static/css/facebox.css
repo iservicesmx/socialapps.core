@@ -87,7 +87,7 @@ body {
 #facebox p {
 	margin: 0 5px 0 0;
 	width: 300px;
-//	display: inline;
+/*  display: inline;*/
 	float: left;
 }
 
@@ -96,15 +96,16 @@ body {
 body.facebox #body { 
 	position: relative; 
 	margin: 0px auto 0px; 
-	//width: 960px; 
+/*    width: 960px; */
 	zoom: 1; 
 	min-height:400px;
 }
 
-.form {
-	//border: 2px solid #E2E2E2;
-	width: 630px;
+/*.form {
+    //border: 2px solid #E2E2E2;
+    width: 630px;
 }
+*/
 
 .contentf .form input, .contentf .form textarea{
 	font-size: 16px;
@@ -120,7 +121,13 @@ body.facebox #body {
 }
 
 .contentf .form {
-	border: 0px;}
+	border: 0px;
+	margin: 10px;
+}
+
+#facebox .cleditorMain {
+    max-width: 350px;
+}
 
 #facebox li {
 /* BUG: ? */
@@ -155,7 +162,7 @@ body.facebox #body {
 	/*min-height: 500px; */
 	-webkit-border-radius: 6px; 
 	-moz-border-radius: 6px; 
-	//border-radius: 6px; 
+/*  //border-radius: 6px; */
 	zoom: 1; 
 
 }
@@ -343,7 +350,7 @@ form#message-send fieldset #message-title{
 	position:absolute;
 	top: 35%;
 	left: 30%;
-//	background: url('/static/images/blufrog.jpg');
+/*//    background: url('/static/images/blufrog.jpg');*/
 }
 
 .contentf #redirect #text {
@@ -370,7 +377,7 @@ form#message-send fieldset #message-title{
 }
 
 li.ac_even:hover {
-    //background:#3b5998;
+/*    //background:#3b5998;*/
     color:#FFFFFF;
 }
 
@@ -388,4 +395,16 @@ li.ac_even:hover {
     text-align: left;
     color: #F00;
     list-style-type: none;
+}
+
+#facebox .tagit {
+    width: 275px;
+}
+
+#facebox table {
+    width: 550px;
+}
+
+#facebox #nav-menu {
+    margin: 0;
 }
