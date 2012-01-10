@@ -637,6 +637,10 @@ textarea#id_posting {
 	padding: 5px 10px 0;
 }
 
+#activity .post {
+    margin-top: 25px;
+}
+
 .post .header-post .avatar {
 	border: medium none;
 	margin: -6px 0 0 -6px;
@@ -881,33 +885,9 @@ a.uiSelectorButton.uiCloseButton {
 	-moz-box-shadow: none;
 	border-radius: 0;	
 }
-#posts_wall .post .button.reply  {
-	background: url(/static/images/reply.png) no-repeat 4px 1px;	
-	margin-right: 6px;
-	width: 60px;
-	-moz-text-shadow:none;
-	-webkit-text-shadow:none;
-	text-shadow:none;
-	box-shadow:none;
-	-webkit-box-shadow:none;
-	-moz-box-shadow:none;
-	float: left;
-	border:none;
-}
 
 #posts_wall .post .button.nolike  {
 	background: url(/static/images/thumb.png) no-repeat 4px 1px;	
-}
-
-#posts_wall .post .comment-posting .comment {
-	position: relative;
-	background: url(/static/images/post.png) no-repeat 3px 0px;
-	width: auto;
-	padding-left: 23px;
-	font-size: 10px;
-	left: -39px;
-	display: block;
-	padding-bottom: 3px;
 }
 
 #posts_wall .post .body-post .footer-post h1, #posts_wall .post .body-post .footer-post h2 {
