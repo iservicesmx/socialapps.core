@@ -101,10 +101,11 @@ body.facebox #body {
 	min-height:400px;
 }
 
-.form {
-	//border: 2px solid #E2E2E2;
-	width: 630px;
+/*.form {
+    //border: 2px solid #E2E2E2;
+    width: 630px;
 }
+*/
 
 .contentf .form input, .contentf .form textarea{
 	font-size: 16px;
@@ -388,4 +389,12 @@ li.ac_even:hover {
     text-align: left;
     color: #F00;
     list-style-type: none;
+}
+
+#facebox .tagit {
+    width: 275px;
+}
+
+#facebox #nav-menu {
+    margin: 0;
 }
