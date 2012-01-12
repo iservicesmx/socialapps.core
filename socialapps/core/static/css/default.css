@@ -781,17 +781,6 @@ textarea#id_posting {
 	opacity: 1;
 }
 
-#posts_wall .post:hover .hideSelector .uiSelectorButton {
-	opacity:1; 
-}
-	
-.hideSelector { 
-	float: right;
-	top: -26px;
-	position: relative;
-	left: -1px;
-}
-
 .uiCloseButton{
 	background-image:url(http://static.ak.fbcdn.net/rsrc.php/z5/r/Yz_2RL5XOEG.png);
 	height:15px;
@@ -801,17 +790,6 @@ textarea#id_posting {
 	margin: 0px;
 	padding: 0px;
 	zoom: 1;
-}
-
-a.uiSelectorButton.uiCloseButton {
-	opacity: 0;
-}
-
-#posts_wall .post .body-post .footer-header-post, #posts_wall .post .comment-post .footer-header-post,
-#posts_wall .post .comment-post .header-post.discussions .footer-header-post {
-/*	float: right;*/
-	font-size: 10px;
-	margin-right: 10px;
 }
 
 #posts_wall .post .comment-post .footer-header-post {
