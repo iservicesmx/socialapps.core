@@ -631,10 +631,10 @@ textarea#id_posting {
 /*  position: relative;*/
 	margin-top: 16px;
 	display: block;
-	width: 96%;
+/*  width: 96%;*/
 /*	border-bottom: 2px solid white;*/
 	text-shadow: 0px 1px 0px white;
-	padding: 5px 10px 0;
+	padding: 5px 0 0 0;
 }
 
 #activity .post {
@@ -644,15 +644,15 @@ textarea#id_posting {
 .post .header-post .avatar {
 	border: medium none;
 	margin: -6px 0 0 -6px;
-	position: absolute;
+/*  position: absolute;*/
 }
 
-.post .header-post h1, #posts_wall .post .comment-posting .header-post.discussions h1 {
+.post .header-post h1, #posts_wall .post .comment-posting .header-post h1 {
 	text-align: left;
 	line-height: 14px;
 	font-size: 13px;
-	position: relative;
 	top: 51px;
+	word-break: keep-all;
 }
 #posts_wall .post .comment-posting .header-post.discussions h1 {
 	top: 2px;
@@ -686,28 +686,24 @@ textarea#id_posting {
 }
 .comment-posting .reply-list.discussions {margin-bottom: -40px;}
 
-#posts_wall .post .comment-post, #posts_wall .post .comment-posting {
-margin-left: 51px;
-margin-top: -69px;
+#posts_wall .post .reply-list .comment-post { 
+    min-height: 100px;
+    margin-bottom: 10px;
 }
-#posts_wall .post .reply-list .comment-post { min-height: 198px;
-margin-bottom: 10px;
-   }
 
 #posts_wall #activity .post .comment-post {
-	margin-left: -45px;
-	display: block;
-	padding: 3px 0px 10px;
+/*  padding: 3px 0px 10px;*/
 	border-bottom: 3px solid white;
 	border-right: 2px solid #2396DC;
 }
 
 #posts_wall #activity .post .comment-posting {
 	border: none;
-	padding: 6px 10px 8px 45px;
+/*    padding: 6px 0 8px 45px;*/
+    margin-top: 5px;
 	min-height: 32px;
-	display: block;
-	position: relative;
+/*  display: block;*/
+/*  position: relative;*/
 	background: #F2F2F2;
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#F2F2F2',endColorstr='#FFFFFF');
 	background: -webkit-gradient(linear,0% 0,0% 100%,from(#F2F2F2),to(#FFFFFF));
@@ -734,24 +730,21 @@ margin-bottom: 10px;
 /*	padding: 4px 10px;*/
 	border: 1px solid #CCC;
 	border: 1px solid rgba(0, 0, 0, .15);
-	margin: 0 0 0.5em;
+/*  margin: 0 0 0.5em;*/
 	/*max-height: 36px;*/
 	/*man-height:15px;*/
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	white-space: nowrap;
-	overflow: hidden;
+/*  white-space: nowrap;*/
+/*  overflow: hidden;*/
 	text-overflow: ellipsis;
 	position: relative;
 	line-height: 14px;
 	font-weight: bold;
 /*	opacity: 0.5;*/
-	
-
-	padding: 9px 10px 4px 43px;
-
-	height: 21px;
+/*  padding: 9px 10px 4px 43px;*/
+/*  height: 21px;*/
 
 }
 
@@ -780,7 +773,7 @@ margin-bottom: 10px;
 #posts_wall #activity .post .comment-post .header-post {
 	background:none;
 	border: none;
-    margin: 4px 0 0 50px;
+    margin: 4px 0 0 0;
 	padding: 7px 0 0 0px;
 	font-size: 12px;
 	max-height: 15px;
@@ -829,26 +822,17 @@ a.uiSelectorButton.uiCloseButton {
 
 #posts_wall .post .body-post .message-post, #posts_wall .post .comment-post .message-post {
 	font-size: 0.9em;
-	min-height: 20px;
+	min-height: 50px;
 	line-height: 15px;
 	padding: 0 10px 5px;
 	color: black;
-/*	max-height: 115px;*/
-/*	max-height: 156px;*/
-/*
-    FIXME por que poner una max-heihgt?
-*/
-}
-
-#posts_wall #activity .post .comment-post .message-post {
-	padding: 0 10px 5px 50px;
-	font-weight: normal;
+    font-weight: normal;
 }
 
 #posts_wall .post .body-post .footer-post {
-	margin-bottom: 5px;
+/*  margin-bottom: 5px;*/
 	display: block;
-	height: 25px;
+	height: 16px;
 }
 
 #posts_wall #activity .post .comment-post .message-post .footer-post {
@@ -877,7 +861,7 @@ a.uiSelectorButton.uiCloseButton {
 #posts_wall .post .comment-posting .footer-post a.favorite-link {padding-top:4px;}
 
 
-#posts_wall .post .button.like  {
+#posts_wall .post .like  {
 	background: url(/static/images/like-icon.png) no-repeat 0px 0px;
 	margin: 2px 6px 0 0;
 	box-shadow: none;
@@ -886,7 +870,7 @@ a.uiSelectorButton.uiCloseButton {
 	border-radius: 0;	
 }
 
-#posts_wall .post .button.nolike  {
+#posts_wall .post .nolike  {
 	background: url(/static/images/thumb.png) no-repeat 4px 1px;	
 }
 
