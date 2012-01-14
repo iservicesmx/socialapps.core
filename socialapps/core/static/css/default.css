@@ -275,6 +275,39 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
     margin: -9px -9px 8px -9px;
 }
 
+.widget.card {
+    width: 260px;
+    margin: 10px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+.widget.card:hover {
+    text-decoration: none;
+}
+    .top-profile img,
+    .widget.card .image {
+        float: left;
+        margin-right: 5px;
+        width: 64px;
+        height: 64px;
+    }
+    .top-profile h1,
+    .widget.card .head {
+        color: #333;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .widget.card .extra {
+        font-size: 13px;
+        color: #666;
+        font-weight: bold;
+    }
+    .widget.card .link {
+        color: #2396DC;
+        float:left;
+    }
+
 #nav-menu .current a, ul#nav-menu li a:hover  {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
