@@ -107,10 +107,14 @@ body.facebox #body {
 }
 */
 
-.contentf .form input[type=text], 
+.contentf .form input, 
 .contentf .form textarea {
 /*  font-size: 16px;*/
 	width: 99%;
+}
+
+.contentf .form .btn {
+    width: auto;
 }
 
 /*.contentf .form .button {
@@ -404,4 +408,8 @@ li.ac_even:hover {
 
 #facebox #nav-menu {
     margin: 0;
+}
+
+#facebox .cms {
+    width: 900px;
 }
