@@ -37,7 +37,7 @@ class RichTextEditor(widgets.Textarea):
         <textarea%s>%s</textarea>
         <script type="text/javascript">
             $(document).ready(function() {
-                $("textarea#%s").cleditor({width:450, height:250});
+                $("textarea#%s").cleditor({width:880, height:200});
             });
         </script>''' % (flatatt(final_attrs),
                         conditional_escape(force_unicode(value)),
