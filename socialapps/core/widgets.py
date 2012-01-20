@@ -43,7 +43,7 @@ class RichTextEditor(widgets.Textarea):
                   controls: "bold italic underline | style | " +
                             "bullets numbering | outdent " +
                             "indent | alignleft center alignright | undo redo | " +
-                            "image link unlink | pastetext | print source",});
+                            "image link unlink | pastetext | source",});
             });
         </script>''' % (flatatt(final_attrs),
                         conditional_escape(force_unicode(value)),
