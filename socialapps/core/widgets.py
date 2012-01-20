@@ -37,13 +37,13 @@ class RichTextEditor(widgets.Textarea):
         <textarea%s>%s</textarea>
         <script type="text/javascript">
             $(document).ready(function() {
-                $("textarea#%s").cleditor({
-                    width:880, 
-                    height:200,
-                  controls: "bold italic underline | style | " +
-                            "bullets numbering | outdent " +
-                            "indent | alignleft center alignright | undo redo | " +
-                            "image link unlink | pastetext | source",});
+                $.cleditor.defaultOptions.controls = "bold italic underline | style | " +
+                                                    "bullets numbering | outdent " +
+                                                    "indent | alignleft center alignright | undo redo | " +
+                                                    "image link unlink | pastetext | source";
+                $.cleditor.defaultOptions.width = 'auto';
+                $.cleditor.defaultOptions.height = 200;
+                $("textarea#%s").cleditor();
             });
         </script>''' % (flatatt(final_attrs),
                         conditional_escape(force_unicode(value)),
