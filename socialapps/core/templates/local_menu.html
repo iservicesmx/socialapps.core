@@ -1,5 +1,5 @@
 <ul id="nav-menu">
     {% for item in options %}
-        <li class="tooltip {% if item.id == current %} current {% endif %}" title="{{ item.description }}"><a href="/{{ absolute_url}}{{item.url }}">{{ item.title }}</a></li>
+        <li rel="tooltip" class="{% if item.id == current %} current {% endif %}" data-original-title="{{ item.description }}"><a href="/{{ absolute_url}}{{item.url }}">{{ item.title }}</a></li>
     {% endfor %}
 </ul>
