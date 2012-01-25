@@ -48,42 +48,38 @@
         $(data.popup).find('iframe[name="existing"]').contents().find('.selected-object').hide();
 		$existing.attr('value', '');
 		
-        var $tabs = $('.browser-tabs').tabs();
-        $tabs.tabs('select', 0);
-        var selected = '#existing';
-
-        $('.browser-tabs').bind('tabsselect', function(event, ui) {
-            selected = $(ui.tab).attr('href');
-        })
-		
-		$(data.popup)
-			.children(":button")
-			.unbind("click")
-			.bind("click", function(e) {
-                $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.selected-size').val();
-                if (selected == '#existing' && $existing != undefined) {
-                    editor.execCommand(data.command, $existing, null, data.button);
+        var $tabs = $('.browser-tabs a:first').tab('show');
+        var selected = '#url';
+        
+        $('.browser-tabs a[data-toggle="tab"]').on('shown', function(e) {
+            selected = $(e.target).attr('href');
+        });
+        
+        $(':button', data.popup).bind('click', function(e) {
+            $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.selected-size').val();
+            if (selected == '#existing' && $existing != undefined) {
+                editor.execCommand(data.command, $existing, null, data.button);
+                closePopup(editor);
+            } else if(selected == '#upload' && $file.val()) { // proceed if any file was selected
+                $iframe.bind('load', function() {
+                    var file_url;
+                    try {
+                        file_url = $iframe.get(0).contentWindow.document.body.innerHTML;
+                    } catch(e) {};
+                    if(file_url) {
+                        editor.execCommand(data.command, file_url, null, data.button);
+                    } else {
+                        alert('An error occured during upload!');
+                    }
+                    $iframe.unbind('load');
                     closePopup(editor);
-				} else if(selected == '#upload' && $file.val()) { // proceed if any file was selected
-                    $iframe.bind('load', function() {
-            			var file_url;
-    				    try {
-    					    file_url = $iframe.get(0).contentWindow.document.body.innerHTML;
-    				    } catch(e) {};
-    				    if(file_url) {
-    					    editor.execCommand(data.command, file_url, null, data.button);
-    				    } else {
-    					    alert('An error occured during upload!');
-    				    }
-    				    $iframe.unbind('load');
-    				    closePopup(editor);
-    			    });
-        		    $(data.popup).find('form').attr('action', $.cleditor.buttons.image.uploadUrl).submit();
-        		} else if (selected == '#url' && $text.val() != '') {
-					editor.execCommand(data.command, $text.val(), null, data.button);
-					closePopup(editor);
-				}
-			});
+                });
+                $(data.popup).find('form').attr('action', $.cleditor.buttons.image.uploadUrl).submit();
+            } else if (selected == '#url' && $text.val() != '') {
+                editor.execCommand(data.command, $text.val(), null, data.button);
+                closePopup(editor);
+            }
+        });
 	}
 	
 	function urlButtonClick(e, data) {
@@ -102,13 +98,12 @@
         $(data.popup).find('iframe[name="existing"]').contents().find('.selected-url').hide();
 		$existing.attr('value', '');
 		
-        var $tabs = $('.browser-tabs').tabs();
-        $tabs.tabs('select', 0);
+        var $tabs = $('.browser-tabs a:first').tab('show');
         var selected = '#link-url';
         
-        $('.browser-tabs').bind('tabsselect', function(event, ui) {
-            selected = $(ui.tab).attr('href');
-        })
+        $('.browser-tabs a[data-toggle="tab"]').on('shown', function(e) {
+            selected = $(e.target).attr('href');
+        });
 
         $(data.popup).find('.save-link').unbind('click').bind('click', function(e) {
             $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.url').val();
