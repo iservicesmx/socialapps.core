@@ -1,11 +1,7 @@
 .navbar .logo { float: left;}
 
-ul#nav-menu {
-	line-height: 100%;
-	margin: -20px -20px 20px;
-	padding: 4px 6px 0px;
-	*padding-bottom:5px;
-	font: normal normal normal 18px/22px Helvetica !important;
+.content-tabs {
+  margin: -24px -21px 27px -21px;
 }
 
 #nav-menu li {
