@@ -1,15 +1,9 @@
 .navbar .logo { float: left;}
 
-.content-tabs {
-  margin: -24px -21px 27px -21px;
-}
-
 #nav-menu li {
 	float: left;
 	list-style: none;
 	margin: 1px 5px 0;
-/*  padding: 0px 0px 2px;
-    *padding-bottom:0px;*/
 	position: relative;
 	color: #666;
 }
@@ -23,9 +17,6 @@ font-weight: bold;
 	*padding-bottom:3px;
 	*padding-top:2px;
 	margin: 0;
-/*	-webkit-border-radius: 0.5em;
-	-moz-border-radius: 0.5em;
-	text-shadow: 0 1px 1px rgba(0,0,0, .3);*/
 	font-size: 14px;
 }
 
@@ -75,11 +66,6 @@ font-weight: bold;
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	/*-webkit-border-radius: 7px;
-  	-moz-border-radius: 7px;
-  	-khtml-border-radius: 7px;
-  	border-radius: 7px;*/
-	
 }
 
 #nav-menu ul a {
