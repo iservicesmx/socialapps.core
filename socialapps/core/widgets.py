@@ -40,7 +40,7 @@ class RichTextEditor(widgets.Textarea):
                 $.cleditor.defaultOptions.controls = "bold italic underline | style | " +
                                                     "bullets numbering | outdent " +
                                                     "indent | alignleft center alignright | undo redo | " +
-                                                    "image link unlink | pastetext | source";
+                                                    "table image link unlink | pastetext | source";
                 $.cleditor.defaultOptions.width = 'auto';
                 $.cleditor.defaultOptions.height = 200;
                 $("textarea#%s").cleditor();
