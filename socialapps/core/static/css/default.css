@@ -699,7 +699,7 @@ textarea#id_posting {
 	height: 36px;
 }
 
-.post .header-post .avatar img, .post .comment-post .avatar img, #messages img{
+.post .header-post .avatar img, .post .comment-post .avatar img{
     height: 30px;
     width: 30px;
 }
