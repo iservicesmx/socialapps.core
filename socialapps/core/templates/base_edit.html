@@ -1,12 +1,5 @@
-{% extends "base.html" %}
-
 {% load i18n %}
 
-{% block head_title %}{% blocktrans %}{{action_title}} {{type_title}}{% endblocktrans %}{% endblock %}
-
 {% block content %}
-    <h2>{% blocktrans %}{{action_title}} {{type_title}}{% endblocktrans %}</h2>
-
     {% include template_form %}
-
 {% endblock %}

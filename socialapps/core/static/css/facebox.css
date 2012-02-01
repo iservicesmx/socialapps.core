@@ -331,26 +331,6 @@ input#id_to, input#id_to:hover, input#id_to:active, input#id_to:focus {
 	width: 101%;
 }
 
- textarea#id_body.message {
-	width: 92%;
-	height: 67px;
-	margin: 0px 25px;
-	font-size: 1.2em;
-}
-
-form#message-send input[type="submit"] {
-	float: right;
-}
-
-form#message-send {
-	width: 616px;
-}
-
-form#message-send fieldset #message-title{
-	font: normal normal normal 1.05em/normal 'Lucida Grande', 'Lucida Sans Unicode', Arial, sans-serif;
-	margin: 0px 27px 10px;
-} 
-
 .contentf #redirect {
 	position:absolute;
 	top: 35%;
