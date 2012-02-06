@@ -65,7 +65,7 @@
                             <h2>
                                 {{ item.verb }}
                                 {% trans "a" %}
-                                <a href="{% url activity_detail item.id %}" rel="facebox[.social_item]">{{ item.activity_object_content_type }}</a>
+                                <a href="#modal-dialog" class="modal-launch-button" data-content="{% url activity_detail item.id %}" data-toggle="modal">{{ item.activity_object_content_type }}</a>
                                 {% trans "on" %}
                                 <a href="{{ item.target.get_absolute_url }}">{{ item.target }}</a>
                             </h2>
