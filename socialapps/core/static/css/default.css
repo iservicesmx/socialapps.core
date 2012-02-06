@@ -247,40 +247,15 @@ footer p a, .footer p a { color: rgba(0,0,0,.25); *color:000; filter:progid:DXIm
 footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
 
 
-.title, .content-title, #nav-menu {
-  	height: 30px;	
-	padding: 9px 16px;
-	position: relative;
-	font: normal normal normal 22px/28px Helvetica;
-	color: #efefef;
-	text-shadow: 0 1px 0 #000;
-	background-color:#111;
-	background-color:rgba(15,15,15,0.9);
-	background:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(35,35,35,0.85)),to(#141414));
-	background:-moz-linear-gradient(top,rgba(35,35,35,0.85),rgba(20,20,20,0.98));
-	*background-color:#111;
-	-webkit-box-shadow:0 1px 3px #111;
-	-moz-box-shadow:0 1px 2px #111;
-	box-shadow:0 0px 1px #111;
-	filter: progid:DXImageTransform.Microsoft.Shadow(color='#666666', Direction=180, Strength=3);
-	border-bottom:1px solid #777;
-	-webkit-border-radius: 7px 7px 0px 0px;	
-  	-moz-border-radius: 7px 7px 0px 0px;	
-  	-khtml-border-radius: 7px 7px 0px 0px;	
-  	border-radius: 7px 7px 0px 0px;	
-  }
-  
-.widget .title,
-.widget #nav-menu {
-    margin: -9px -9px 8px -9px;
-}
 
+  
 .widget.card {
     width: 260px;
     margin: 10px;
     display: inline-block;
     zoom: 1;
     *display: inline;
+    padding: 5px;
 }
 .widget.card:hover {
     text-decoration: none;

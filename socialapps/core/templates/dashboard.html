@@ -40,8 +40,8 @@
 	{% endif %}
 	
 	<div class="widget">
-		<div class="dashboard-form">  
-            {%  socialstream_status_form user.get_profile %}
+		<div class="widget-content dashboard-form">  
+	           {%  socialstream_status_form user.get_profile %}
 		</div>
 	</div>
 <!-- Inicia widget izquierdo-->
@@ -95,7 +95,7 @@
                 {% endif %}
             {% endif %}
             </div>
-        </div>
+        </div>†
 	</div> 	<!-- Termina menu1 en panel izquierdo-->
 	</div> 	<!-- Termina widget izquierdo-->	
 	<!-- Inicia menu2 en panel derecho-->		
@@ -108,32 +108,46 @@
                      {% endfor %}	
                       
 			     
-				</ul> 
-                
-				<!-- <script type="text/javascript"> 
-				var dataSource = new ctRotatorBridgeLi($('#existed')).getDataSource();  
-				$('#existed').ctRotator(dataSource, { 
-				  speed:2500,
-				  showCount:2,  
-				});  
-				</script>  -->
-
+				</ul>                 
                 <div class = "widget">
-				{% show_course_widget 5 request.user %}
+					<!-- My resources widget -->	
+					<div class="title">
+						<ul class="nav nav-pills">
+						    <li class="active"><a href="#mycourses" data-toggle="pill">{% trans 'My Courses' %}</a></li>
+						    <li><a href="#myspaces" data-toggle="pill">{% trans 'My Spaces' %}</a></li>
+				    	</ul>
+					</div>
+					<div class="widget-content">
+						<div class="tab-content">
+							<div id="mycourses" class="tab-pane active">
+								{% show_course_widget 5 request.user 'my' %}
+							</div>
+							<div id="myspaces" class="tab-pane">
+								{% show_space_widget 5 request.user 'my' %}
+							</div>
+						</div>
+					</div>
 				</div>
 				
 				<div class = "widget">
-                {% show_space_widget 5 request.user %}
-				</div>
-				
-										      
-			 </div> <!-- Termina widget -->
-			
-
-			
-			
-			
+					<!-- All resources widget -->	
+					<div class="title">
+						<ul class="nav nav-pills">
+						    <li class="active"><a href="#allcourses" data-toggle="pill">{% trans 'All Courses' %}</a></li>
+						    <li><a href="#allspaces" data-toggle="pill">{% trans 'All Spaces' %}</a></li>
+				    	</ul>
+					</div>
+					<div class="widget-content">
+						<div class="tab-content">
+							<div id="allcourses" class="tab-pane active">
+								{% show_course_widget 5 request.user 'all' %}
+							</div>
+							<div id="allspaces" class="tab-pane">
+								{% show_space_widget 5 request.user 'all' %}
+							</div>
+						</div>
+					</div>
+				</div>												      
 		</div><!-- Termina menu2 en panel derecho-->
-
 </div>
 {% endblock %}
