@@ -41,7 +41,7 @@ class RichTextEditor(widgets.Textarea):
                                                     "bullets numbering | outdent " +
                                                     "indent | alignleft center alignright | undo redo | " +
                                                     "table image link unlink | pastetext | source";
-                $.cleditor.defaultOptions.width = 'auto';
+                $.cleditor.defaultOptions.width = 650;
                 $.cleditor.defaultOptions.height = 200;
                 $("textarea#%s").cleditor();
             });
