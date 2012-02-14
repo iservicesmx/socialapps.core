@@ -49,16 +49,14 @@
         $existing.attr('value', '');
 
         $('.browser-tabs a:first').tab('show');
-		var selected_image = $('.browser-tabs li.active').attr('href');
+		var selected_image = "#url"; //$('.browser-tabs li.active').attr('href');
         $('.browser-tabs a[data-toggle="tab"]').on('shown', function(e) {
             selected_image = $(e.target).attr('href');
         });
         
         $(data.popup).find('.save-image').unbind('click').bind('click', function(e) {
-            console.log(selected_image);
             if (selected_image == '#existing') {
                 var existing = $(data.popup).find('iframe[name="existing"]').contents().find('.selected-size').val();
-                console.log(existing);
                 if (existing != 'undefined') {
                     editor.execCommand(data.command, existing, null, data.button);
                     closePopup(editor);                    
@@ -92,16 +90,16 @@
             $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.url');
             
         $('.browser-url-tabs a:first').tab('show');
-		var selected_url = $('.browser-url-tabs li.active').attr('href');
+		var selected_url = "#link-url"; //$('.browser-url-tabs li.active').attr('href');
         $('.browser-url-tabs a[data-toggle="tab"]').on('shown', function (e) {
             selected_url = $(e.target).attr('href');
         })        
-        $(data.popup).find('.save-link').unbind('click').bind('click', function(e) {
+        $(data.popup).find('.save-link').unbind('click').bind('click', function(e) {            
             $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.url').val();
             if (selected_url == '#existing-url' && $existing != undefined) {
                 editor.execCommand(data.command, $existing, $existing, data.button);
                 closePopup(editor);
-            } else if (selected_url == '#link-url' && $text.val() != '') {
+            } else if (selected_url == '#link-url' && $text.val()) {
                 editor.execCommand(data.command, $text.val(), $text.val(), data.button);
                 closePopup(editor);
             }            
