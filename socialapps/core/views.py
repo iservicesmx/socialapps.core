@@ -1,10 +1,10 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.views.generic.simple import direct_to_template
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext, ugettext_lazy as _
+from django.views.generic.simple import direct_to_template
 from django.views.generic import edit
 from django.views.generic.detail import *
 from django.views.generic.list import *
@@ -22,9 +22,6 @@ from socialapps.core.utils import python_to_json
 
 
 from datetime import date, timedelta
-from django.template import RequestContext
-from django.shortcuts import render_to_response
-from django.http import HttpResponse
 from datetime import datetime
 from dateutil import parser
 
@@ -36,23 +33,6 @@ DATE_FORMAT='%m/%d/%Y'
 def dashboard(request):
     """ Dashboard page """
     return direct_to_template(request, template='dashboard.html',)
-    
-class ContentBridgeView(object):
-    container = None
-    bridge = None
-    
-    def dispatch(self, request, *args, **kwargs):
-        self.container = getattr(request, "container", None)
-        if self.container:
-            self.bridge = request.bridge
-                    
-        return super(ContentBridgeView, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        kwargs.update({
-                'container': self.container,
-        })
-        return super(ContentBridgeView, self).get_context_data(**kwargs)
 
 
 class LocalFormView(object):
