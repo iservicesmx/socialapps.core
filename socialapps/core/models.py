@@ -95,21 +95,6 @@ class BaseMetadata(BaseDescription):
     def date_string(self):
         """Formats the created date into a pretty string."""                           
         return self.created.strftime("%d/%m/%Y %H:%M")
-                
-class BaseContent(BaseMetadata):
-    
-    body   = models.TextField(_(u"Body"), blank=True)
-    
-    images = generic.GenericRelation("Image", verbose_name=_(u"Images"),
-        object_id_field="content_id", content_type_field="content_type")
-    files  = generic.GenericRelation("File", verbose_name=_(u"Files"),
-        object_id_field="content_id", content_type_field="content_type")
-    
-    class Meta:
-        abstract = True
-
-    def __unicode__(self):
-        return self.title
         
         
 class Commentable(models.Model):
