@@ -1,0 +1,75 @@
+{% load i18n %}
+<style>
+#social-panels-handler {
+    position: fixed;
+    background: white;
+    border: 1px solid #111;
+    top: 125px;
+    right: 0;
+    z-index: 100000000;
+    opacity: .75;
+}
+#social-panels-button {
+    display: block;
+    height: 130px;
+    width: 35px;
+    padding: 2px;
+    border-right: none;
+    border-bottom: 4px solid white;
+    border-top: 4px solid white;
+    border-left: 4px solid white;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    text-indent: -999999px;
+    background: black url("/static/images/social-panel.png") no-repeat center center;
+    opacity: .5;
+}
+
+a#social-panels-button:hover {
+    border-color: yellow;
+    width: 40px;
+    opacity: 1;
+}
+
+#social-panels-list {
+    display: none;
+}
+
+#social-panels-list ul li{
+    width: 200px;
+}
+</style>
+
+<script type="text/javascript">
+$('document').ready(function() {
+    $('#social-panels-button').click(function(e) {
+        $(this).hide();
+        $('#social-panels-list').show();
+    })
+    $('.social-panels-hide').click(function(e) {
+        $('#social-panels-list').hide();
+        $('#social-panels-button').show();
+    });  
+});
+</script>
+<div id="social-panels-handler">
+    <a href="#" title="{% trans 'Show Panels' %}" id="social-panels-button">title</a>
+    <div id="social-panels-list">
+        <ul class="unstyled">
+            <li><a href="#" class="social-panels-hide">{% trans "Hide" %}</a></li>
+            {% for panel in panels %}
+                <li>
+                    <div class="panel-title">
+                        {{ panel.title }}
+                    </div>
+                    <div class="panel-content">
+                        {{ panel.content}}                        
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
