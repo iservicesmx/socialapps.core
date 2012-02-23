@@ -36,40 +36,76 @@ a#social-panels-button:hover {
 
 #social-panels-list {
     display: none;
+    position: fixed;
+    background: white;
+    top: 60px;
+    right: 0;
+    border: 1px solid #DDD;
+    -webkit-border-radius: 10px 0 0 10px;
+          -moz-border-radius: 10px 0 0 10px;
+               border-radius: 10px 0 0 10px;
+
+   	-webkit-box-shadow: #244766 5px 5px 10px;
+   	   -moz-box-shadow: #244766 10px 10px 10px;
+   	        box-shadow: #244766 10px 10px 10px;    
 }
 
 #social-panels-list ul li{
+    padding: 5px;
     width: 200px;
+    border-bottom: 1px solid #DDD;
 }
+    #social-panels-list .social-panels-hide {
+        text-align: center;
+    }
+    #social-panels-list .panel-title {
+        color: #999;
+    }
+    #social-panels-list .panel-content {
+        text-align: center;
+    }    
 </style>
 
 <script type="text/javascript">
 $('document').ready(function() {
+    $(window).resize(function(e) {
+        if ($(this).width() >= 1410) {        
+            $("#social-panels-handler").hide();
+            $('#social-panels-list').show();
+        } else {
+            $("#social-panels-handler").show();
+            $('#social-panels-list').hide();
+        }
+    });
+    if ($(window).width() >= 1410) {        
+        $("#social-panels-handler").hide();
+        $('#social-panels-list').show();
+    }
     $('#social-panels-button').click(function(e) {
-        $(this).hide();
+        $("#social-panels-handler").hide();
         $('#social-panels-list').show();
     })
-    $('.social-panels-hide').click(function(e) {
+    $('li.social-panels-hide a').click(function(e) {
         $('#social-panels-list').hide();
-        $('#social-panels-button').show();
+        $('#social-panels-handler').show();
     });  
 });
 </script>
 <div id="social-panels-handler">
     <a href="#" title="{% trans 'Show Panels' %}" id="social-panels-button">title</a>
-    <div id="social-panels-list">
-        <ul class="unstyled">
-            <li><a href="#" class="social-panels-hide">{% trans "Hide" %}</a></li>
-            {% for panel in panels %}
-                <li>
-                    <div class="panel-title">
-                        {{ panel.title }}
-                    </div>
-                    <div class="panel-content">
-                        {{ panel.content}}                        
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+</div>
+<div id="social-panels-list">
+    <ul class="unstyled">
+        <li class="social-panels-hide"><a href="#" class="btn">{% trans "Hide" %} »</a></li>
+        {% for panel in panels %}
+            <li>
+                <div class="panel-title">
+                    {{ panel.title }}
+                </div>
+                <div class="panel-content">
+                    {{ panel.content}}                        
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 </div>
