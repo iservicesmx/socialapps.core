@@ -1,13 +1,41 @@
+import thread
+import os
+import sys
+
+from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.cache import cache
 from django.http import Http404, HttpResponse
 from django.utils.functional import curry
 from django.utils.datastructures import SortedDict
 from django.core import exceptions
-import thread
-import os
-import sys
 from django.utils.encoding import smart_unicode
 from django.template.loader import render_to_string
+
+from django.contrib.sites.models import Site
+
+HOST_SITE_TIMEOUT = getattr(settings, "HOST_SITE_TIMEOUT", 3600)
+
+class HostSiteMiddleware(object):
+    
+    def process_request(self, request):
+        host = request.get_host()
+        cache_key = "host:%s" % host
+        site = cache.get(cache_key, None)        
+        
+        if not site:
+            try:
+                site = Site.objects.get(domain__iexact=host)
+            except Site.DoesNotExist:
+                site = Site.objects.get_current()
+                
+                if not settings.DEBUG:
+                    raise Http404
+                    
+            cache.set(cache_key, site, HOST_SITE_TIMEOUT)
+        
+        request.site = site
+
 
 def replace_insensitive(string, target, replacement):
     """
