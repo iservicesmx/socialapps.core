@@ -5,7 +5,6 @@ from socialapps import cms
 cms.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^accounts/', include('socialapps.account.urls')),
     (r'^profiles/', include('socialapps.profile.urls')),
     (r'^messages/', include('socialapps.dmessages.urls')),
 )
