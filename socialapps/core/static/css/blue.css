@@ -7,7 +7,6 @@ body { background: #8BC8EC;}
 	#sidebar-profile .widget .title {	opacity:0.5;}
 }
 
-.login-switch a { color: #2637DC; }
 
 #content {
 	-webkit-box-shadow: #244766 5px 5px 10px;
@@ -16,5 +15,6 @@ body { background: #8BC8EC;}
 }
 
 .avatar, #menu-left #id_posting { border-color: #94CBEC !important; }
+
 a { color: #2396dc; text-decoration: none; font-weight: normal; }
 a:hover { text-decoration: underline; }
