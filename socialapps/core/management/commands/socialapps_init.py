@@ -15,6 +15,7 @@ class Command(BaseCommand):
     """
 
     def handle(self, *args, **options):
+        
         roles = {}
         for role in settings.ROLES:
             roles[role] = register_role(role[1])
