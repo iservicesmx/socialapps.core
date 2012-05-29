@@ -12,7 +12,6 @@ from django.views.generic.base import *
 
 import urllib2
 import urllib
-from BeautifulSoup import BeautifulSoup
 import re
 from django.utils import simplejson
 from django.core import serializers

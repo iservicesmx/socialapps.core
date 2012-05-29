@@ -1,9 +1,5 @@
 from django import template
 from django.db import models
-import urllib2
-import urllib
-from BeautifulSoup import BeautifulSoup
-import re
 import permissions.utils
 
 register = template.Library()
