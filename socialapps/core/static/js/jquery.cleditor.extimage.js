@@ -53,29 +53,30 @@
         $('.browser-tabs a[data-toggle="tab"]').on('shown', function(e) {
             selected_image = $(e.target).attr('href');
         });
-        
+
         $(data.popup).find('.save-image').unbind('click').bind('click', function(e) {
             if (selected_image == '#existing') {
                 var existing = $(data.popup).find('iframe[name="existing"]').contents().find('.selected-size').val();
                 if (existing != 'undefined') {
-                    editor.execCommand(data.command, existing, null, data.button);
-                    closePopup(editor);                    
+                    $.get(existing, function(dat) {
+                        if (dat.success === true) {
+                            editor.execCommand(data.command, dat.thumb_url, null, data.button);
+                            closePopup(editor);
+                        }
+                    });
                 }
             } else if(selected_image == '#upload' && $file.val() != '') { // proceed if any file was selected
-                $iframe.bind('load', function() {
-                    try {
-                        var file_url = $iframe.contents().find("pre").html();
-                    } catch(e) {};
-                    if(file_url) {
-                        var obj = $.parseJSON(file_url).image;
-                        editor.execCommand(data.command, obj, null, data.button);
-                    } else {
-                        alert('An error occured during upload!');
-                    }
-                    $iframe.unbind('load');
-                    closePopup(editor);
-                });
-                $(data.popup).find('form').attr('action', $.cleditor.buttons.image.uploadUrl).submit();
+                var image = $('.selected-size').val();
+                if(image) {
+                    $.get(image, function(dat) {
+                        if (dat.success === true) {
+                            $('#upload form').show();
+                            $('#upload .data').html(''); 
+                            editor.execCommand(data.command, dat.thumb_url, null, data.button);
+                            closePopup(editor);
+                        }
+                    });
+                }
             } else if (selected_image == '#url' && $text.val() != '') {
                 editor.execCommand(data.command, $text.val(), null, data.button);
                 closePopup(editor);
