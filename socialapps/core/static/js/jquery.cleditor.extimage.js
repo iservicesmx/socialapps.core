@@ -30,6 +30,16 @@
 		buttonClick: urlButtonClick,
 	};
 
+    $.cleditor.buttons.multimedia = {
+        name: 'multimedia',
+        title: 'Insert Multimedia,',
+        image: 'multimedia.gif',
+        command: 'inserthtml',
+        popupName: 'ext-mult',
+        popupClass: 'cleditorPrompt',
+        buttonClick: multimediaButtonClick,
+    };
+
 	function closePopup(editor) {
 		editor.hidePopups();
 		editor.focus();
@@ -107,4 +117,28 @@
             return false;
         });
 	}
+
+    function multimediaButtonClick(e, data) {
+        var editor = data.editor,
+            $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.url'), html = '';
+        $(data.popup).find('.save-multimedia').unbind('click').bind('click', function(e) {
+            $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.url').val();
+            var mimetype = $(data.popup).find('iframe[name="existing"]').contents().find('.mimetype').html();
+            if ($existing != undefined) {
+                if(mimetype) {
+                    if (mimetype == 'video' || mimetype == 'audio') {
+                        var mult_url = $(data.popup).find('iframe[name="existing"]').contents().find('.mult_url').val();
+                        var mult_type = $(data.popup).find('iframe[name="existing"]').contents().find('.mult_type').val();
+                        html = '<video class="video-js vjs-default-skin" controls width="560" height="315" data-setup="{}"><source src="'+ mult_url+'" type="'+ mult_type+'"></video>';
+                    }
+                } else {
+                    var img = $(data.popup).find('iframe[name="existing"]').contents().find('.icon').attr('src');
+                    html = '<a href="'+ $existing +'"><img src="'+ img +'" /></div>';
+                }
+                editor.execCommand(data.command, html, null, data.button);
+                closePopup(editor);
+            }
+            return false;
+        });
+    }
 })(jQuery);
