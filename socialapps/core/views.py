@@ -1,32 +1,27 @@
+import re
+import urllib2
+import urllib
+from datetime import date, timedelta, datetime
+from dateutil import parser
+
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext as _
 from django.views.generic.simple import direct_to_template
 from django.views.generic import edit
 from django.views.generic.detail import *
 from django.views.generic.list import *
 from django.views.generic.base import *
-
-import urllib2
-import urllib
-import re
 from django.utils import simplejson
 from django.core import serializers
 
+from account.mixins import LoginRequiredMixin
 from socialapps.core.utils import python_to_json
 
-
-
-from datetime import date, timedelta
-from datetime import datetime
-from dateutil import parser
-
 DATE_FORMAT='%m/%d/%Y'
-
-
 
 @login_required
 def dashboard(request):
@@ -97,7 +92,6 @@ class JSONResponseMixin(object):
         "Returns a JSON response containing 'context' as payload"
         return HttpResponse(python_to_json(context), content_type='application/json')
 
-
 class JSONDetailView(JSONResponseMixin, BaseDetailView):
     pass
 
@@ -133,7 +127,6 @@ class HybridTemplateView(JSONResponseMixin, TemplateView):
 
         return TemplateView.render_to_response(self, context)
 
-
 def file(request, language=None, id=None):
     """Delivers files to the browser.
     """
@@ -141,5 +134,3 @@ def file(request, language=None, id=None):
     response = HttpResponse(file.file, mimetype='application/binary')
     response['Content-Disposition'] = 'attachment; filename=%s' % file.title
     return response
-
-
