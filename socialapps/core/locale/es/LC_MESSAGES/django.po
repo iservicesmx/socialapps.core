@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-04 20:14-0500\n"
+"POT-Creation-Date: 2012-06-05 00:34-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,54 +116,67 @@ msgstr "Eliminar %(type_title)s"
 msgid "confirm"
 msgstr "Confirmar"
 
-#: templates/dashboard.html:23
-msgid "new messages"
-msgstr "Nuevos mensajes"
-
-#: templates/dashboard.html:23
-msgid "click to read"
-msgstr "Click para leer"
-
-#: templates/dashboard.html:35
+#: templates/dashboard.html:26
 msgid "Hey!"
 msgstr "¡Oye!"
 
-#: templates/dashboard.html:35
+#: templates/dashboard.html:26
 msgid " your profile is incomplete, please fill it"
 msgstr "To perfil está incompleto, por favor cambialo"
 
-#: templates/dashboard.html:37
+#: templates/dashboard.html:28
 msgid "Fill in now"
-msgstr "Cambiar ahora"
+msgstr "Completar ahora"
 
-#: templates/dashboard.html:67
+#: templates/dashboard.html:58
 msgid "a"
 msgstr "un"
 
-#: templates/dashboard.html:69
+#: templates/dashboard.html:60
 msgid "on"
 msgstr "en"
 
-#: templates/dashboard.html:79
-#: templates/dashboard.html:92
+#: templates/dashboard.html:70 templates/dashboard.html.py:83
 msgid "View more"
 msgstr "Ver mas"
 
-#: templates/dashboard.html:116
+#: templates/dashboard.html:107
 msgid "My Courses"
 msgstr "Mis Cursos"
 
-#: templates/dashboard.html:117
+#: templates/dashboard.html:108
 msgid "My Spaces"
 msgstr "Mis Espacios"
 
-#: templates/dashboard.html:136
+#: templates/dashboard.html:127
 msgid "All Courses"
 msgstr "Todos los cursos"
 
-#: templates/dashboard.html:137
+#: templates/dashboard.html:128
 msgid "All Spaces"
 msgstr "Todos los espacios"
+
+#: templates/notification/email_body.txt:1
+#, python-format
+msgid ""
+"You have received the following notice from %(current_site)s:\n"
+"\n"
+"%(message)s\n"
+"\n"
+"To see other notices or change how you receive notifications, please go to "
+"%(default_http_protocol)s://%(current_site)s%(notices_url)s\n"
+msgstr ""
+"Has recibido la siguiente notificación desde %(current_site)s:\n"
+"\n"
+"%(message)s\n"
+"\n"
+"Para ver otras notificaciones o cambiar la configuración de las notificaciones, por favor ir a "
+"%(default_http_protocol)s://%(current_site)s%(notices_url)s\n"
+
+#: templates/notification/notice.html:1
+#, python-format
+msgid "%(notice)s"
+msgstr "%(notice)s"
 
 #: templates/pagination/pagination.html:6
 #: templates/pagination/pagination.html:8
