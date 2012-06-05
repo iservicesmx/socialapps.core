@@ -1,0 +1,184 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-06-04 20:14-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: models.py:35
+msgid "Title"
+msgstr "Título"
+
+#: models.py:36
+msgid "Slug"
+msgstr "Slug"
+
+#: models.py:37
+msgid "Description"
+msgstr "Descripción"
+
+#: models.py:69
+msgid "Creator"
+msgstr "Creador"
+
+#: models.py:70
+msgid "Create on"
+msgstr "Creado el"
+
+#: models.py:72
+msgid "Modified on"
+msgstr "Modificado el"
+
+#: models.py:74
+msgid "Published from"
+msgstr "Publicado de"
+
+#: models.py:76
+msgid "Expires on"
+msgstr "Expira el"
+
+#: models.py:79
+msgid "content type"
+msgstr "tipo de contenido"
+
+#: models.py:101
+msgid "total amount of comments"
+msgstr "Total de comentarios"
+
+#: models.py:102
+msgid "Allow comments"
+msgstr "Permitir comentarios"
+
+#: models.py:108
+msgid "Allow vote"
+msgstr "Permitir votos"
+
+#: models.py:109
+msgid "total amount of like"
+msgstr "Total de \"Me Gusta\""
+
+#: models.py:110
+msgid "total amount of dislike"
+msgstr "Total de \"No Me Gusta\""
+
+#: models.py:113
+msgid "total amount of votes"
+msgstr "Total de votos"
+
+#: views.py:33
+msgid "Edit"
+msgstr "Editar"
+
+#: views.py:34 views.py:76 views.py:80 views.py:84
+msgid "Object"
+msgstr "Objeto"
+
+#: views.py:75
+msgid "Create"
+msgstr "Crear"
+
+#: views.py:79 views.py:83
+msgid "Update"
+msgstr "Actualizar"
+
+#: fields/json.py:19
+msgid "Enter valid JSON"
+msgstr "Introduce un JSON válido"
+
+#: socialpanels/activity.py:18
+msgid "Activity"
+msgstr "Actividad"
+
+#: socialpanels/activity.py:27
+msgid "Versions"
+msgstr "Versiones"
+
+#: templates/base_delete.html:4 templates/base_delete.html.py:7
+#: templates/base_delete_facebox.html:3
+#, python-format
+msgid "Delete %(type_title)s"
+msgstr "Eliminar %(type_title)s"
+
+#: templates/base_delete_form.html:8
+msgid "confirm"
+msgstr "Confirmar"
+
+#: templates/dashboard.html:23
+msgid "new messages"
+msgstr "Nuevos mensajes"
+
+#: templates/dashboard.html:23
+msgid "click to read"
+msgstr "Click para leer"
+
+#: templates/dashboard.html:35
+msgid "Hey!"
+msgstr "¡Oye!"
+
+#: templates/dashboard.html:35
+msgid " your profile is incomplete, please fill it"
+msgstr "To perfil está incompleto, por favor cambialo"
+
+#: templates/dashboard.html:37
+msgid "Fill in now"
+msgstr "Cambiar ahora"
+
+#: templates/dashboard.html:67
+msgid "a"
+msgstr "un"
+
+#: templates/dashboard.html:69
+msgid "on"
+msgstr "en"
+
+#: templates/dashboard.html:79
+#: templates/dashboard.html:92
+msgid "View more"
+msgstr "Ver mas"
+
+#: templates/dashboard.html:116
+msgid "My Courses"
+msgstr "Mis Cursos"
+
+#: templates/dashboard.html:117
+msgid "My Spaces"
+msgstr "Mis Espacios"
+
+#: templates/dashboard.html:136
+msgid "All Courses"
+msgstr "Todos los cursos"
+
+#: templates/dashboard.html:137
+msgid "All Spaces"
+msgstr "Todos los espacios"
+
+#: templates/pagination/pagination.html:6
+#: templates/pagination/pagination.html:8
+msgid "previous"
+msgstr "Anterior"
+
+#: templates/pagination/pagination.html:22
+#: templates/pagination/pagination.html:24
+msgid "next"
+msgstr "Siguiente"
+
+#: templates/socialpanels/base.html:95
+msgid "Show Panels"
+msgstr "Mostrar paneles"
+
+#: templates/socialpanels/base.html:99
+msgid "Hide"
+msgstr "Ocultar"
