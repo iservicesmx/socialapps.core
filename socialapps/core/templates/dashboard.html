@@ -10,20 +10,11 @@
 {% endblock %}
 
 {% block extra_js %}
-<!-- <script type="text/javascript" src="{{ STATIC_URL }}js/datepicker.js"></script> -->
-<!-- <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script> -->
 {% include "socialstream/json_templates.html" %}
 {% endblock %}
 
 {% block body_id %}dash{% endblock %}
 
-{% block extra_messages %}
-    {% if messages_new_count %}
-    <ul class="notify">
-        <li><a href="/messages">{{ messages_new_count }} {% trans "new messages" %}, {% trans "click to read" %}</a></li>   
-    </ul>
-    {% endif %}    
-{% endblock %}
 {% block content %}
 <div class="row">
 
@@ -89,7 +80,7 @@
                 {% if stream.more %}
                     <div class="more-activity dash">
                         <div class="view-more">
-                            <a id="more-activity" class="btn primary" href="/social/?ct={{stream.ct}}&id={{stream.parent.id}}&option=friends">{% trans "view more" %}</a>
+                            <a id="more-activity" class="btn primary" href="/social/?ct={{stream.ct}}&id={{stream.parent.id}}&option=friends">{% trans "View more" %}</a>
                         </div>
                     </div>
                 {% endif %}
