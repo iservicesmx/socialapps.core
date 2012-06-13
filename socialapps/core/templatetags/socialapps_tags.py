@@ -4,15 +4,15 @@ import permissions.utils
 
 register = template.Library()
 
-@register.inclusion_tag('local_menu.html')
-def show_local_menu(parent = None, current = 'index'):
+@register.inclusion_tag('local_menu.html', takes_context = True)
+def show_local_menu(context, parent = None, current = 'index'):
     if isinstance(parent, models.Model):
         for ancestor in parent.get_ancestors(ascending = True, include_self = True):
             parent = ancestor.get_type_object()
             if hasattr(parent, 'get_local_menu'):
-                menu = parent.get_local_menu()
+                menu = parent.get_local_menu(context['user'])['items']
                 absolute_url = parent.get_absolute_url()
-                if not [item for item in parent.get_local_menu() if item['id'] == current ]:
+                if not [item for item in menu if item['id'] == current ]:
                     current = 'index'
                 return {'options' : menu, 'absolute_url':absolute_url ,'current' : current }
 
