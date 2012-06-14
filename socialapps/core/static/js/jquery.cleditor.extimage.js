@@ -17,7 +17,7 @@
 		popupClass: 'cleditorPrompt',
 		stripIndex: $.cleditor.buttons.image.stripIndex,
 		buttonClick: imageButtonClick,
-		uploadUrl: '/uploadImage' // default url
+		uploadUrl: '/uploadImage'
 	};
 	
 	$.cleditor.buttons.link = {
@@ -27,7 +27,7 @@
 		popupName: 'ext-url',
 		popupClass: 'cleditorPrompt',
 		stripIndex: $.cleditor.buttons.link.stripIndex,		
-		buttonClick: urlButtonClick,
+		buttonClick: urlButtonClick
 	};
 
     $.cleditor.buttons.multimedia = {
@@ -37,7 +37,7 @@
         command: 'inserthtml',
         popupName: 'ext-mult',
         popupClass: 'cleditorPrompt',
-        buttonClick: multimediaButtonClick,
+        buttonClick: multimediaButtonClick
     };
 
 	function closePopup(editor) {
