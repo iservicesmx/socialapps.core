@@ -61,7 +61,8 @@
         $('.browser-tabs a:first').tab('show');
 		var selected_image = "#url"; //$('.browser-tabs li.active').attr('href');
         $('.browser-tabs a[data-toggle="tab"]').on('shown', function(e) {
-            selected_image = $(e.target).attr('href');
+            var base = window.location.href.substring(0, window.location.href.lastIndexOf("/") + 1);
+            selected_image = $(e.target).attr("href").replace(base, "");
         });
 
         $(data.popup).find('.save-image').unbind('click').bind('click', function(e) {
@@ -111,6 +112,7 @@
                 editor.execCommand(data.command, $existing, $existing, data.button);
                 closePopup(editor);
             } else if (selected_url == '#link-url' && $text.val()) {
+                alert("loading");
                 editor.execCommand(data.command, $text.val(), $text.val(), data.button);
                 closePopup(editor);
             }            
@@ -121,7 +123,7 @@
     function multimediaButtonClick(e, data) {
         var editor = data.editor,
             $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.url'), html = '';
-        $(data.popup).find('.save-multimedia').unbind('click').bind('click', function(e) {
+            $(data.popup).find('.save-multimedia').unbind('click').bind('click', function(e) {
             $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.url').val();
             var mimetype = $(data.popup).find('iframe[name="existing"]').contents().find('.mimetype').html();
             if ($existing != undefined) {
