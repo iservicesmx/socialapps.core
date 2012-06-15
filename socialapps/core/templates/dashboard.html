@@ -25,7 +25,7 @@
 			<a class="close" data-dismiss="alert" href="#">×</a>
 			<p><strong>{% trans "Hey!" %}</strong>{% trans " your profile is incomplete, please fill it" %}</p>
 			<div class="alert-actions">
-				<a rel='facebox' class="btn small" href="{% url profile_edit user %}">{% trans "Fill in now" %}</a>
+				<a href="#modal-dialog" class="btn btn-small modal-launch-button" data-toggle="modal" data-content="{% url profile_edit user %}">{% trans "Fill in now" %}</a>
 			</div>
 		</div>
 	{% endif %}
