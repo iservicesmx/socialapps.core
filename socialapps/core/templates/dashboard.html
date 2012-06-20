@@ -111,10 +111,10 @@
 					<div class="widget-content">
 						<div class="tab-content">
 							<div id="mycourses" class="tab-pane active">
-								{% show_course_widget 5 request.user 'my' %}
+								{% show_course_widget 5 'my' %}
 							</div>
 							<div id="myspaces" class="tab-pane">
-								{% show_space_widget 5 request.user 'my' %}
+								{% show_space_widget 5 'my' %}
 							</div>
 						</div>
 					</div>
@@ -131,10 +131,10 @@
 					<div class="widget-content">
 						<div class="tab-content">
 							<div id="allcourses" class="tab-pane active">
-								{% show_course_widget 5 request.user 'all' %}
+								{% show_course_widget 5 'all' %}
 							</div>
 							<div id="allspaces" class="tab-pane">
-								{% show_space_widget 5 request.user 'all' %}
+								{% show_space_widget 5 'all' %}
 							</div>
 						</div>
 					</div>
