@@ -1,8 +1,6 @@
 html, body, h1 { margin: 0; padding: 0; border: 0; outline: 0; vertical-align: baseline; background: transparent; }
-body {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	line-height: 20px; color: #333; 
-}
+
+
 img { 
     -ms-interpolation-mode: bicubic; 
     border: none;
@@ -23,9 +21,6 @@ img {
     padding: 0 !important;
 }
 
-.search_form { overflow: hidden; }
-.search_form p { margin: 0; }
-.search_form p input { margin: 3px 5px 0 0; background: #fff url(/static/images/spyglass.png) no-repeat 98% 50%; }
 
 h2.trigger {font-size: 1em !important; font-weight:normal !important; display: inline;}
 
