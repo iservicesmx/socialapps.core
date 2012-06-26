@@ -801,7 +801,7 @@ textarea#id_posting {
 }
 
 #posts_wall .post .body-post .message-post, #posts_wall .post .comment-post .message-post {
-	font-size: 0.9em;
+	font-size: 1em;
 	min-height: 50px;
 	line-height: 15px;
 	padding: 0 10px 5px;
