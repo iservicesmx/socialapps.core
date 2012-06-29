@@ -4,6 +4,8 @@
 {% load socialstream_tags %}
 {% load space_tags %}
 {% load courses_tags %}
+{% load tz %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/dash.css">
 <!-- <link rel="stylesheet" href="{{ STATIC_URL }}css/calendars.css"/> -->
@@ -74,7 +76,7 @@
                             {% endif %}
                             </h2>
                         {% endif %}
-                        <h3>{{ item.activity_object.date_string }}</h3>
+                        <h3>{{ item.activity_object.created|timezone:account.timezone|date:"M j, Y, P" }}</h3>
                     </div>
                 {% endfor %}
                 {% if stream.more %}
