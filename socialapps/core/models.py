@@ -19,10 +19,10 @@ def _get_queryset(klass):
     """
     Returns a QuerySet from a Model, Manager, or QuerySet. Created to make
     get_object_or_404 and get_list_or_404 more DRY.
-    
+
     Pulled from django.shortcuts
     """
-    
+
     if isinstance(klass, QuerySet):
         return klass
     elif isinstance(klass, models.Manager):
@@ -35,14 +35,14 @@ class BaseDescription(models.Model):
     title = models.CharField(_("Title"), max_length=255, blank=True)
     slug = models.SlugField(_("Slug"), max_length=255, blank=True)
     description = models.TextField(_(u"Description"), blank=True)
-    
+
     class Meta:
         abstract = True
         ordering = ("title",)
 
     def __unicode__(self):
         return self.title
-    
+
     def save(self, *args, **kwargs):
         """
         Create a unique slug from the title by appending an index.
@@ -56,51 +56,51 @@ class BaseDescription(models.Model):
                 self.slug = self.get_slug() + "-%s" % i
                 i += 1
         super(BaseDescription, self).save(*args, **kwargs)
-        
+
     def get_slug(self):
         return slugify(self.title)
-        
+
     def get_type(self):
         pass
-    
-    
+
+
 class BaseMetadata(BaseDescription):
     creator  = models.ForeignKey("auth.User",
                     verbose_name=_(u"Creator"), null=True)
     created  = models.DateTimeField(_("Create on"),
                     auto_now_add=True)
     modified = models.DateTimeField(_("Modified on"),
-                    auto_now=True, auto_now_add=True) 
-    efective = models.DateTimeField(_("Published from"), 
+                    auto_now=True, auto_now_add=True)
+    efective = models.DateTimeField(_("Published from"),
                     blank=True, null=True)
-    expires  = models.DateTimeField(_("Expires on"), 
+    expires  = models.DateTimeField(_("Expires on"),
                     blank=True, null=True)
-    
+
     content_type = models.ForeignKey(ContentType, verbose_name=_('content type'), blank=True, null=True)
     content_id = models.PositiveIntegerField(blank=True, null=True)
     content = generic.GenericForeignKey('content_type', 'content_id')
 
     tags = TagField()
-   
+
     class Meta:
         abstract = True
 
     def __unicode__(self):
         return self.title
-        
+
     def get_contenttype(self):
         return ContentType.objects.get_for_model(self).id
-        
+
     @property
     def date_string(self):
-        """Formats the created date into a pretty string."""                           
+        """Formats the created date into a pretty string."""
         return self.created.strftime("%d/%m/%Y %H:%M")
-        
-        
+
+
 class Commentable(models.Model):
-    comments_count = models.IntegerField(_('total amount of comments'), default=0)
-    allow_comments = models.BooleanField(_('Allow comments'),default=True)
-    
+    comments_count = models.IntegerField(_('total amount of comments'), blank=True, default=0)
+    allow_comments = models.BooleanField(_('Allow comments'), blank=True, default=True)
+
     class Meta:
         abstract = True
 
@@ -108,7 +108,7 @@ class Voteable(models.Model):
     allow_vote      = models.BooleanField(_('Allow vote'),default=True)
     like_count      = models.IntegerField(_('total amount of like'), default=0)
     dislike_count   = models.IntegerField(_('total amount of dislike'), default=0)
-    
+
     #TODO: change to use a method instead a field
     vote_count      = models.IntegerField(_('total amount of votes'), default=0)
 
