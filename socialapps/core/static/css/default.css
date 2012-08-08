@@ -1,8 +1,8 @@
 html, body, h1 { margin: 0; padding: 0; border: 0; outline: 0; vertical-align: baseline; background: transparent; }
 
 
-img { 
-    -ms-interpolation-mode: bicubic; 
+img {
+    -ms-interpolation-mode: bicubic;
     border: none;
 }
 
@@ -16,7 +16,7 @@ img {
     float: left;
     margin-top: 0px;
     /*width: 250px;*/
-	#width: 250px;  
+	#width: 250px;
     margin-left: 73px;
     padding: 0 !important;
 }
@@ -102,7 +102,7 @@ display: block;}
 	min-height: 150px;
 	float: left;
 	padding-right: 20px;
-	margin-left: 0px;	
+	margin-left: 0px;
 }
 
 #dash-board-left{
@@ -145,7 +145,7 @@ div.widget.slide-right button {
 }
 
 div.widget.slide-right .title {
-	width: 92%;	
+	width: 92%;
 	font: normal normal normal 18px/22px Helvetica !important;
 	height: 22px !important;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.246094);
@@ -182,7 +182,7 @@ div.widget.slide-right .body ul li{
 
 div.widget.slide-right .body ul li a{
 	text-decoration: none;
-	color: black;	
+	color: black;
 }
 
 div.tags {
@@ -242,7 +242,7 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
 
 
 
-  
+
 .widget.card {
     width: 260px;
     margin: 10px;
@@ -284,13 +284,13 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
 	border-radius: 3px;
 }
 /*
-.calendar-small thead #calendar-left { 
+.calendar-small thead #calendar-left {
 	-webkit-border-radius: 8px 0 0 0;
 	-moz-border-radius: 8px 0 0 0;
 	-khtml-border-radius: 8px 0 0 0;
 	border-radius: 8px 0 0 0;
 	}
-.calendar-small thead #calendar-right { 
+.calendar-small thead #calendar-right {
 	-webkit-border-radius: 0 8px 0 0;
 	-moz-border-radius: 0 8px 0 0;
 	-khtml-border-radius: 0 8px 0 0;
@@ -304,7 +304,6 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
  }
 
  .body .class {
- 	background: #E0DFDF url(../images/sections-24-black.png) no-repeat 5px;
 	-webkit-user-select: none;
 	padding: 5px 0px 8px 34px;
 	border: 1px white solid;
@@ -314,6 +313,14 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
 	height: 20px;
 	width: 58.5%;
  }
+
+ .body .course-class {
+    background: #E0DFDF url(../images/icons/24x24/courses.png) no-repeat 5px;
+}
+
+.body .space-class {
+    background: #E0DFDF url(../images/icons/24x24/users.png) no-repeat 5px;
+}
 
 #content-left .body .class {
 	width: 360px;
@@ -362,7 +369,7 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
 	height: 26px;
 	line-height: 16px;
  }
- 
+
 #content-left .body .result {
 	width: 148px;
 	padding: 0px 8px 8px 3px;
@@ -373,7 +380,7 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
   	background: #94CBEC url(/static/images/eye.png) no-repeat 1px;
   	padding: 0px 0px 0px 32px;
  }
- 
+
  #content-left .body .result t1,  #content-left .body .result t2{
    	padding: 0px 0px 0px 25px;
  }
@@ -400,7 +407,7 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
   	height: 80px;
   	width: 97.7%;
  }
- 
+
   #content-left  .body .info {
  	width: 96.1%
  }
@@ -487,7 +494,7 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
 .personal-bar.messages>ul>li>a#reply {width: 80px;}
 
 .personal-bar.messages > ul > li > a > span.ui-icon {
-	
+
 }
 .personal-bar>ul>li:hover>a, #new-message a:hover, .personal-bar.messages>ul>li>a, .personal-bar.list>ul>li>a, .return  {
 	background: #666 url(/static/images/gradient.png) repeat-x 0 -40px;
@@ -673,7 +680,7 @@ textarea#id_posting {
     width: 30px;
 }
 
-#sidebar-profile .widget img, .post .header-post .avatar img, .post .comment-post .avatar img, #messages img, 
+#sidebar-profile .widget img, .post .header-post .avatar img, .post .comment-post .avatar img, #messages img,
 .top-profile img {
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
@@ -688,7 +695,7 @@ textarea#id_posting {
 }
 .comment-posting .reply-list.discussions {margin-bottom: -40px;}
 
-#posts_wall .post .reply-list .comment-post { 
+#posts_wall .post .reply-list .comment-post {
     min-height: 100px;
     margin-bottom: 10px;
 }
@@ -709,7 +716,7 @@ textarea#id_posting {
 	background: #F2F2F2;
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#F2F2F2',endColorstr='#FFFFFF');
 	background: -webkit-gradient(linear,0% 0,0% 100%,from(#F2F2F2),to(#FFFFFF));
-	background: -moz-linear-gradient(270deg,#F2F2F2,#FFFFFF);	
+	background: -moz-linear-gradient(270deg,#F2F2F2,#FFFFFF);
 }
 
 #posts_wall .post .comment-posting textarea {
@@ -769,7 +776,7 @@ textarea#id_posting {
 	padding: 4px 7px;
 	border: black 1px solid;
 	border-radius: 6px;
-	-moz-border-radius: 6px;	
+	-moz-border-radius: 6px;
 }
 
 #posts_wall #activity .post .comment-post .header-post {
@@ -847,11 +854,11 @@ textarea#id_posting {
 	box-shadow: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
-	border-radius: 0;	
+	border-radius: 0;
 }
 
 #posts_wall .post .nolike  {
-	background: url(/static/images/thumb.png) no-repeat 4px 1px;	
+	background: url(/static/images/thumb.png) no-repeat 4px 1px;
 }
 
 #posts_wall .post .body-post .footer-post h1, #posts_wall .post .body-post .footer-post h2 {
@@ -869,23 +876,23 @@ textarea#id_posting {
 }
 
 #user-profile {
-	
+
 }
 
 #user-profile #header {
-	
-}
 
-#user-profile #body { 
-	
-}
-
-#user-profile #body #avatar{
-	
 }
 
 #user-profile #body {
-	
+
+}
+
+#user-profile #body #avatar{
+
+}
+
+#user-profile #body {
+
 }
 
 ul#existed.ctrotator{
@@ -919,7 +926,7 @@ ul#existed.ctrotator li, #tooltip h3 {
 
     ul#existed.ctrotator li h3 {
 		margin-top: -1px;
-		font-size: 1.13em;	
+		font-size: 1.13em;
     }
     ul#existed.ctrotator li p {
         margin-bottom: 0;
@@ -950,7 +957,7 @@ border: 1px solid #e5dbaa;
 /*ul#manually.ctrotator li:hover {
 	text-align: left !important;
 	margin: 0 0 10px 0;
-	background-color: #FFFFFF;	
+	background-color: #FFFFFF;
 	opacity:1;
 }*/
 
@@ -974,12 +981,12 @@ ul#testimonials {
 ul#testimonials li {
 	text-align: left;
 	font-style: normal;
-} 
+}
 
 ul#testimonials li blockquote {
 	color: black;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 1);	
-} 
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+}
 
 #agenda-wrapper{
 	margin: 0 220px 0 0;
@@ -992,8 +999,8 @@ table#agenda{
 	width: 100%;
 }
 
-table#agenda td, table#agenda th { 
-	padding: 2px; 
+table#agenda td, table#agenda th {
+	padding: 2px;
 }
 
 table#agenda th {
@@ -1020,34 +1027,34 @@ table#agenda th.table-top a{
 	margin: 0 40px;
 }
 
-   
-table#agenda dt { 
+
+table#agenda dt {
 	font-weight: bold;
 }
-   table#agenda dd { 
-   	margin-bottom: .5em; 
+   table#agenda dd {
+   	margin-bottom: .5em;
 }
 
-.month-view td { 
-	vertical-align: top; 		height: 6em; 
+.month-view td {
+	vertical-align: top; 		height: 6em;
 	min-height: 6em;
-	border: 1px solid #ebebe3; 
+	border: 1px solid #ebebe3;
 }
 
 
-    .month-view td, .month-view th { 
+    .month-view td, .month-view th {
 	width: 200px;
 
-}    
-.month-view .day-ordinal { 
-    font-weight: bold; 
-    font-size: 1.1em; 
-    text-align: right; 
 }
-.month-view ul { 
-    list-style: none; 
-    margin: 1px 2px; 
-    padding: 0; 
+.month-view .day-ordinal {
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: right;
+}
+.month-view ul {
+    list-style: none;
+    margin: 1px 2px;
+    padding: 0;
 }
 
 .month-view ul li{
@@ -1055,8 +1062,8 @@ table#agenda dt {
 	margin: 0 0 4px;
 	background-color: #fec8b5;
 	padding: 2px;
-	border-radius: 3px;  
-    -moz-border-radius: 3px;  
+	border-radius: 3px;
+    -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 }
 
@@ -1078,11 +1085,11 @@ span.done{
 }
 
 span.event_times{
-	color: #1a1a1a;  
+	color: #1a1a1a;
 }
 
-.month-view .today{ 
- 	background-color: #eed; 
+.month-view .today{
+ 	background-color: #eed;
 }
 
 .extra_options {
@@ -1093,8 +1100,8 @@ div.form{
 	background-color: #ebebe3;
 	margin: 0 220px 10px 0;
 	position: relative;
-	border-radius: 6px;  
-    -moz-border-radius: 6px;  
+	border-radius: 6px;
+    -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
 }
 
@@ -1122,8 +1129,8 @@ ul.types-calendar li p,
 ul.project-calendar li p{
 	margin: 1px 0 0 22px;
 	font-weight: bold;
-	border-radius: 3px;  
-    -moz-border-radius: 3px;  
+	border-radius: 3px;
+    -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     padding: 2px 3px;
 }
@@ -1192,9 +1199,9 @@ h2#content-title {
 }
 
 li.ac_even {
-    padding:4px; 
-    border-top:solid 1px #dedede; 
-    font-size:12px; 
+    padding:4px;
+    border-top:solid 1px #dedede;
+    font-size:12px;
     height:30px;
 }
 
@@ -1215,7 +1222,7 @@ li.ac_even:hover {
 }
 
 .widget .desc {
-	
+
 }
 
 
