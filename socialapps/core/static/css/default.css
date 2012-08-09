@@ -719,7 +719,7 @@ textarea#id_posting {
 	background: -moz-linear-gradient(270deg,#F2F2F2,#FFFFFF);
 }
 
-#posts_wall .post .comment-posting textarea {
+/*#posts_wall .post .comment-posting textarea {
 	width: 108%;
 	font: normal normal normal 0.7em/normal 'Lucida Grande', 'Lucida Sans Unicode', Arial, sans-serif;
 	margin-left: -38px;
@@ -729,7 +729,7 @@ textarea#id_posting {
 	-webkit-border-radius: 2px;
 	display: block;
 	margin-top: 5px;
-}
+}*/
 
 #posts_wall .post .body-post .header-post, #posts_wall .post .comment-post .header-post, #sidebar-blog .widget #friends .footer-friends,
  #sidebar-blog .widget #followers .footer-followers/*, .more-activity*/ {
