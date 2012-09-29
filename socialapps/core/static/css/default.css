@@ -319,7 +319,7 @@ footer p a:hover, .footer p a:hover { color: rgba(0,0,0,.6); }
 }
 
 .body .space-class {
-    background: #E0DFDF url(../images/spaces-24-black.png) no-repeat 5px;
+    background: #E0DFDF url(../images/icons/24x24/spaces.png) no-repeat 5px;
 }
 
 #content-left .body .class {
