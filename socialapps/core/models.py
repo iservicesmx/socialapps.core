@@ -12,7 +12,6 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 
 from tagging.fields import TagField
 
-from socialapps.core.fields import ImageWithThumbsField
 from socialapps.core.utils import base_concrete_model
 
 def _get_queryset(klass):
