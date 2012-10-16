@@ -26,7 +26,12 @@ DATE_FORMAT='%m/%d/%Y'
 @login_required
 def dashboard(request):
     """ Dashboard page """
-    return direct_to_template(request, template='dashboard.html',)
+    #return direct_to_template(request, template='dashboard.html',)
+    return direct_to_template(request, template='dashboard2.html',)
+
+def test(request):
+    """ Dashboard page """
+    return direct_to_template(request, template='test.html',)
 
 
 class LocalFormView(object):

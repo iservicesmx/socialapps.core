@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load avatar_tags %}
+{% load socialstream_tags %}
+{% load space_tags %}
+{% load courses_tags %}
+{% load tz %}
+
+{% block body_id %}dash{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="span7">
+    {% socialstream_form user.person %}
+  </div>
+  <div class="span5">
+            {% comment %}
+			<ul id="existed" class="ctrotator">
+                {% for announcement in site_wide_announcements %}	
+                <li><a class="rotator_item" href="{{ announcement }}"><p>{{ announcement.description }}</p></a></li>                        
+                 {% endfor %}
+			</ul>
+			{% endcomment %}         
+            <div class = "widget">
+				<!-- My resources widget -->	
+				<div class="widget-header">
+					<ul class="nav nav-pills">
+					    <li class="active"><a href="#mycourses" data-toggle="pill">{% trans 'My Courses' %}</a></li>
+					    <li><a href="#myspaces" data-toggle="pill">{% trans 'My Spaces' %}</a></li>
+			    	</ul>
+				</div>
+				<div class="widget-table">
+					<div class="tab-content">
+						<div id="mycourses" class="tab-pane active">
+							{% show_course_widget 5 'my' %}
+						</div>
+						<div id="myspaces" class="tab-pane">
+							{% show_space_widget 5 'my' %}
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class = "widget">
+				<!-- All resources widget -->	
+				<div class="widget-header">
+					<ul class="nav nav-pills">
+					    <li class="active"><a href="#allcourses" data-toggle="pill">{% trans 'All Courses' %}</a></li>
+					    <li><a href="#allspaces" data-toggle="pill">{% trans 'All Spaces' %}</a></li>
+			    	</ul>
+				</div>
+				<div class="widget-table">
+					<div class="tab-content">
+						<div id="allcourses" class="tab-pane active">
+							{% show_course_widget 5 'all' %}
+						</div>
+						<div id="allspaces" class="tab-pane">
+							{% show_space_widget 5 'all' %}
+						</div>
+					</div>
+				</div>
+			</div>												      
+  </div><!-- Termina menu2 en panel derecho-->
+</div>
+{% endblock %}

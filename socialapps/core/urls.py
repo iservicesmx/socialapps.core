@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 
 urlpatterns += patterns('socialapps.core.views',
     url(r'^$', "dashboard", name="core_dashboard"),
+    url(r'^demos/$', "test", name="test"),
     url(r'^file/(?P<id>[-\w]*)', "file", name="socialapps_file"),
 )
 
