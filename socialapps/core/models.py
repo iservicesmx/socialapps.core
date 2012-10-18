@@ -4,6 +4,7 @@ from datetime import datetime
 from django.db import models
 from django.db.models.sql.constants import LOOKUP_SEP
 from django.db.models.query import QuerySet
+from django.forms import model_to_dict
 
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
@@ -89,6 +90,9 @@ class BaseMetadata(BaseDescription):
 
     def get_contenttype(self):
         return ContentType.objects.get_for_model(self).id
+
+    def to_dict(self):
+        return model_to_dict(self)
 
     @property
     def date_string(self):
