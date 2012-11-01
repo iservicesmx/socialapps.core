@@ -46,9 +46,12 @@ class PermissionComparisonNode(template.Node):
     def render(self, context):
         obj = context.get(self.object)
         request = context.get("request")
+        if hasattr(obj, 'creator'):
+            if obj.creator == request.user:
+                return self.nodelist_true.render(context)
         temp = obj
         while temp:
-            if permissions.utils.has_permission(temp, request.user, self.codename) or temp.creator == request.user:
+            if permissions.utils.has_permission(temp, request.user, self.codename):
                 return self.nodelist_true.render(context)
             if not hasattr(temp, 'parent'):
                 break
