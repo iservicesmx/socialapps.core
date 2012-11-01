@@ -59,9 +59,8 @@ class JSONField(models.TextField):
         defaults.update(kwargs)
         return form_class(**defaults)
 
-try:
-    from south.modelsinspector import add_introspection_rules
-    add_introspection_rules([], ["^jsonfield\.fields\.JSONField"])
-except:
-    pass
-    
+# try:
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules([], ["^socialapps\.core\.fields\.json\.JSONField"])
+# except:
+#     pass
