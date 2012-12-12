@@ -4,6 +4,7 @@
 {% load socialstream_tags %}
 {% load space_tags %}
 {% load courses_tags %}
+{% load news_tags %}
 {% load tz %}
 
 {% block body_id %}dash{% endblock %}
@@ -60,6 +61,8 @@
 					</div>
 				</div>
 			</div>												      
+
+			{% show_news_widget 5 %}
   </div><!-- Termina menu2 en panel derecho-->
 </div>
 {% endblock %}
