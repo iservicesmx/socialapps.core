@@ -1,7 +1,7 @@
 from django import template
 from django.db import models
-import permissions.utils
 
+from ..utils import has_permission
 register = template.Library()
 
 @register.inclusion_tag('local_menu.html', takes_context = True)
@@ -46,18 +46,9 @@ class PermissionComparisonNode(template.Node):
     def render(self, context):
         obj = context.get(self.object)
         request = context.get("request")
-        if hasattr(obj, 'creator'):
-            if obj.creator == request.user:
-                return self.nodelist_true.render(context)
-        temp = obj
-        while temp:
-            if permissions.utils.has_permission(temp, request.user, self.codename):
-                return self.nodelist_true.render(context)
-            if not hasattr(temp, 'parent'):
-                break
-            if not temp.parent:
-                break
-            temp = temp.parent.get_type_object()
+        perm = has_permission(obj, request.user, self.codename)
+        if perm:
+            return self.nodelist_true.render(context)
         if type(self.nodelist_false) == str:
             return self.nodelist_false
         else:

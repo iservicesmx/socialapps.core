@@ -6,6 +6,7 @@ import PIL
 
 import datetime
 import types
+import permissions.utils
 
 from django.utils import simplejson
 from django.utils.functional import Promise
@@ -135,7 +136,7 @@ def base_concrete_model(abstract, instance):
         if issubclass(cls, abstract) and not cls._meta.abstract:
             return cls
     return instance.__class__
-    
+
 #http://docs.djangoproject.com/en/dev/topics/serialization#s-id2
 class LazyEncoder(simplejson.JSONEncoder):
     def default(self, obj):
@@ -143,13 +144,13 @@ class LazyEncoder(simplejson.JSONEncoder):
             return obj.strftime('%Y-%m-%dT%H:%M:%S')
         elif isinstance(obj, Promise):
             return force_unicode(obj)
-        return super(LazyEncoder, self).default(obj) 
+        return super(LazyEncoder, self).default(obj)
 
 json_encoder = LazyEncoder(ensure_ascii=True)
 
 def python_to_json(obj):
     return json_encoder.encode(obj)
-    
+
 def serialize_model(obj):
     attrs = []
     for slot in dir(obj):
@@ -165,4 +166,18 @@ def serialize_model(obj):
         else:
             attrs.append((slot, attr))
     return attrs
-        
+
+def has_permission(obj, user, codename):
+    if hasattr(obj, 'creator'):
+        if obj.creator == user:
+            return True
+    temp = obj
+    while temp:
+        if permissions.utils.has_permission(temp, user, codename):
+            return True
+        if not hasattr(temp, 'parent'):
+            break
+        if not temp.parent:
+            break
+        temp = temp.parent.get_type_object()
+    return False
