@@ -10,6 +10,7 @@ from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.template.defaultfilters import slugify, truncatewords_html
 from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils import formats, timezone
 
 from tagging.fields import TagField
 
@@ -97,7 +98,8 @@ class BaseMetadata(BaseDescription):
     @property
     def date_string(self):
         """Formats the created date into a pretty string."""
-        return self.created.strftime("%d/%m/%Y %H:%M")
+        tz = timezone.get_current_timezone()
+        return formats.date_format(self.created.astimezone(tz), "DATETIME_FORMAT")
 
 
 class Commentable(models.Model):
