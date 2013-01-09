@@ -23,6 +23,17 @@ MERIDIEM = 4
 class RichTextEditor(widgets.Textarea):
     editor_settings = dict ()
 
+    def __init__(self, attrs=None):
+        # The 'rows' and 'cols' attributes are required for HTML correctness.
+        default_attrs = {
+            'width': 650,
+            'height': 200,
+            'controls': "bold italic underline | style | bullets numbering | outdent indent | alignleft center alignright | undo redo | table image link unlink | pastetext | source"
+        }
+        if attrs:
+            default_attrs.update(attrs)
+        super(RichTextEditor, self).__init__(default_attrs)
+
     def update_settings(self,custom):
         return_dict = self.editor_settings.copy()
         return_dict = update(custom)
@@ -33,21 +44,22 @@ class RichTextEditor(widgets.Textarea):
         value = smart_unicode(value)
         final_attrs = self.build_attrs(attrs, name=name)
 
-        return mark_safe(u'''
+        a = mark_safe(u'''
         <textarea%s>%s</textarea>
         <script type="text/javascript">
             $(document).ready(function() {
-                $.cleditor.defaultOptions.controls = "bold italic underline | style | " +
-                                                    "bullets numbering | outdent " +
-                                                    "indent | alignleft center alignright | undo redo | " +
-                                                    "table image link unlink multimedia | pastetext | source";
-                $.cleditor.defaultOptions.width = 650;
-                $.cleditor.defaultOptions.height = 200;
-                $("textarea#%s").cleditor();
+                $.cleditor.defaultOptions.controls = "%s";
+                $.cleditor.defaultOptions.width = %s;
+                $.cleditor.defaultOptions.height = %s;
+                $("#%s").cleditor();
             });
         </script>''' % (flatatt(final_attrs),
                         conditional_escape(force_unicode(value)),
+                        self.attrs['controls'],
+                        self.attrs['width'],
+                        self.attrs['height'],
                         final_attrs['id'],))
+        return a
 
 class AutoCompleteTagInput(widgets.TextInput):
     def __init__(self, tagged_model, attrs=None):
