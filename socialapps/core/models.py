@@ -95,12 +95,24 @@ class BaseMetadata(BaseDescription):
     def to_dict(self):
         return model_to_dict(self)
 
+    def get_date_string(self, attr):
+        tz = timezone.get_current_timezone()
+        return formats.date_format(getattr(self, attr).astimezone(tz), "DATETIME_FORMAT")
+
     @property
     def date_string(self):
         """Formats the created date into a pretty string."""
-        tz = timezone.get_current_timezone()
-        return formats.date_format(self.created.astimezone(tz), "DATETIME_FORMAT")
+        return self.get_date_string('created')
 
+    @property
+    def effective_string(self):
+        """Formats the effective date into a pretty string."""
+        return self.get_date_string('efective')
+
+    @property
+    def expires_string(self):
+        """Formats the expires date into a pretty string."""
+        return self.get_date_string('expires')
 
 class Commentable(models.Model):
     comments_count = models.IntegerField(_('total amount of comments'), blank=True, default=0)
