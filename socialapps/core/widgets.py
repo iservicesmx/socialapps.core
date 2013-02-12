@@ -28,7 +28,7 @@ class RichTextEditor(widgets.Textarea):
         default_attrs = {
             'width': 650,
             'height': 200,
-            'controls': "bold italic underline | style | bullets numbering | outdent indent | alignleft center alignright | undo redo | table image link unlink | pastetext | source"
+            'controls': "bold italic underline | style | bullets numbering | outdent indent | alignleft center alignright | undo redo | table image link unlink multimedia | pastetext | source"
         }
         if attrs:
             default_attrs.update(attrs)
