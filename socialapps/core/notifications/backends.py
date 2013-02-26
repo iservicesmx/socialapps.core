@@ -49,11 +49,6 @@ class EmailCustomBackend(email.EmailBackend):
             "message": messages["full.txt"],
         }, context)
         # TODO: remove school dependency
-        return {
-            'subject': subject,
-            'body': body,
-            'from': "%s <%s>" % (self.site.school.title, self.site.school.email),
-            'to': [recipient.email]
-        }
+        return (subject, body, "%s <%s>" % (self.site.school.title, self.site.school.email), [recipient.email])
         # # print recipient
         # send_mail(subject, body, "%s <%s>" %(self.site.school.title, self.site.school.email), [recipient.email])

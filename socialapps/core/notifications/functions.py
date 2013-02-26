@@ -1,4 +1,4 @@
-from django.core.mail import send_mail
+from django.core.mail import send_mass_mail
 from notification.models import *
 import gevent
 
@@ -42,11 +42,7 @@ def send_now(users, label, extra_context=None, sender=None):
                     recipients.append(recipient)
                 # sent = False
     if len(recipients) > 0:
-        # for item in recipients:
-        jobs = [gevent.spawn(send_mail(item['subject'], item['body'], item['from'], item['to'])) for item in recipients]
+        gevent.spawn(send_mass_mail(recipients))
         sent=True
-    # gevent.joinall(jobs)
-    # print jobs
-    # reset environment to original language
     activate(current_language)
     return sent
