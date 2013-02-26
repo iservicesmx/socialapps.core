@@ -73,7 +73,7 @@ def send_now(users, label, extra_context=None, sender=None):
         if hasattr(current_site, 'school'):
             recipients.append((subject, body, "%s <%s>" % (current_site.school.title, current_site.school.email), [user.email]))
         else:
-            recipients.append((subject, body, current_site.domain, [user.email]))
+            recipients.append((subject, body, settings.DEFAULT_FROM_EMAIL, [user.email]))
     if len(recipients) > 0:
         gevent.spawn(send_mass_mail(recipients))
         sent=True
