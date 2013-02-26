@@ -72,6 +72,6 @@ def send_now(users, label, extra_context=None, sender=None):
     for user in users:
         recipients.append((subject, body, "%s <%s>" % (current_site.school.title, current_site.school.email), [user.email]))
     if len(recipients) > 0:
-        gevent.spawn(send_mass_mail(recipients)
+        gevent.spawn(send_mass_mail(recipients))
         sent=True
     return sent
