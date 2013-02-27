@@ -1,4 +1,6 @@
-from django.core.mail import send_mass_mail
+import threading
+from django.core import mail
+from django.core.mail import send_mass_mail, send_mail
 # from django.template.loader import render_to_string
 from django.template import loader, Context
 from django.utils.translation import ugettext
@@ -7,6 +9,7 @@ from django.conf import settings
 from notification.models import *
 
 import gevent
+from gevent.pool import Pool
 
 from .backends import EmailCustomBackend 
 
@@ -68,13 +71,23 @@ def send_now(users, label, extra_context=None, sender=None):
         'message': messages['full.txt']
     })
     body = loader.render_to_string("notification/email_body.txt", context)
-
     for user in users:
         if hasattr(current_site, 'school'):
-            recipients.append((subject, body, "%s <%s>" % (current_site.school.title, current_site.school.email), [user.email]))
+            EmailThread(subject, body, "%s <%s>" % (current_site.school.title, current_site.school.email), [user.email]).start()
         else:
-            recipients.append((subject, body, settings.DEFAULT_FROM_EMAIL, [user.email]))
-    if len(recipients) > 0:
-        gevent.spawn(send_mass_mail(recipients))
-        sent=True
+            EmailThread(subject, body, settings.DEFAULT_FROM_EMAIL, [user.email]).start()
+    sent=True
     return sent
+
+class EmailThread(threading.Thread):
+    def __init__(self, subject, html_content, sender, recipient_list):
+        self.subject = subject
+        self.recipient_list = recipient_list
+        self.html_content = html_content
+        self.sender = sender
+        threading.Thread.__init__(self)
+
+    def run (self):
+        msg = mail.EmailMessage(self.subject, self.html_content, self.sender, self.recipient_list)
+        msg.content_subtype = "html"
+        msg.send()
