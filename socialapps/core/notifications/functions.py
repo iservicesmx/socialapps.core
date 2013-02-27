@@ -89,5 +89,5 @@ class EmailThread(threading.Thread):
 
     def run (self):
         msg = mail.EmailMessage(self.subject, self.html_content, self.sender, self.recipient_list)
-        msg.content_subtype = "html"
+        # msg.content_subtype = "html"
         msg.send()
