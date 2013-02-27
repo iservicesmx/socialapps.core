@@ -73,21 +73,10 @@ def send_now(users, label, extra_context=None, sender=None):
     body = loader.render_to_string("notification/email_body.txt", context)
     for user in users:
         if hasattr(current_site, 'school'):
-            EmailThread(subject, body, "%s <%s>" % (current_site.school.title, current_site.school.email), [user.email]).start()
+            recipients.append((subject, body, "%s <%s>" % (current_site.school.title, current_site.school.email), [user.email]))
         else:
-            EmailThread(subject, body, settings.DEFAULT_FROM_EMAIL, [user.email]).start()
+            recipients.append((subject, body, settings.DEFAULT_FROM_EMAIL, [user.email]))
+    if len(recipients) > 0:
+        gevent.spawn(send_mass_mail, recipients)
     sent=True
     return sent
-
-class EmailThread(threading.Thread):
-    def __init__(self, subject, html_content, sender, recipient_list):
-        self.subject = subject
-        self.recipient_list = recipient_list
-        self.html_content = html_content
-        self.sender = sender
-        threading.Thread.__init__(self)
-
-    def run (self):
-        msg = mail.EmailMessage(self.subject, self.html_content, self.sender, self.recipient_list)
-        # msg.content_subtype = "html"
-        msg.send()
