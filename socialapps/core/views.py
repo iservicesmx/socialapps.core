@@ -139,3 +139,10 @@ def file(request, language=None, id=None):
     response = HttpResponse(file.file, mimetype='application/binary')
     response['Content-Disposition'] = 'attachment; filename=%s' % file.title
     return response
+
+from haystack.views import SearchView
+class CustomSearchView(SearchView):
+    results_per_page = 10
+    
+    def get_results(self):
+        return self.form.search(user=self.request.user)

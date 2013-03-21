@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <div class="row">
+        <div class="span12">
+            <div class="widget">
+                <div class="widget-header"><h3>{% trans "Results" %}</h3></div>
+                <div class="widget-content">
+                    {% if query %}
+                        <table class="table">
+                            {% for result in page.object_list %}
+                                <tr>
+                                    <td>
+                                        {% if result.object.get_type_object %}
+                                            <img src="{{ STATIC_URL }}{{ result.object.get_type_object.icon }}" width="32" height="32">
+                                        {% endif %}
+                                        <a href="/{{ result.object.get_absolute_url }}">{{ result.object }}</a>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td>
+                                        {% trans 'No results found' %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+
+                        {% if page.has_previous or page.has_next %}
+                            <div>
+                                {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                                |
+                                {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        {# Show some example queries to run, maybe query syntax, something else? #}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

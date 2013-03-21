@@ -1,6 +1,8 @@
 from django.conf.urls.defaults import *
 from socialapps import core
 from socialapps import cms
+from .forms import CustomSearchForm
+from .views import CustomSearchView
 
 cms.autodiscover()
 
@@ -15,3 +17,8 @@ urlpatterns += patterns('socialapps.core.views',
     url(r'^file/(?P<id>[-\w]*)', "file", name="socialapps_file"),
 )
 
+urlpatterns += patterns('haystack.views',
+    url(r'^search/$', CustomSearchView(
+        form_class=CustomSearchForm
+    ), name='haystack_search'),
+)
