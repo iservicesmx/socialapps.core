@@ -145,4 +145,4 @@ class CustomSearchView(SearchView):
     results_per_page = 10
     
     def get_results(self):
-        return self.form.search(user=self.request.user)
+        return self.form.search(user=self.request.user, site=self.request.site)

@@ -12,17 +12,19 @@ class CustomSearchForm(SearchForm):
             return self.no_query_found()
 
         user = kwargs.get('user', None)
+        site = kwargs.get('site', None)
 
         sqs = self.searchqueryset.auto_query(self.cleaned_data['q'])
         
         if user:
             ids = []
             for item in sqs:
-                if not item.object.site == user.person.site:
+                if not item.object.site == site:
                     ids.append('%s.%s.%s' % (item.app_label, item.model_name, item.pk))
-                if item.model_name == 'basecontent':
-                    if not has_permission(item.object.get_type_object(), user, 'socialize'):
-                        ids.append('cms.basecontent.%s' % item.pk)
+                else:
+                    if item.model_name == 'basecontent':
+                        if not has_permission(item.object.get_type_object(), user, 'socialize'):
+                            ids.append('cms.basecontent.%s' % item.pk)
             sqs = sqs.exclude(id__in=ids)
         
         if self.load_all:
