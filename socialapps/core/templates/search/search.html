@@ -14,8 +14,10 @@
                                     <td>
                                         {% if result.object.get_type_object %}
                                             <img src="{{ STATIC_URL }}{{ result.object.get_type_object.icon }}" width="32" height="32">
+                                            <a href="/{{ result.object.get_absolute_url }}">{{ result.object }}</a>
+                                        {% else %}
+                                            <a href="{{ result.object.get_absolute_url }}">{{ result.object }}</a>
                                         {% endif %}
-                                        <a href="/{{ result.object.get_absolute_url }}">{{ result.object }}</a>
                                     </td>
                                 </tr>
                             {% empty %}
