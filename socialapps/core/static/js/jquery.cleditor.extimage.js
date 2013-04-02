@@ -112,7 +112,6 @@
                 editor.execCommand(data.command, $existing, $existing, data.button);
                 closePopup(editor);
             } else if (selected_url == '#link-url' && $text.val()) {
-                alert("loading");
                 editor.execCommand(data.command, $text.val(), $text.val(), data.button);
                 closePopup(editor);
             }            

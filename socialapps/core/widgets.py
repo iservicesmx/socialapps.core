@@ -23,6 +23,12 @@ MERIDIEM = 4
 class RichTextEditor(widgets.Textarea):
     editor_settings = dict ()
 
+    # class Media:
+    #     css = {
+    #         'all': ('css/jquery.cleditor.css', )
+    #     }
+    #     js = ('js/jquery.cleditor.min.js', 'js/jquery.cleditor.table.min.js', 'js/jquery.cleditor.extimage.js', 'js/RichTextEditor.js')
+
     def __init__(self, attrs=None):
         # The 'rows' and 'cols' attributes are required for HTML correctness.
         default_attrs = {
@@ -51,14 +57,14 @@ class RichTextEditor(widgets.Textarea):
                 $.cleditor.defaultOptions.controls = "%s";
                 $.cleditor.defaultOptions.width = %s;
                 $.cleditor.defaultOptions.height = %s;
-                $("#%s").cleditor();
+                $("#cms-form #%s").cleditor();
             });
         </script>''' % (flatatt(final_attrs),
                         conditional_escape(force_unicode(value)),
                         self.attrs['controls'],
                         self.attrs['width'],
                         self.attrs['height'],
-                        final_attrs['id'],))
+                        final_attrs['id']))
         return a
 
 class AutoCompleteTagInput(widgets.TextInput):
