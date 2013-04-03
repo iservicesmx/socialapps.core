@@ -23,11 +23,11 @@ MERIDIEM = 4
 class RichTextEditor(widgets.Textarea):
     editor_settings = dict ()
 
-    # class Media:
-    #     css = {
-    #         'all': ('css/jquery.cleditor.css', )
-    #     }
-    #     js = ('js/jquery.cleditor.min.js', 'js/jquery.cleditor.table.min.js', 'js/jquery.cleditor.extimage.js', 'js/RichTextEditor.js')
+    class Media:
+        css = {
+            'all': ('css/jquery.cleditor.css', )
+        }
+        js = ('js/jquery.cleditor.min.js', 'js/jquery.cleditor.table.min.js', 'js/jquery.cleditor.extimage.js')
 
     def __init__(self, attrs=None):
         # The 'rows' and 'cols' attributes are required for HTML correctness.
@@ -49,6 +49,10 @@ class RichTextEditor(widgets.Textarea):
         if value is None: value = ''
         value = smart_unicode(value)
         final_attrs = self.build_attrs(attrs, name=name)
+        if 'class' in final_attrs:
+            final_attrs['class'] = final_attrs['class'] + ' cleditor'
+        else:
+            final_attrs['class'] = 'cleditor'
 
         a = mark_safe(u'''
         <textarea%s>%s</textarea>
@@ -57,7 +61,8 @@ class RichTextEditor(widgets.Textarea):
                 $.cleditor.defaultOptions.controls = "%s";
                 $.cleditor.defaultOptions.width = %s;
                 $.cleditor.defaultOptions.height = %s;
-                $("#cms-form #%s").cleditor();
+                $("#%s.cleditor").cleditor();
+                $('#upload form').ajaxForm({ dataType : 'json', success : selectSize, beforeSubmit: loadingForm});
             });
         </script>''' % (flatatt(final_attrs),
                         conditional_escape(force_unicode(value)),
