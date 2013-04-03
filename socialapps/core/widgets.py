@@ -23,12 +23,6 @@ MERIDIEM = 4
 class RichTextEditor(widgets.Textarea):
     editor_settings = dict ()
 
-    class Media:
-        css = {
-            'all': ('css/jquery.cleditor.css', )
-        }
-        js = ('js/jquery.cleditor.min.js', 'js/jquery.cleditor.table.min.js', 'js/jquery.cleditor.extimage.js')
-
     def __init__(self, attrs=None):
         # The 'rows' and 'cols' attributes are required for HTML correctness.
         default_attrs = {

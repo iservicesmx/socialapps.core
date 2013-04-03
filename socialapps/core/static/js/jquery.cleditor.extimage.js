@@ -17,7 +17,6 @@
 		popupClass: 'cleditorPrompt',
 		stripIndex: $.cleditor.buttons.image.stripIndex,
 		buttonClick: imageButtonClick,
-		// uploadUrl: '/uploadImage'
 	};
 	
 	$.cleditor.buttons.link = {
