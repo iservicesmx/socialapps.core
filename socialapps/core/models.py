@@ -9,8 +9,9 @@ from django.forms import model_to_dict
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.template.defaultfilters import slugify, truncatewords_html
-from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 from django.utils import formats, timezone
+from django_bleach.models import BleachField
 
 from tagging.fields import TagField
 
@@ -35,7 +36,7 @@ def _get_queryset(klass):
 class BaseDescription(models.Model):
     title = models.CharField(_("Title"), max_length=255, blank=False)
     slug = models.SlugField(_("Slug"), max_length=255, blank=True)
-    description = models.TextField(_(u"Description"), blank=True)
+    description = BleachField(verbose_name=_("Description"), blank=True)
 
     class Meta:
         abstract = True

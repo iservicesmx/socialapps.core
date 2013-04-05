@@ -1,7 +1,5 @@
-import threading
 from django.core import mail
 from django.core.mail import send_mass_mail, send_mail
-# from django.template.loader import render_to_string
 from django.template import loader, Context
 from django.utils.translation import ugettext
 from django.conf import settings
@@ -9,7 +7,6 @@ from django.conf import settings
 from notification.models import *
 
 import gevent
-from gevent.pool import Pool
 
 from .backends import EmailCustomBackend 
 
