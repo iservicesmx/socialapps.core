@@ -7,10 +7,12 @@ import PIL
 import datetime
 import types
 import permissions.utils
+import bleach
 
 from django.utils import simplejson
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
+from django.conf import settings
 
 def scale_to_min_size(image, min_width, min_height):
     """Returns an image, that isn't smaller than min_width and min_height.
@@ -181,3 +183,12 @@ def has_permission(obj, user, codename):
             break
         temp = temp.parent.get_type_object()
     return False
+
+def bleach_clean(value):
+    bleach_args = {}
+    bleach_args["tags"] = settings.BLEACH_ALLOWED_TAGS
+    bleach_args["attributes"] = settings.BLEACH_ALLOWED_ATTRIBUTES
+    bleach_args["styles"] = settings.BLEACH_ALLOWED_STYLES
+    bleach_args["strip"] = settings.BLEACH_STRIP_TAGS
+    
+    return bleach.clean(value, **bleach_args)

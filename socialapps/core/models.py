@@ -14,7 +14,7 @@ from django.utils import formats, timezone
 
 from tagging.fields import TagField
 
-from socialapps.core.utils import base_concrete_model
+from socialapps.core.utils import base_concrete_model, bleach_clean
 
 def _get_queryset(klass):
     """
@@ -49,6 +49,7 @@ class BaseDescription(models.Model):
         Create a unique slug from the title by appending an index.
         TODO: how much time spend this?
         """
+        self.description = bleach_clean(self.description)
         concrete_model = base_concrete_model(BaseDescription, self)
         if not self.slug:
             self.slug = self.get_slug()
