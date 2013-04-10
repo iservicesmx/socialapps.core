@@ -111,7 +111,8 @@
                 editor.execCommand(data.command, $existing, $existing, data.button);
                 closePopup(editor);
             } else if (selected_url == '#link-url' && $text.val()) {
-                editor.execCommand(data.command, $text.val(), $text.val(), data.button);
+                var value = '<a href="' + $text.val() + '" target="_blank">' + editor.selectedText() + '</a>';
+                editor.execCommand('inserthtml', value, null, data.button);
                 closePopup(editor);
             }            
             return false;
