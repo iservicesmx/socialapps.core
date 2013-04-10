@@ -1,3 +1,4 @@
+import re
 from StringIO import StringIO
 
 # PIL imports
@@ -13,6 +14,9 @@ from django.utils import simplejson
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
 from django.conf import settings
+from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext as _
+
 
 def scale_to_min_size(image, min_width, min_height):
     """Returns an image, that isn't smaller than min_width and min_height.
@@ -192,3 +196,7 @@ def bleach_clean(value):
     bleach_args["strip"] = settings.BLEACH_STRIP_TAGS
     
     return bleach.clean(value, **bleach_args)
+
+def form_title_validator(value):
+    if len(re.findall('\W', value)) == len(value):
+        raise ValidationError(_("Write a valid title"))
