@@ -15,6 +15,7 @@ def create_roles(app, created_models, verbosity, **kwargs):
     register_permission('Add', 'add')
     register_permission('Delete', 'delete')
     register_permission('Socialize', 'socialize')
+    register_permission('Rate', 'rate')
     print "roles creados"
         
 signals.post_syncdb.connect(create_roles, sender=site_app)

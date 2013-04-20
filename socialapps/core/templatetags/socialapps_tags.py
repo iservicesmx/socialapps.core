@@ -23,9 +23,9 @@ class PermissionComparisonNode(template.Node):
     @classmethod
     def handle_token(cls, parser, token):
         bits = token.contents.split()
-        if len(bits) != 3:
+        if len(bits) < 3:
             raise template.TemplateSyntaxError(
-                "'%s' tag takes two arguments" % bits[0])
+                "'%s' tag takes at least two arguments" % bits[0])
         end_tag = 'endifhasperm'
         nodelist_true = parser.parse(('else', end_tag))
         token = parser.next_token()
@@ -35,18 +35,17 @@ class PermissionComparisonNode(template.Node):
         else:
             nodelist_false = ""
 
-        return cls(bits[1], bits[2], nodelist_true, nodelist_false)
+        return cls(nodelist_true, nodelist_false, *bits[1:])
 
-    def __init__(self, codename, object, nodelist_true, nodelist_false):
-        self.codename = codename
-        self.object = object
+    def __init__(self, nodelist_true, nodelist_false, *args):
         self.nodelist_true = nodelist_true
         self.nodelist_false = nodelist_false
+        self.args = args
 
     def render(self, context):
-        obj = context.get(self.object)
+        obj = context.get(self.args[len(self.args) - 1])
         request = context.get("request")
-        perm = has_permission(obj, request.user, self.codename)
+        perm = has_permission(obj, request.user, *self.args[:-1])
         if perm:
             return self.nodelist_true.render(context)
         if type(self.nodelist_false) == str:

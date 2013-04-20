@@ -173,14 +173,15 @@ def serialize_model(obj):
             attrs.append((slot, attr))
     return attrs
 
-def has_permission(obj, user, codename):
+def has_permission(obj, user, *args):
     if hasattr(obj, 'creator'):
         if obj.creator == user:
             return True
     temp = obj
     while temp:
-        if permissions.utils.has_permission(temp, user, codename):
-            return True
+        for codename in args:
+            if permissions.utils.has_permission(temp, user, codename):
+                return True
         if not hasattr(temp, 'parent'):
             break
         if not temp.parent:
