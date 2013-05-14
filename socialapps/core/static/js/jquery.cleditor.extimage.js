@@ -129,8 +129,13 @@
                 if(mimetype) {
                     if (mimetype == 'video' || mimetype == 'audio') {
                         var mult_url = $(data.popup).find('iframe[name="existing"]').contents().find('.mult_url').val();
-                        var mult_type = $(data.popup).find('iframe[name="existing"]').contents().find('.mult_type').val();
-                        html = '<video class="video-js vjs-default-skin" controls width="560" height="315" data-setup="{}"><source src="'+ mult_url+'" type="'+ mult_type+'"></video>';
+                        var mult_true_type = $(data.popup).find('iframe[name="existing"]').contents().find('.mult_true_type').val();
+                        var player_width = 560;
+                        var player_height = 315;
+                        if(mimetype == 'audio') {
+                            player_height = 30;
+                        }
+                        html = '<video data-setup="" class="video-js vjs-default-skin vjs-tech" controls preload="none" width="'+player_width+'" height="'+player_height+'"><source src="'+ mult_url+'" type="'+ mult_true_type+'"></video>';
                     }
                 } else {
                     var img = $(data.popup).find('iframe[name="existing"]').contents().find('.icon').attr('src');
