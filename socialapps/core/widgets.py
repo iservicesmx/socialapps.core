@@ -25,6 +25,8 @@ class RichTextEditor(widgets.Textarea):
 
     def __init__(self, attrs=None):
         # The 'rows' and 'cols' attributes are required for HTML correctness.
+        print dir(self.__metaclass__)
+        print self.__metaclass__
         default_attrs = {
             'width': 650,
             'height': 200,
@@ -33,6 +35,7 @@ class RichTextEditor(widgets.Textarea):
         if attrs:
             default_attrs.update(attrs)
         super(RichTextEditor, self).__init__(default_attrs)
+        print(default_attrs);
 
     def update_settings(self,custom):
         return_dict = self.editor_settings.copy()
@@ -50,19 +53,23 @@ class RichTextEditor(widgets.Textarea):
 
         a = mark_safe(u'''
         <textarea%s>%s</textarea>
+
         <script type="text/javascript">
+            var %s_cleditor;
             $(document).ready(function() {
                 $.cleditor.defaultOptions.controls = "%s";
                 $.cleditor.defaultOptions.width = %s;
                 $.cleditor.defaultOptions.height = %s;
-                $("#%s.cleditor").cleditor();
+                %s_cleditor = $("#%s.cleditor").cleditor();
                 $('#upload form').ajaxForm({ dataType : 'json', success : selectSize, beforeSubmit: loadingForm});
             });
         </script>''' % (flatatt(final_attrs),
                         conditional_escape(force_unicode(value)),
+                        final_attrs['id'],
                         self.attrs['controls'],
                         self.attrs['width'],
                         self.attrs['height'],
+                        final_attrs['id'],
                         final_attrs['id']))
         return a
 

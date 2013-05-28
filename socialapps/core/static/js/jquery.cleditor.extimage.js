@@ -8,26 +8,26 @@
 */
 
 (function($) {
-	// Define the image button by replacing the standard one
-	$.cleditor.buttons.image = {
-		name: 'image',
-		title: 'Insert/Upload Image',
-		command: 'insertimage',
-		popupName: 'image',
-		popupClass: 'cleditorPrompt',
-		stripIndex: $.cleditor.buttons.image.stripIndex,
-		buttonClick: imageButtonClick,
-	};
-	
-	$.cleditor.buttons.link = {
-		name: 'link',
-		title: 'Insert Hyperlink,',
-		command: 'createlink',
-		popupName: 'ext-url',
-		popupClass: 'cleditorPrompt',
-		stripIndex: $.cleditor.buttons.link.stripIndex,		
-		buttonClick: urlButtonClick
-	};
+    // Define the image button by replacing the standard one
+    $.cleditor.buttons.image = {
+        name: 'image',
+        title: 'Insert/Upload Image',
+        command: 'insertimage',
+        popupName: 'image',
+        popupClass: 'cleditorPrompt',
+        stripIndex: $.cleditor.buttons.image.stripIndex,
+        buttonClick: imageButtonClick,
+    };
+    
+    $.cleditor.buttons.link = {
+        name: 'link',
+        title: 'Insert Hyperlink,',
+        command: 'createlink',
+        popupName: 'ext-url',
+        popupClass: 'cleditorPrompt',
+        stripIndex: $.cleditor.buttons.link.stripIndex,     
+        buttonClick: urlButtonClick
+    };
 
     $.cleditor.buttons.multimedia = {
         name: 'multimedia',
@@ -39,26 +39,26 @@
         buttonClick: multimediaButtonClick
     };
 
-	function closePopup(editor) {
-		editor.hidePopups();
-		editor.focus();
-	}
+    function closePopup(editor) {
+        editor.hidePopups();
+        editor.focus();
+    }
 
-	function imageButtonClick(e, data) {
-		var editor = data.editor,
-			$text = $(data.popup).find(':text.url'),
-			url = $.trim($text.val()),
+    function imageButtonClick(e, data) {
+        var editor = data.editor,
+            $text = $(data.popup).find(':text.url'),
+            url = $.trim($text.val()),
             $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.selected-size'),
-			$iframe = $(data.popup).find('iframe[name="__upload_iframe"]'),
-			$file = $(data.popup).find(':file');
+            $iframe = $(data.popup).find('iframe[name="__upload_iframe"]'),
+            $file = $(data.popup).find(':file');
 
-		// clear previously selected file and url
+        // clear previously selected file and url
         $file.val('');
         $iframe.contents().find('body').html('');
         $existing.attr('value', '');
 
         $('.browser-tabs a:first').tab('show');
-		var selected_image = "#url"; //$('.browser-tabs li.active').attr('href');
+        var selected_image = "#url"; //$('.browser-tabs li.active').attr('href');
         $('.browser-tabs a[data-toggle="tab"]').on('shown', function(e) {
             var base = window.location.href.substring(0, window.location.href.lastIndexOf("/") + 1);
             selected_image = $(e.target).attr("href").replace(base, "");
@@ -92,16 +92,16 @@
                 closePopup(editor);
             }
         });
-	}
-	
-	function urlButtonClick(e, data) {
-		var editor = data.editor,
-			$text = $(data.popup).find(':text.url'),
-			url = $.trim($text.val()),
+    }
+    
+    function urlButtonClick(e, data) {
+        var editor = data.editor,
+            $text = $(data.popup).find(':text.url'),
+            url = $.trim($text.val()),
             $existing = $(data.popup).find('iframe[name="existing"]').contents().find('.url');
             
         $('.browser-url-tabs a:first').tab('show');
-		var selected_url = "#link-url"; //$('.browser-url-tabs li.active').attr('href');
+        var selected_url = "#link-url"; //$('.browser-url-tabs li.active').attr('href');
         $('.browser-url-tabs a[data-toggle="tab"]').on('shown', function (e) {
             selected_url = $(e.target).attr('href');
         })        
@@ -111,13 +111,14 @@
                 editor.execCommand(data.command, $existing, $existing, data.button);
                 closePopup(editor);
             } else if (selected_url == '#link-url' && $text.val()) {
-                var value = '<a href="' + $text.val() + '" target="_blank">' + editor.selectedText() + '</a>';
+                var anchor_text = editor.selectedText() ? editor.selectedText : $text.val();
+                var value = '<a href="' + anchor_text + '" target="_blank">' + anchor_text + '</a>';
                 editor.execCommand('inserthtml', value, null, data.button);
                 closePopup(editor);
             }            
             return false;
         });
-	}
+    }
 
     function multimediaButtonClick(e, data) {
         var editor = data.editor,

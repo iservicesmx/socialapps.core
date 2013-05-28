@@ -1,85 +1,83 @@
 {% load i18n %}
 <script type="text/javascript">
-    $(document).ready(function() {
-        {% if object.get_absolute_url %}
-            var uploadUrl = '{% url base_create object.get_absolute_url "image" %}';
-            var ajaxBrowser = '{% url ajax_browser object.get_absolute_url "image" %}';
-            var imagePopupContent =
-                '<ul class="nav nav-tabs browser-tabs">' +
-                    '<li><a href="#url" data-toggle="tab">{% trans "Url from a external image" %}</a></li>' +
-                    '<li><a href="#upload" data-toggle="tab">{% trans "Upload from your computer" %}</a></li>' +
-                    '<li><a href="#existing" data-toggle="tab">{% trans "Choose an existing one" %}</a></li>' +
-                '</ul>';
-            var urlPopupContent =
-                '<ul class="nav nav-tabs browser-url-tabs">' +
-                    '<li><a href="#link-url" data-toggle="tab">{% trans "External url" %}</a></li>' +                               
-                    '<li><a href="#existing-url" data-toggle="tab">{% trans "Choose an existing object to link" %}</a></li>' +
-                '</ul>';
-        {% else %}
-            var uploadUrl = null;
-            var ajaxBrowser = null;
-            var imagePopupContent =
-                '<ul class="nav nav-tabs browser-tabs">' +
-                    '<li><a href="#url" data-toggle="tab">{% trans "Url from a external image" %}</a></li>' +
-                '</ul>';
-            var urlPopupContent =
-                '<ul class="nav nav-tabs browser-url-tabs">' +
-                    '<li><a href="#link-url" data-toggle="tab">{% trans "External url" %}</a></li>' +
-                '</ul>';
-        {% endif %}
-        imagePopupContent +=
-            '<div class="tab-content">'+
-                '<div id="url" class="tab-pane fade">' +
-                    '<input type="text" class="url" size="40" value="" />' +                
-                '</div>';
-        if (uploadUrl !== null) {
-            imagePopupContent +=
-                    '<div id="upload" class="tab-pane fade">' +
-                        '<form method="post" enctype="multipart/form-data" action="'+ uploadUrl + '"?X-Progress-ID={% now "U" %}">' +
-                        "{% csrf_token %}" +
-                        '<input type="hidden" name="X-Progress-ID" value="{% now "U" %}"  id="progress-id"/>' + 
-                        '<input type="hidden" name="title" value="image_{{ object.children.count }}">' +
-                        '<input type="hidden" name="hide" value="1">' +
-                        '<input id="id_image" name="image" type="file" />' +
-                        '<div id="progress" class="progress progress-striped hide">' +
-                            '<div class="bar"style="width: 0%;">{% trans "Uploading" %}</div>' +
-                        '</div>' +
-                        '<input type="submit"  class="btn" value="{% trans "Upload" %}"/>'+
-                        '</form>' +
-                        '<div class="data"></div>' +
-                    '</div>' +
-                    '<div class="tab-pane fade" id="existing">' +
-                        '<iframe width="500" height="250" name="existing" style="border:1px solid #CCC;" src="'+ ajaxBrowser +'" />' +
-                    '</div>';
-        }
-        imagePopupContent +=
-                    '<input type="button" class="btn save-image" value="{% trans "Insert" %}"/>' + 
-                '</div>';
-        $.cleditor.buttons.image.popupContent = imagePopupContent;
-        urlPopupContent +=
-            '<div class="tab-content">' +
-                '<div id="link-url" class="tab-pane fade">' +                   
-                    '<input type="text" class="url" size="40" value="" />' +
-                '</div>';
-        {% if object.get_absolute_url %}
-            urlPopupContent +=
-                    '<div id="existing-url" class="tab-pane fade">'+
-                        '<iframe width="500" height="250" name="existing" style="border:1px solid #CCC;" src="{% url ajax_browser object.get_absolute_url "all" %}" />' +
-                    '</div>';
-        {% endif %}
-        urlPopupContent +=
-                '<input type="button" class="btn save-link" value="{% trans "Insert" %}"/>' +
+    {% if object.get_absolute_url %}
+        var uploadUrl = '{% url base_create object.get_absolute_url "image" %}';
+        var ajaxBrowser = '{% url ajax_browser object.get_absolute_url "image" %}';
+        var imagePopupContent =
+            '<ul class="nav nav-tabs browser-tabs">' +
+                '<li><a href="#url" data-toggle="tab">{% trans "Url from a external image" %}</a></li>' +
+                '<li><a href="#upload" data-toggle="tab">{% trans "Upload from your computer" %}</a></li>' +
+                '<li><a href="#existing" data-toggle="tab">{% trans "Choose an existing one" %}</a></li>' +
+            '</ul>';
+        var urlPopupContent =
+            '<ul class="nav nav-tabs browser-url-tabs">' +
+                '<li><a href="#link-url" data-toggle="tab">{% trans "External url" %}</a></li>' +                               
+                '<li><a href="#existing-url" data-toggle="tab">{% trans "Choose an existing object to link" %}</a></li>' +
+            '</ul>';
+    {% else %}
+        var uploadUrl = null;
+        var ajaxBrowser = null;
+        var imagePopupContent =
+            '<ul class="nav nav-tabs browser-tabs">' +
+                '<li><a href="#url" data-toggle="tab">{% trans "Url from a external image" %}</a></li>' +
+            '</ul>';
+        var urlPopupContent =
+            '<ul class="nav nav-tabs browser-url-tabs">' +
+                '<li><a href="#link-url" data-toggle="tab">{% trans "External url" %}</a></li>' +
+            '</ul>';
+    {% endif %}
+    imagePopupContent +=
+        '<div class="tab-content">'+
+            '<div id="url" class="tab-pane fade">' +
+                '<input type="text" class="url" size="40" value="" />' +                
             '</div>';
-        $.cleditor.buttons.link.popupContent = urlPopupContent;
-
-        {% if object.get_absolute_url %}
-            $.cleditor.buttons.multimedia.popupContent = 
-                '<div id="existing-multimedia" class="">'+
-                    '<iframe width="500" height="250" name="existing" style="border:1px solid #CCC;" src="{% url ajax_browser object.get_absolute_url "all" %}" />' +
+    if (uploadUrl !== null) {
+        imagePopupContent +=
+                '<div id="upload" class="tab-pane fade">' +
+                    '<form method="post" enctype="multipart/form-data" action="'+ uploadUrl + '"?X-Progress-ID={% now "U" %}">' +
+                    "{% csrf_token %}" +
+                    '<input type="hidden" name="X-Progress-ID" value="{% now "U" %}"  id="progress-id"/>' + 
+                    '<input type="hidden" name="title" value="image_{{ object.children.count }}">' +
+                    '<input type="hidden" name="hide" value="1">' +
+                    '<input id="id_image" name="image" type="file" />' +
+                    '<div id="progress" class="progress progress-striped hide">' +
+                        '<div class="bar"style="width: 0%;">{% trans "Uploading" %}</div>' +
+                    '</div>' +
+                    '<input type="submit"  class="btn" value="{% trans "Upload" %}"/>'+
+                    '</form>' +
+                    '<div class="data"></div>' +
                 '</div>' +
-                '<input type="button" class="btn save-multimedia" value="{% trans "Insert" %}"/>';
-        {% endif %}
-    });
+                '<div class="tab-pane fade" id="existing">' +
+                    '<iframe width="500" height="250" name="existing" style="border:1px solid #CCC;" src="'+ ajaxBrowser +'" />' +
+                '</div>';
+    }
+    imagePopupContent +=
+                '<input type="button" class="btn save-image" value="{% trans "Insert" %}"/>' + 
+            '</div>';
+    $.cleditor.buttons.image.popupContent = imagePopupContent;
+    urlPopupContent +=
+        '<div class="tab-content">' +
+            '<div id="link-url" class="tab-pane fade">' +                   
+                '<input type="text" class="url" size="40" value="" />' +
+            '</div>';
+    {% if object.get_absolute_url %}
+        urlPopupContent +=
+                '<div id="existing-url" class="tab-pane fade">'+
+                    '<iframe width="500" height="250" name="existing" style="border:1px solid #CCC;" src="{% url ajax_browser object.get_absolute_url "all" %}" />' +
+                '</div>';
+    {% endif %}
+    urlPopupContent +=
+            '<input type="button" class="btn save-link" value="{% trans "Insert" %}"/>' +
+        '</div>';
+    $.cleditor.buttons.link.popupContent = urlPopupContent;
+
+    {% if object.get_absolute_url %}
+        $.cleditor.buttons.multimedia.popupContent = 
+            '<div id="existing-multimedia" class="">'+
+                '<iframe width="500" height="250" name="existing" style="border:1px solid #CCC;" src="{% url ajax_browser object.get_absolute_url "all" %}" />' +
+            '</div>' +
+            '<input type="button" class="btn save-multimedia" value="{% trans "Insert" %}"/>';
+    {% endif %}
      function selectSize(data, statusText, xhr, $form) {
         $('input[type=submit]', $form).button('reset');
         $('#id_image', $form).removeClass('hide');
