@@ -25,8 +25,6 @@ class RichTextEditor(widgets.Textarea):
 
     def __init__(self, attrs=None):
         # The 'rows' and 'cols' attributes are required for HTML correctness.
-        print dir(self.__metaclass__)
-        print self.__metaclass__
         default_attrs = {
             'width': 650,
             'height': 200,
@@ -35,7 +33,6 @@ class RichTextEditor(widgets.Textarea):
         if attrs:
             default_attrs.update(attrs)
         super(RichTextEditor, self).__init__(default_attrs)
-        print(default_attrs);
 
     def update_settings(self,custom):
         return_dict = self.editor_settings.copy()
